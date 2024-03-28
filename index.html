@@ -11,7 +11,7 @@
   </head>
   <body>
     <nav id="desktop-nav">
-      <div class="logo">Jianming Zheng</div>
+      <div class="logo">Jianming</div>
       <div>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
@@ -38,12 +38,12 @@
       </div>
     </nav>
     <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/jianming_zheng.JPG" alt="Jianming Zheng profile picture" />
+      <div class="profile-container">
+        <img src="./assets/jianming_zheng.JPG" alt="Jianming Zheng's profile picture" />
       </div>
       <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Jianming Zheng</h1>
+        <p class="section__text__p1">Hello</p>
+        <h1>I'm <span class = "auto-type"></span></h1>
         <p class="section__text__p2">A second-year student at UCI</p>
         <div class="btn-container">
           <button
@@ -329,6 +329,19 @@
       </nav>
       <p>Copyright &#169; 2024 Jianming Zheng. All Rights Reserved.</p>
     </footer>
+
     <script src="script.js"></script>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+      var typed = new Typed('.auto-type', {
+          strings: ['Jianming Zheng'],
+          typeSpeed: 150, 
+          backSpeed: 150,
+          loop: true
+        });
+    </script>
+
   </body>
 </html>

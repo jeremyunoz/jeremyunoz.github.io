@@ -176,9 +176,26 @@ section {
   margin: auto 0;
 }
 
+.profile-container{
+  display: flex;
+  position: relative;
+  height: 350px;
+  width: 350px;
+  margin: auto 0;
+}
+
 .section__text {
   align-self: center;
   text-align: center;
+}
+
+.section__text h1{
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.section__text span{
+  color: #80c2bb; 
 }
 
 .section__text p {
