@@ -178,7 +178,6 @@ section {
 
 .profile-container{
   display: flex;
-  position: relative;
   height: 350px;
   width: 350px;
   margin: auto 0;
