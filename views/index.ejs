@@ -1,55 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jianming Zheng's Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="./assets/letterZ.jpeg">
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">Jianming</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Jianming</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
+<%- include('partials/header') %>
     <section id="profile">
       <div class="profile-container">
-        <img src="./assets/jianming_zheng.JPG" alt="My profile picture" />
+        <img src="/public/assets/jianming_zheng.JPG" alt="My profile picture" />
       </div>
       <div class="section__text">
         <p class="section__text__p1">Hello</p>
-        <h1>I'm <span class = "myName"></span></h1>
+        <h1>I'm <span class="myName"></span></h1>
         <p class="section__text__p2">A second-year student at UCI</p>
         <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/Resume.pdf')"
-          >
+          <button class="btn btn-color-2" onclick="window.open('/public/assets/Resume.pdf')">
             Download CV
           </button>
           <button class="btn btn-color-1" onclick="location.href='./#contact'">
@@ -58,13 +17,13 @@
         </div>
         <div id="socials-container">
           <img
-            src="./assets/linkedin.png"
+            src="/public/assets/linkedin.png"
             alt="My LinkedIn profile"
             class="icon"
             onclick="location.href='https://www.linkedin.com/in/jianming-zheng-a207aa278/'"
           />
           <img
-            src="./assets/github.png"
+            src="/public/assets/github.png"
             alt="My Github profile"
             class="icon"
             onclick="location.href='https://github.com/jeremyunoz'"
@@ -78,7 +37,7 @@
       <div class="section-container">
         <div class="section__pic-container">
           <img
-            src="./assets/backgroundImg.png"
+            src="/public/assets/backgroundImg.png"
             alt="Profile picture"
             class="about-pic"
           />
@@ -86,36 +45,31 @@
         <div class="about-details-container">
           <div class="about-containers">
             <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
+              <img src="/public/assets/experience.png" alt="Experience icon" class="icon" />
               <h3>Experience</h3>
               <p>2+ years <br />Programming Experience</p>
             </div>
             <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
+              <img src="/public/assets/education.png" alt="Education icon" class="icon" />
               <h3>Education</h3>
-              <p>B.S.Computer Science & Engineering (Currently Pursuing)<br />University of California, Irvine</p>
+              <p>
+                B.S.Computer Science & Engineering (Currently Pursuing)<br />
+                University of California, Irvine
+              </p>
             </div>
           </div>
           <div class="text-container">
             <p>
-              Love tennis, climb mountains, workout, League of Legends, and coding 
-              <br/> 
-              <br>
-              <strong>Quote: </strong>  Any fool can write code that a computer can understand. Good programmers write code that humans can understand - Martin Fowler
+              Love tennis, climb mountains, workout, League of Legends, and coding
+              <br />
+              <br />
+              <strong>Quote: </strong> Any fool can write code that a computer can understand. Good programmers write code that humans can understand - Martin Fowler
             </p>
           </div>
         </div>
       </div>
       <img
-        src="./assets/arrow.png"
+        src="/public/assets/arrow.png"
         alt="Arrow icon"
         class="icon arrow"
         onclick="location.href='./#experience'"
@@ -130,33 +84,21 @@
             <h2 class="experience-sub-title">Frontend Development</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="/public/assets/checkmark.png" alt="Experience icon" class="icon" />
                 <div>
                   <h3>HTML</h3>
                   <p>Experienced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="/public/assets/checkmark.png" alt="Experience icon" class="icon" />
                 <div>
                   <h3>CSS</h3>
                   <p>Experienced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="/public/assets/checkmark.png" alt="Experience icon" class="icon" />
                 <div>
                   <h3>JavaScript</h3>
                   <p>Experienced</p>
@@ -168,67 +110,46 @@
             <h2 class="experience-sub-title">Backend Development</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="/public/assets/checkmark.png" alt="Experience icon" class="icon" />
                 <div>
                   <h3>Python</h3>
                   <p>Intermediate</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="/public/assets/checkmark.png" alt="Experience icon" class="icon" />
                 <div>
                   <h3>C++</h3>
                   <p>Intermediate</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="/public/assets/checkmark.png" alt="Experience icon" class="icon" />
                 <div>
                   <h3>Java</h3>
                   <p>Basic</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="/public/assets/checkmark.png" alt="Experience icon" class="icon" />
                 <div>
                   <h3>Git</h3>
                   <p>Basic</p>
                 </div>
               </article>
-            </article>
-            <article>
-              <img
-                src="./assets/checkmark.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <div>
-                <h3>GitHub</h3>
-                <p>Basic</p>
-              </div>
-            </article>
+              <article>
+                <img src="/public/assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3>GitHub</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
             </div>
           </div>
         </div>
       </div>
       <img
-        src="./assets/arrow.png"
+        src="/public/assets/arrow.png"
         alt="Arrow icon"
         class="icon arrow"
         onclick="location.href='./#projects'"
@@ -241,11 +162,7 @@
         <div class="about-containers">
           <div class="details-container color-container">
             <div class="article-container">
-              <img
-                src="./assets/personalWeb.png"
-                alt="Project 1"
-                class="project-img"
-              />
+              <img src="/public/assets/personalWeb.png" alt="Project 1" class="project-img" />
             </div>
             <h2 class="experience-sub-title project-title">Personal Website</h2>
             <div class="btn-container">
@@ -266,7 +183,7 @@
           <div class="details-container color-container">
             <div class="article-container">
               <img
-                src="./assets/still-working.png"
+                src="/public/assets/still-working.png"
                 alt="Currently Developing"
                 class="project-img"
               />
@@ -290,7 +207,7 @@
         </div>
       </div>
       <img
-        src="./assets/arrow.png"
+        src="/public/assets/arrow.png"
         alt="Arrow icon"
         class="icon arrow"
         onclick="location.href='./#contact'"
@@ -302,7 +219,7 @@
       <div class="contact-info-upper-container">
         <div class="contact-info-container">
           <img
-            src="./assets/email.png"
+            src="/public/assets/email.png"
             alt="Email icon"
             class="icon contact-icon email-icon"
           />
@@ -310,27 +227,16 @@
         </div>
         <div class="contact-info-container">
           <img
-            src="./assets/linkedin.png"
+            src="/public/assets/linkedin.png"
             alt="LinkedIn icon"
             class="icon contact-icon"
           />
-          <p><a href="https://www.linkedin.com/in/jianming-zheng-a207aa278/" target="_blank">LinkedIn</a></p>
+          <p>
+            <a href="https://www.linkedin.com/in/jianming-zheng-a207aa278/" target="_blank">LinkedIn</a>
+          </p>
         </div>
       </div>
     </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Copyright &#169; 2024 Jianming Zheng. All Rights Reserved.</p>
-    </footer>
 
     <script src="script.js"></script>
 
@@ -338,12 +244,10 @@
 
     <script>
       var typed = new Typed('.myName', {
-          strings: ['Jianming Zheng'],
-          typeSpeed: 150, 
-          backSpeed: 150,
-          loop: true
-        });
+        strings: ['Jianming Zheng'],
+        typeSpeed: 100,
+        backSpeed: 100,
+        loop: true,
+      });
     </script>
-
-  </body>
-</html>
+  <%- include('partials/footer') %>

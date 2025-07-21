@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title><%= myName %>'s Portfolio</title>
+      <link rel="icon" type="image/x-icon" href="/public/assets/letterZ.jpeg" />
+      <link rel="stylesheet" href="/public/style.css" />
+      <link rel="stylesheet" href="/public/mediaqueries.css" />
+   </head>
+   <body>
+      <nav id="desktop-nav">
+         <div class="logo"><%= myName %></div>
+         <div>
+            <ul class="nav-links">
+               <% links.forEach(link => { %>
+               <li><a href="#<%= link.id %>"><%= link.name %></a></li>
+               <% }); %>
+            </ul>
+         </div>
+      </nav>
+
+      <nav id="hamburger-nav">
+         <div class="logo"><%= myName %></div>
+         <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+               <span></span>
+               <span></span>
+               <span></span>
+            </div>
+            <div class="menu-links">
+               <% links.forEach(link => { %>
+               <li>
+                  <a href="#<%= link.id %>" onclick="toggleMenu()"
+                     ><%= link.name %></a
+                  >
+               </li>
+               <% }); %>
+            </div>
+         </div>
+      </nav>
+   </body>
+</html>
