@@ -24,21 +24,15 @@
       <nav id="hamburger-nav">
          <div class="logo"><%= myName %></div>
          <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">
+            <div class="hamburger-icon">
                <span></span>
                <span></span>
                <span></span>
             </div>
             <div class="menu-links">
                <% links.forEach(link => { %>
-               <li>
-                  <a href="#<%= link.id %>" onclick="toggleMenu()"
-                     ><%= link.name %></a
-                  >
-               </li>
+               <li><a href="#<%= link.id %>"><%= link.name %></a></li>
                <% }); %>
             </div>
          </div>
       </nav>
-   </body>
-</html>
