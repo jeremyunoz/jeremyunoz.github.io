@@ -1,0 +1,17 @@
+.about {
+   background-color: #fbfbfb; /* soft green from your palette */
+   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+   background-repeat: repeat;
+   padding: 60px 20px;
+   text-align: center;
+}
+
+.about h2 {
+   color: var(--color-heading);
+}
+
+.about p {
+   color: var(--color-text);
+   max-width: 700px;
+   margin: 0 auto;
+}

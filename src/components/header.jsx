@@ -7,7 +7,15 @@ function Header() {
    return (
       <header>
          <nav className="navbar">
-            <h1 className="logo">MyPortfolio</h1>
+            <h1
+               className="logo"
+               style={{
+                  background: "#2b5d4d",
+                  fontFamily: "'Bungee Shade', cursive",
+               }}
+            >
+               MyPortfolio
+            </h1>
 
             <ul className={`nav-links ${open ? "show" : ""}`}>
                <li>
