@@ -10,11 +10,17 @@ export default function Hero() {
 
    return (
       <section className={`hero ${visible ? "fade-in" : ""}`}>
-         <h1>Hi, I'm Jianming Zheng</h1>
-         <p>CS & Engineering Student | Web Developer</p>
-         <a href="#projects" className="btn">
-            View My Work
-         </a>
+         <div className="hero-content">
+            <h1>Hi, I'm Jeremy Zheng</h1>
+            <p>CS & Engineering Student | Code Hunter</p>
+            <a href="#projects" className="btn">
+               View My Work
+            </a>
+         </div>
+
+         <div className={`hero-image ${visible ? "fade-in" : ""}`}>
+            <img src="/assets/author.png" alt="Jianming Zheng" />
+         </div>
       </section>
    );
 }
