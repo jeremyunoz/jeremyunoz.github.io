@@ -4,8 +4,8 @@ function Footer() {
    const currentYear = new Date().getFullYear();
 
    return (
-      <footer>
-         <p>&copy; {currentYear} My Website</p>
+      <footer className="footer">
+         <p>© {currentYear} Jianming Zheng. All rights reserved.</p>
       </footer>
    );
 }
