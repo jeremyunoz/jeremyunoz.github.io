@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import "./Projects.css";
 
-export default function Projects() {
+function Projects() {
+   const ref = useRef();
+   const [visible, setVisible] = useState(false);
+
+   useEffect(() => {
+      const handleScroll = () => {
+         if (ref.current) {
+            const top = ref.current.getBoundingClientRect().top;
+            if (top < window.innerHeight - 100) setVisible(true);
+         }
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+   }, []);
+
    return (
-      <section id="projects" className="projects">
+      <section
+         id="projects"
+         ref={ref}
+         className={`projects ${visible ? "visible" : ""}`}
+      >
          <h2>Projects</h2>
          <div className="project-grid">
             <div className="project-card">
@@ -19,3 +37,5 @@ export default function Projects() {
       </section>
    );
 }
+
+export default Projects;
