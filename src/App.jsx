@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import { FloatingNav } from "./components/decoration/Floating_navbar";
 import TimelineUI from "./components/decoration/TimelineUI";
+import Skills from "./components/Skills";
 
 const navItems = [
    { name: "About", link: "#about", icon: "👤" },
@@ -24,6 +25,7 @@ function App() {
             <Hero />
             <About />
             <TimelineUI />
+            <Skills />
             <Projects />
             <Contact />
             <Footer />

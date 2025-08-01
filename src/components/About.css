@@ -18,3 +18,29 @@
    margin: 0 auto;
    font-size: 1.4rem;
 }
+
+@media (max-width: 768px) {
+   .about h2 {
+      font-size: 1.6rem !important;
+   }
+
+   .about p {
+      font-size: 1rem;
+   }
+   .about {
+      padding: 30px 10px;
+   }
+}
+
+@media (max-width: 480px) {
+   .about h2 {
+      font-size: 1.4rem !important;
+   }
+
+   .about p {
+      font-size: 0.9rem;
+   }
+   .about {
+      padding: 20px 5px;
+   }
+}
