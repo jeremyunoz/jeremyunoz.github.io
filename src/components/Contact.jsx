@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Contact.css";
+import { GrGithub } from "react-icons/gr";
 
 function Contact() {
    const ref = useRef();
@@ -27,6 +28,14 @@ function Contact() {
             Feel free to email me at{" "}
             <a href="mailto:your-email@example.com">jianmiz1@uci.edu</a>
          </p>
+         <a
+            href="https://github.com/jeremyunoz"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontSize: "2rem", marginLeft: "10px" }}
+         >
+            <GrGithub />
+         </a>
       </section>
    );
 }

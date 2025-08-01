@@ -2,10 +2,11 @@
    height: 100vh;
    display: flex;
    flex-direction: row;
-   justify-content: space-between;
+   justify-content: center;
    align-items: center;
-   text-align: left;
-   padding: 0 45px;
+   text-align: center;
+   padding: 0 30px;
+   gap: 60px;
    opacity: 0;
    transform: translateX(-50px);
    transition: all 1s ease;
@@ -17,42 +18,47 @@
    transition: opacity 1s ease, transform 1s ease;
 }
 
-.hero h1 {
+.hero-intro {
    font-size: 3rem;
-   color: var(--color-heading);
    font-weight: 700;
 }
 
 .hero p {
    margin-top: 15px;
+   margin-bottom: 10px;
    font-size: 1.2rem;
    color: #333333;
    font-weight: 500;
 }
 
 .hero-content {
-   flex: 1;
-   max-width: 50%;
+   flex: 0 1 auto;
+   max-width: 45%;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   gap: 20px;
+   gap: 10px;
    padding-top: 30px;
    padding-bottom: 30px;
+   min-height: 10rem; /* reserve vertical space */
+   min-width: 35rem; /* reserve horizontal space */
 }
 
 .hero-image {
-   flex: 1;
+   flex: 0 1 auto;
    display: flex;
    justify-content: center;
+   min-width: 22rem; /* keep space reserved for the image */
+   margin-left: 20px; /* push slightly to the right */
 }
 
 .hero-image img {
-   width: 50rem;
+   width: 20rem;
+   height: 20rem;
    max-width: 100%;
-   height: auto;
-   border-radius: 10px;
+   object-fit: cover;
+   border-radius: 50%;
 }
 
 .btn {

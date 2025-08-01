@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./About.css";
+import TrueFocus from "./decoration/TrueFocus";
 
 function About() {
    const ref = useRef();
@@ -21,8 +22,18 @@ function About() {
          id="about"
          ref={ref}
          className={`about ${visible ? "visible" : ""}`}
+         style={{ paddingBottom: 10 }}
       >
-         <h2>About Me</h2>
+         <h2>
+            <TrueFocus
+               sentence="About Me"
+               manualMode={false}
+               blurAmount={4}
+               borderColor="#9ed5c5"
+               animationDuration={2}
+               pauseBetweenAnimations={1}
+            />
+         </h2>
          <p>
             I'm a Computer Science & Engineering student at UC Irvine,
             passionate about embedded systems, IoT, and web development.

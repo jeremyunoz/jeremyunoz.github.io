@@ -6,17 +6,29 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
+import { FloatingNav } from "./components/decoration/Floating_navbar";
+import TimelineUI from "./components/decoration/TimelineUI";
+
+const navItems = [
+   { name: "About", link: "#about", icon: "👤" },
+   { name: "Projects", link: "#projects", icon: "📂" },
+   { name: "Contact", link: "#contact", icon: "✉️" },
+];
 
 function App() {
    return (
-      <div className="App">
-         <Header />
-         <Hero />
-         <About />
-         <Projects />
-         <Contact />
-         <Footer />
-      </div>
+      <>
+         <FloatingNav navItems={navItems} />
+         <div className="App">
+            <Header />
+            <Hero />
+            <About />
+            <TimelineUI />
+            <Projects />
+            <Contact />
+            <Footer />
+         </div>
+      </>
    );
 }
 
