@@ -43,8 +43,8 @@ const StyledWrapper = styled.div`
 
    .terminal-loader {
       border: 0.1em solid #333;
-      background-color: #1a1a1a;
-      color: #0f0;
+      background-color: #222;
+      color: #00ffcc;
       font-family: "Courier New", Courier, monospace;
       font-size: 1.2em;
       padding: 2em 1.5em;
@@ -62,7 +62,7 @@ const StyledWrapper = styled.div`
       left: 0;
       right: 0;
       height: 1.5em;
-      background-color: #333;
+      background-color: #444;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
       padding: 0 0.4em;
@@ -104,7 +104,7 @@ const StyledWrapper = styled.div`
       display: inline-block;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 0.2em solid green; /* Cursor */
+      border-right: 0.2em solid #00ffcc; /* Cursor */
       animation: typeAndDelete 4s steps(11) infinite,
          blinkCursor 0.5s step-end infinite alternate;
       margin-top: 1.5em;
