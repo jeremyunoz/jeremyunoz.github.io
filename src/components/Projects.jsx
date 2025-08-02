@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Projects.css";
+import Card from "./decoration/ProjectCard.jsx";
+import ShinyText from "./decoration/ShinyText";
 
 function Projects() {
    const ref = useRef();
@@ -17,23 +19,36 @@ function Projects() {
    }, []);
 
    return (
-      <section
-         id="projects"
-         ref={ref}
-         className={`projects ${visible ? "visible" : ""}`}
-      >
-         <h2>Projects</h2>
-         <div className="project-grid">
-            <div className="project-card">
-               <h3>Project 1</h3>
-               <p>Description of the project goes here.</p>
+      <div>
+         <section
+            id="projects"
+            ref={ref}
+            className={`projects ${visible ? "visible" : ""}`}
+         >
+            <h2>Projects</h2>
+            <div className="flex justify-center">
+               <div className="grid grid-cols-1 xl:grid-cols-2 gap-20 justify-items-center">
+                  <Card
+                     imageSrc="./assets/portfolio.png"
+                     altText="Project 1 Image"
+                     description="Built the personal portfolio from scratch using React."
+                     title="Personal Portfolio"
+                  />
+                  <Card
+                     imageSrc="./assets/zotfitness.png"
+                     altText="Project 1 Image"
+                     description="Built the personal portfolio from scratch using React."
+                     title={"ZotFitness"}
+                  />
+               </div>
             </div>
-            <div className="project-card">
-               <h3>Project 2</h3>
-               <p>Description of the project goes here.</p>
+            <div className="mt-20 text-center">
+               <h2 className="text-2xl font-semibold">
+                  <ShinyText text=" More Projects Coming Soon" speed={4} />
+               </h2>
             </div>
-         </div>
-      </section>
+         </section>
+      </div>
    );
 }
 

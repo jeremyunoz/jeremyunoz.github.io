@@ -19,8 +19,8 @@
    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
    background-repeat: repeat;
    min-height: 100vh;
-   position: relative;
-   z-index: 0;
+   /* position: relative; */
+   /* z-index: 0; */
 }
 
 body {
@@ -59,25 +59,6 @@ button:hover {
    background-color: var(--color-accent);
 }
 
-.project-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-   gap: 20px;
-}
-
-.project-card {
-   background: white;
-   padding: 20px;
-   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-   border-radius: 8px;
-}
-
-.footer {
-   padding: 20px;
-   background: var(--color-accent);
-   text-align: center;
-}
-
 section {
    opacity: 0;
    transform: translateY(20px);
@@ -92,35 +73,60 @@ section.visible {
 }
 
 @media (max-width: 768px) {
-  section {
-    padding: 40px 15px;
-  }
+   section {
+      padding: 40px 15px;
+   }
 
-  h1, h2, h3 {
-    font-size: 1.5rem;
-  }
+   h1,
+   h2,
+   h3 {
+      font-size: 1.5rem;
+   }
 
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
+   .project-grid {
+      grid-template-columns: 1fr;
+   }
 
-  button {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-  }
+   button {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+   }
+}
+
+@media (max-width: 1024px) {
+   section {
+      padding: 50px 20px;
+   }
+
+   h1,
+   h2,
+   h3 {
+      font-size: 1.8rem;
+   }
+
+   button {
+      padding: 9px 18px;
+      font-size: 1rem;
+   }
+
+   .project-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   }
 }
 
 @media (max-width: 480px) {
-  section {
-    padding: 30px 10px;
-  }
+   section {
+      padding: 30px 10px;
+   }
 
-  h1, h2, h3 {
-    font-size: 1.2rem;
-  }
+   h1,
+   h2,
+   h3 {
+      font-size: 1.2rem;
+   }
 
-  button {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-  }
+   button {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+   }
 }

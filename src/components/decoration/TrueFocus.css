@@ -10,7 +10,7 @@
 .focus-word {
    position: relative;
    font-size: 3rem;
-   font-weight: 900;
+   font-weight: 600;
    cursor: pointer;
    transition: filter 0.3s ease, color 0.3s ease;
 }
