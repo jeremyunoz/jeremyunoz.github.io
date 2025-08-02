@@ -64,7 +64,7 @@ export const FloatingNav = ({ navItems, className }) => {
                </a>
             ))}
             <a
-               href="/"
+               href="#hero"
                className="text-sm font-medium relative border-2 border-blue-500 text-black dark:text-white px-4 py-2 rounded-full hover:border-blue-600 transition-colors"
             >
                <span>Home</span>

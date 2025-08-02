@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Hero.css";
-import ShinyText from "./decoration/ShinyText";
 import TextType from "./decoration/TextType";
+import Button from "./decoration/Button";
 
 function Hero() {
    const [visible, setVisible] = useState(false);
@@ -11,7 +11,7 @@ function Hero() {
    }, []);
 
    return (
-      <section className={`hero ${visible ? "fade-in" : ""}`}>
+      <section id="hero" className={`hero ${visible ? "fade-in" : ""}`}>
          <div className="hero-content">
             <h1 className="hero-intro">
                <TextType
@@ -23,9 +23,10 @@ function Hero() {
                />
             </h1>
             <p>CS & Engineering Student | Code Hunter</p>
-            <a href="#projects" className="btn">
-               <ShinyText text="View My Work" speed={4} />
-            </a>
+            <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+               <Button label="Download CV" href="/assets/resume.pdf" download />
+               <Button label="View My Work" href="#projects" />
+            </div>
          </div>
 
          <div className={`hero-image ${visible ? "fade-in" : ""}`}>

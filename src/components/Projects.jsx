@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Projects.css";
 import Card from "./decoration/ProjectCard.jsx";
-import ShinyText from "./decoration/ShinyText";
+import Loading from "./decoration/StatusBox";
 
 function Projects() {
    const ref = useRef();
@@ -25,7 +25,7 @@ function Projects() {
             ref={ref}
             className={`projects ${visible ? "visible" : ""}`}
          >
-            <h2>Projects</h2>
+            <h2 className="font-bold">Projects</h2>
             <div className="flex justify-center">
                <div className="grid grid-cols-1 xl:grid-cols-2 gap-20 justify-items-center">
                   <Card
@@ -43,9 +43,16 @@ function Projects() {
                </div>
             </div>
             <div className="mt-20 text-center">
-               <h2 className="text-2xl font-semibold">
-                  <ShinyText text=" More Projects Coming Soon" speed={4} />
-               </h2>
+               <div
+                  style={{
+                     display: "flex",
+                     justifyContent: "center",
+                     marginTop: "1rem",
+                     marginBottom: "1rem",
+                  }}
+               >
+                  <Loading />
+               </div>
             </div>
          </section>
       </div>

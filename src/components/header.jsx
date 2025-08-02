@@ -24,6 +24,11 @@ function Header() {
                   </a>
                </li>
                <li>
+                  <a href="#skills" onClick={() => setOpen(false)}>
+                     Skills
+                  </a>
+               </li>
+               <li>
                   <a href="#projects" onClick={() => setOpen(false)}>
                      Projects
                   </a>

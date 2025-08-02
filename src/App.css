@@ -19,8 +19,8 @@
    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
    background-repeat: repeat;
    min-height: 100vh;
-   /* position: relative; */
-   /* z-index: 0; */
+   position: relative;
+   z-index: 0;
 }
 
 body {

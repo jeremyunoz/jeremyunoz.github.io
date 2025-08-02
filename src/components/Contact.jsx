@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Contact.css";
 import { GrGithub } from "react-icons/gr";
+import { SiGmail, SiLinkedin } from "react-icons/si";
 
 function Contact() {
    const ref = useRef();
@@ -23,19 +24,39 @@ function Contact() {
          ref={ref}
          className={`contact ${visible ? "visible" : ""}`}
       >
-         <h2>Contact Me</h2>
-         <p>
-            Feel free to email me at{" "}
-            <a href="mailto:your-email@example.com">jianmiz1@uci.edu</a>
+         <h2 className="font-semibold">Contact Me</h2>
+         <p style={{ textAlign: "center", marginTop: "0.5rem", fontSize: "1rem" }}>
+            Based in Irvine, CA
          </p>
-         <a
-            href="https://github.com/jeremyunoz"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontSize: "2rem", marginLeft: "10px" }}
+         <div
+            style={{
+               display: "flex",
+               justifyContent: "center",
+               gap: "2rem",
+               marginTop: "1rem",
+            }}
          >
-            <GrGithub />
-         </a>
+            <a href="mailto:jianmiz1@uci.edu" style={{ fontSize: "2rem" }}>
+               <SiGmail />
+            </a>
+
+            <a
+               href="https://github.com/jeremyunoz"
+               target="_blank"
+               rel="noopener noreferrer"
+               style={{ fontSize: "2rem" }}
+            >
+               <GrGithub />
+            </a>
+            <a
+               href="https://www.linkedin.com/in/jeremy-zheng-a207aa278/"
+               target="_blank"
+               rel="noopener noreferrer"
+               style={{ fontSize: "2rem" }}
+            >
+               <SiLinkedin />
+            </a>
+         </div>
       </section>
    );
 }
