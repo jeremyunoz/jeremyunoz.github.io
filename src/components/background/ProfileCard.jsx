@@ -1,13 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { IoLogoWechat } from "react-icons/io5";
 
 const ProfileCard = () => {
+   const [flipped, setFlipped] = useState(false);
+
+   useEffect(() => {
+      const handleResize = () => {
+         if (window.innerWidth < 1024) {
+            setFlipped(false);
+         }
+      };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+   }, []);
+
    return (
       <StyledWrapper>
-         <div className="container">
-            <div className="card">
+         <div
+            className="container"
+            onClick={() => {
+               // Toggle flip on click for mobile devices
+               if (window.innerWidth < 1024) {
+                  setFlipped(!flipped);
+               }
+            }}
+            // Add hover effect for larger screens
+            onMouseEnter={() => {
+               if (window.innerWidth >= 1024) {
+                  setFlipped(true);
+               }
+            }}
+            // Reset flip on mouse leave for larger screens
+            onMouseLeave={() => {
+               if (window.innerWidth >= 1024) {
+                  setFlipped(false);
+               }
+            }}
+         >
+            <div className={`card ${flipped ? "flipped" : ""}`}>
                <div className="front">
                   <div className="card-top">
                      <p className="card-top-para">Profile</p>
@@ -65,6 +97,7 @@ const ProfileCard = () => {
    );
 };
 
+// Styled components for the ProfileCard
 const StyledWrapper = styled.div`
    .container {
       height: 380px;
@@ -109,11 +142,6 @@ const StyledWrapper = styled.div`
    .card-top-para {
       font-size: 16px;
       font-weight: bold;
-   }
-
-   .container:hover > .card {
-      cursor: pointer;
-      transform: rotateX(180deg) rotateZ(-180deg);
    }
 
    .front,
@@ -173,6 +201,12 @@ const StyledWrapper = styled.div`
 
    .card-top {
       padding-bottom: 8px;
+   }
+   .card.flipped {
+      transform: rotateX(180deg) rotateZ(-180deg);
+   }
+   .container {
+      cursor: pointer;
    }
 `;
 
