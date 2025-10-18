@@ -27,7 +27,13 @@ function Projects() {
          >
             <h2 className="font-bold">Projects</h2>
             <div className="flex justify-center">
-               <div className="grid grid-cols-1 xl:grid-cols-2 gap-20 justify-items-center">
+               <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-20 justify-items-center">
+                  <Card
+                     imageSrc="./assets/bincredible.png"
+                     altText="Bincredible App Image"
+                     description="I built my first mobile app using React Native and Firebase to make recycling smarter and more accessible. The app features an on-device ML model that scans everyday items and teaches users how to properly sort recyclables and trash."
+                     title="Bincredible"
+                  />
                   <Card
                      imageSrc="./assets/portfolio.png"
                      altText="Project 1 Image"

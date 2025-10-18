@@ -34,6 +34,7 @@ const StyledWrapper = styled.div`
       width: 100%;
       height: 280px;
       object-fit: contain;
+      object-position: center;
       border-radius: 20px 20px 0 0;
       background-color: #f5f5f5;
    }
@@ -41,12 +42,16 @@ const StyledWrapper = styled.div`
    .card-text {
       padding: 12px 16px;
       text-align: center;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
    }
 
    .card-text h3 {
       font-size: 1rem;
       font-weight: bold;
-      margin-bottom: 6px;
+      margin: 0;
       color: #333;
    }
 
@@ -61,6 +66,9 @@ const StyledWrapper = styled.div`
       }
       .card img {
          height: 200px;
+      }
+      .card-text {
+         min-height: 50px;
       }
       .card-text h3 {
          font-size: 0.9rem;
@@ -77,6 +85,9 @@ const StyledWrapper = styled.div`
       .card img {
          height: 320px;
       }
+      .card-text {
+         min-height: 70px;
+      }
       .card-text h3 {
          font-size: 1.2rem;
       }
@@ -91,6 +102,9 @@ const StyledWrapper = styled.div`
       }
       .card img {
          height: 360px;
+      }
+      .card-text {
+         min-height: 80px;
       }
       .card-text h3 {
          font-size: 1.4rem;
