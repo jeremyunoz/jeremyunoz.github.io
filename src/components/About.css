@@ -11,11 +11,67 @@
    margin-bottom: 20px !important;
 }
 
-.about p {
-   color: var(--color-text);
-   max-width: 700px;
+.about-content {
+   max-width: 1200px;
    margin: 0 auto;
+}
+
+.about-intro {
+   margin-bottom: 40px;
+}
+
+.about-text {
+   color: var(--color-text);
    font-size: 1.4rem;
+   line-height: 1.7;
+   margin: 0;
+}
+
+
+.passion-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 30px;
+   margin-top: 20px;
+   justify-content: center;
+   max-width: 900px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.passion-item {
+   background: rgba(255, 255, 255, 0.7);
+   padding: 25px;
+   border-radius: 15px;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+   text-align: center;
+}
+
+.passion-item:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.passion-icon {
+   font-size: 2.5rem;
+   display: block;
+   margin-bottom: 15px;
+}
+
+.passion-item p {
+   color: var(--color-text);
+   font-size: 1.1rem;
+   line-height: 1.6;
+   margin: 0;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+   .passion-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      max-width: 800px;
+   }
 }
 
 @media (max-width: 768px) {
@@ -23,28 +79,65 @@
       font-size: 1.6rem !important;
    }
 
-   .about p {
+   .about-text {
+      font-size: 1.2rem;
+   }
+   
+   
+   .passion-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+   }
+   
+   .passion-item {
+      padding: 20px;
+   }
+   
+   .passion-icon {
+      font-size: 2rem;
+   }
+   
+   .passion-item p {
       font-size: 1rem;
    }
-   .about p {
-      line-height: 1.6;
-   }
+   
    .about {
       padding: 30px 10px;
    }
 }
 
+@media (max-width: 600px) {
+   .passion-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+   }
+}
+
 @media (max-width: 480px) {
+   .passion-grid {
+      gap: 10px;
+   }
    .about h2 {
       font-size: 1.4rem !important;
    }
 
-   .about p {
+   .about-text {
+      font-size: 1.1rem;
+   }
+   
+   
+   .passion-item {
+      padding: 15px;
+   }
+   
+   .passion-icon {
+      font-size: 1.8rem;
+   }
+   
+   .passion-item p {
       font-size: 0.9rem;
    }
-   .about p {
-      line-height: 1.6;
-   }
+   
    .about {
       padding: 20px 5px;
    }
