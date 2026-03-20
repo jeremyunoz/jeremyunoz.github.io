@@ -112,9 +112,6 @@ function Projects() {
                   <Card key={project.title} {...project} delay={index * 160} />
                ))}
             </div>
-            <div className="projects-loader">
-               <Loading />
-            </div>
          </div>
       </section>
    );

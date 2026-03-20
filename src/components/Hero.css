@@ -3,7 +3,7 @@
    min-height: 100vh;
    width: 100%;
    margin: 0;
-   padding: 7.5rem 1.5rem 5.5rem;
+   padding: clamp(9rem, 11vh + 5.5rem, 13.5rem) 1.5rem 5.5rem;
    overflow: hidden;
    display: flex;
    flex-direction: column;
@@ -153,6 +153,8 @@
 
 .hero-name {
    display: block;
+   /* Softer than kicker / subhead base — cleaner on mint */
+   color: #5f9788;
 }
 
 .hero-name-visual {
@@ -308,7 +310,7 @@
 @media (max-width: 768px) {
    .hero {
       min-height: auto;
-      padding: 6.5rem 1.1rem 4rem;
+      padding: clamp(7.25rem, 10vh + 4.5rem, 9.5rem) 1.1rem 4rem;
    }
 
    .hero-avatar-shell {
@@ -332,7 +334,7 @@
 
 @media (max-width: 480px) {
    .hero {
-      padding-top: 6rem;
+      padding-top: clamp(6.75rem, 12vw + 5rem, 8.5rem);
    }
 
    .hero-intro {
