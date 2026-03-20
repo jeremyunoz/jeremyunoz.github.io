@@ -35,11 +35,13 @@ function HomePage() {
       <div className="App">
          <FloatingNav navItems={navItems} />
          <Header />
-         <Hero />
-         {/* About is intentionally not rendered on home; it lives on /about */}
-         <Skills />
-         <Projects />
-         <Contact />
+         <main className="page-sections">
+            <Hero />
+            {/* About is intentionally not rendered on home; it lives on /about */}
+            <Skills />
+            <Projects />
+            <Contact />
+         </main>
          <Footer />
       </div>
    );

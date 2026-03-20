@@ -11,6 +11,7 @@
    --color-link: #9ed5c5;
    --color-heading: #8ec3b0;
    --color-text: #333;
+   --section-gap: clamp(2rem, 5vw, 4rem);
 }
 
 /* App background styling */
@@ -21,6 +22,12 @@
    min-height: 100vh;
    position: relative;
    z-index: 0;
+}
+
+.page-sections {
+   display: flex;
+   flex-direction: column;
+   gap: var(--section-gap);
 }
 
 body {
@@ -73,6 +80,10 @@ section.visible {
 }
 
 @media (max-width: 768px) {
+   :root {
+      --section-gap: 2rem;
+   }
+
    section {
       padding: 40px 15px;
    }
@@ -93,7 +104,11 @@ section.visible {
    }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 769px) {
+   :root {
+      --section-gap: 2.5rem;
+   }
+
    section {
       padding: 50px 20px;
    }
@@ -115,6 +130,10 @@ section.visible {
 }
 
 @media (max-width: 480px) {
+   :root {
+      --section-gap: 1.5rem;
+   }
+
    section {
       padding: 30px 10px;
    }

@@ -1,148 +1,108 @@
 import React from "react";
-import { useState } from "react";
 import "./Skills.css";
-import TechStackCard from "./decoration/TechStackCard";
 import {
-   IoLogoReact,
-   IoLogoJavascript,
-   IoLogoHtml5,
-   IoLogoCss3,
-   IoLogoPython,
-} from "react-icons/io5";
+   SiArduino,
+   SiCplusplus,
+   SiJavascript,
+   SiPlatformio,
+   SiPostman,
+   SiPytorch,
+   SiRaspberrypi,
+   SiRust,
+   SiTailwindcss,
+} from "react-icons/si";
 import {
-   DiJqueryLogo,
-   DiPostgresql,
-   DiRasberryPi,
-   DiNodejsSmall,
-   DiMysql,
-   DiMootoolsBadge,
-} from "react-icons/di";
-
-import { FaAws, FaC, FaGithub } from "react-icons/fa6";
+   FaAws,
+   FaBootstrap,
+   FaCss3Alt,
+   FaGithub,
+   FaHtml5,
+   FaNodeJs,
+   FaPython,
+   FaReact,
+} from "react-icons/fa6";
 import { FaGitAlt } from "react-icons/fa";
-import { SiPostman, SiArduino, SiPlatformio, SiPytorch } from "react-icons/si";
+import { DiJqueryLogo, DiMysql, DiPostgresql } from "react-icons/di";
 import { FcLinux } from "react-icons/fc";
-import Loader from "./decoration/Loader";
-import TechButton from "./decoration/TechButton";
 
 function Skills() {
-   const [open, setOpen] = useState(false);
+   const skillGroups = [
+      {
+         title: "Languages",
+         items: [
+            { name: "C/C++", icon: SiCplusplus, color: "#00599C" },
+            { name: "Python", icon: FaPython, color: "#3776AB" },
+            { name: "Rust", icon: SiRust, color: "#000000" },
+            { name: "HTML", icon: FaHtml5, color: "#E34F26" },
+            { name: "CSS", icon: FaCss3Alt, color: "#1572B6" },
+            { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+         ],
+      },
+      {
+         title: "Embedded & Platforms",
+         items: [
+            { name: "Arduino", icon: SiArduino, color: "#00979D" },
+            { name: "Raspberry Pi", icon: SiRaspberrypi, color: "#A22846" },
+            { name: "PlatformIO", icon: SiPlatformio, color: "#F5822A" },
+            { name: "Linux", icon: FcLinux, color: "#222222" },
+            { name: "Git", icon: FaGitAlt, color: "#F05032" },
+            { name: "GitHub", icon: FaGithub, color: "#181717" },
+            { name: "AWS", icon: FaAws, color: "#181717" },
+            { name: "PyTorch", icon: SiPytorch, color: "#EE4C2C" },
+         ],
+      },
+      {
+         title: "Frontend",
+         items: [
+            { name: "React", icon: FaReact, color: "#61DAFB" },
+            { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+            { name: "jQuery", icon: DiJqueryLogo, color: "#0769AD" },
+            { name: "Bootstrap", icon: FaBootstrap, color: "#7952B3" },
+         ],
+      },
+      {
+         title: "Backend & Data",
+         items: [
+            { name: "Node.js", icon: FaNodeJs, color: "#5FA04E" },
+            { name: "MySQL", icon: DiMysql, color: "#4479A1" },
+            { name: "PostgreSQL", icon: DiPostgresql, color: "#4169E1" },
+            { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+         ],
+      },
+   ];
+
    return (
-      <div id="skills" className="skills relative w-full overflow-clip">
-         <h2 className="font-bold text-3xl mt-4 mb-4">Skills & Tools</h2>
-         {/* Show Loader when not open, else show button */}
-         {
-            // Only show Loader if not open; show button always, but Loader and button are mutually exclusive visually
-         }
-         {!open && <Loader />}
-         {open && (
-            <>
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center mb-4">
-                  <TechStackCard
-                     title="Frontend Tools"
-                     description="React, Tailwind, and UI libraries"
-                     icons={[
-                        <DiJqueryLogo
-                           className="h-6 w-6 text-blue-400"
-                           key="jQuery-logo"
-                        />,
-                        <IoLogoJavascript
-                           className="h-8 w-8 text-yellow-500"
-                           key="js-icon"
-                        />,
-                        <IoLogoReact
-                           className="h-10 w-10 text-sky-400"
-                           key="react-logo"
-                        />,
-                        <IoLogoHtml5
-                           className="h-8 w-8 text-orange-600"
-                           key="html-icon"
-                        />,
-                        <IoLogoCss3
-                           className="h-6 w-6 text-blue-500"
-                           key="css-icon"
-                        />,
-                     ]}
-                  />
-                  <TechStackCard
-                     title="Backend Tools"
-                     description="Node.js, Python, MySQL, PostgreSQL, and API testing"
-                     icons={[
-                        <DiMysql
-                           className="h-6 w-6 text-blue-600"
-                           key="mysql-logo"
-                        />,
-                        <DiNodejsSmall
-                           className="h-8 w-8 text-green-600"
-                           key="nodeJS-icon"
-                        />,
-                        <IoLogoPython
-                           className="h-10 w-10"
-                           key="python-logo"
-                        />,
-                        <DiPostgresql
-                           className="h-8 w-8 text-indigo-500"
-                           key="postgresql-icon"
-                        />,
-                        <SiPostman
-                           className="h-6 w-6 text-orange-500"
-                           key="postman-icon"
-                        />,
-                     ]}
-                  />
-                  <TechStackCard
-                     title="Embedded Tools"
-                     description="Arduino, Linux, Embedded C, Raspberry Pi, and debugging tools"
-                     icons={[
-                        <SiArduino
-                           className="h-6 w-6 text-green-500"
-                           key="arduino-logo"
-                        />,
-                        <FcLinux className="h-8 w-8" key="linux-icon" />,
-                        <FaC
-                           className="h-10 w-10 text-blue-700"
-                           key="embeddedc-logo"
-                        />,
-                        <DiRasberryPi
-                           className="h-8 w-8 text-pink-600"
-                           key="rasberrypi-icon"
-                        />,
-                        <DiMootoolsBadge
-                           className="h-6 w-6 text-purple-500"
-                           key="debug-icon"
-                        />,
-                     ]}
-                  />
-                  <TechStackCard
-                     title="Platform Tools & Libraries"
-                     description="PlatformIO, Git, GitHub, AWS, and PyTorch"
-                     icons={[
-                        <SiPlatformio
-                           className="h-6 w-6  text-orange-600"
-                           key="platformio-logo"
-                        />,
-                        <FaGitAlt
-                           className="h-8 w-8 text-gray-800 dark:text-white"
-                           key="git-icon"
-                        />,
-                        <FaGithub
-                           className="h-10 w-10 text-gray-900 dark:text-white"
-                           key="github-logo"
-                        />,
-                        <FaAws className="h-8 w-8" key="aws-icon" />,
-                        <SiPytorch
-                           className="h-6 w-6 text-red-600"
-                           key="pytorch-icon"
-                        />,
-                     ]}
-                  />
-               </div>
-            </>
-         )}
-         <TechButton onClick={() => setOpen(!open)}>
-            {open ? "Hide Tech Stack" : "Explore My Tech Stack"}
-         </TechButton>
-      </div>
+      <section id="skills" className="skills visible">
+         <div className="skills-shell">
+            <p className="skills-eyebrow">My Stack</p>
+            <h2 className="skills-title">Tools & Technologies</h2>
+            <p className="skills-intro">
+               The technologies I keep coming back to when building web,
+               embedded, and software projects.
+            </p>
+
+            <div className="skills-groups">
+               {skillGroups.map((group) => (
+                  <article className="skill-group" key={group.title}>
+                     <h3>{group.title}</h3>
+                     <div className="skill-icon-grid">
+                        {group.items.map((item) => (
+                           <div className="skill-tile" key={item.name}>
+                              <div className="skill-logo-wrap">
+                                 <item.icon
+                                    className="skill-logo"
+                                    style={{ color: item.color }}
+                                 />
+                              </div>
+                              <span className="skill-name">{item.name}</span>
+                           </div>
+                        ))}
+                     </div>
+                  </article>
+               ))}
+            </div>
+         </div>
+      </section>
    );
 }
 
