@@ -1,10 +1,20 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
    const [open, setOpen] = useState(false);
    const navigate = useNavigate();
+   const location = useLocation();
+   const [activeItem, setActiveItem] = useState("home");
+
+   const navItems = [
+      { id: "about", label: "About", href: "#about" },
+      { id: "skills", label: "Skills", href: "#skills" },
+      { id: "projects", label: "Projects", href: "#projects" },
+      { id: "contact", label: "Contact", href: "#contact" },
+      { id: "home", label: "Home", href: "/" },
+   ];
 
    const goTo = (hash) => {
       if (!hash || !hash.startsWith("#")) return;
@@ -12,6 +22,45 @@ function Header() {
       if (id === "about") navigate("/about");
       else navigate(`/?section=${id}`);
    };
+
+   useEffect(() => {
+      if (location.pathname === "/about") {
+         setActiveItem("about");
+         return;
+      }
+
+      if (location.pathname !== "/") {
+         setActiveItem("");
+         return;
+      }
+
+      const updateActiveSection = () => {
+         const sectionIds = ["skills", "projects", "contact"];
+         const threshold = 150;
+         let currentSection = "home";
+
+         for (const id of sectionIds) {
+            const section = document.getElementById(id);
+            if (!section) continue;
+
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= threshold) {
+               currentSection = id;
+            }
+         }
+
+         setActiveItem(currentSection);
+      };
+
+      updateActiveSection();
+      window.addEventListener("scroll", updateActiveSection, { passive: true });
+      window.addEventListener("resize", updateActiveSection);
+
+      return () => {
+         window.removeEventListener("scroll", updateActiveSection);
+         window.removeEventListener("resize", updateActiveSection);
+      };
+   }, [location.pathname, location.search]);
 
    return (
       <header>
@@ -23,58 +72,32 @@ function Header() {
                   fontFamily: "'Bungee Shade', cursive",
                }}
             >
-               MyPortfolio
+               Jeremy Zheng
             </h1>
 
             <ul className={`nav-links ${open ? "show" : ""}`}>
-               <li>
-                  <a
-                     href="#about"
-                     onClick={(e) => {
-                        e.preventDefault();
-                        setOpen(false);
-                        goTo("#about");
-                     }}
-                  >
-                     About
-                  </a>
-               </li>
-               <li>
-                  <a
-                     href="#skills"
-                     onClick={(e) => {
-                        e.preventDefault();
-                        setOpen(false);
-                        goTo("#skills");
-                     }}
-                  >
-                     Skills
-                  </a>
-               </li>
-               <li>
-                  <a
-                     href="#projects"
-                     onClick={(e) => {
-                        e.preventDefault();
-                        setOpen(false);
-                        goTo("#projects");
-                     }}
-                  >
-                     Projects
-                  </a>
-               </li>
-               <li>
-                  <a
-                     href="#contact"
-                     onClick={(e) => {
-                        e.preventDefault();
-                        setOpen(false);
-                        goTo("#contact");
-                     }}
-                  >
-                     Contact
-                  </a>
-               </li>
+               {navItems.map((item) => (
+                  <li key={item.id}>
+                     <a
+                        href={item.href}
+                        className={activeItem === item.id ? "active" : ""}
+                        onClick={(e) => {
+                           e.preventDefault();
+                           setOpen(false);
+                           setActiveItem(item.id);
+
+                           if (item.id === "home") {
+                              navigate("/");
+                              return;
+                           }
+
+                           goTo(item.href);
+                        }}
+                     >
+                        {item.label}
+                     </a>
+                  </li>
+               ))}
             </ul>
 
             <div className="hamburger" onClick={() => setOpen(!open)}>
