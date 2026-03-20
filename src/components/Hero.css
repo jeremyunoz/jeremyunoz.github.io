@@ -120,7 +120,7 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: 1.6rem;
+   gap: clamp(1.5rem, 2.6vw, 2.35rem);
 }
 
 .hero-kicker {
@@ -140,27 +140,53 @@
 
 .hero-intro {
    color: #3b6155;
-   font-size: clamp(2.5rem, 1.5rem + 3.9vw, 5rem);
+   /* ~2.5rem mobile → ~3.75–4rem desktop (reference-style scale, not oversized) */
+   font-size: clamp(2.35rem, 1.35rem + 2.35vw, 3.85rem);
    font-weight: 700;
-   line-height: 1.18;
+   line-height: 1.16;
    letter-spacing: -0.04em;
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: 0.85rem;
+   gap: clamp(1.35rem, 2.8vw, 2.5rem);
 }
 
 .hero-name {
    display: block;
 }
 
+.hero-name-visual {
+   display: inline;
+}
+
+.hero-name-cursor {
+   display: inline-block;
+   margin-left: 0.06em;
+   font-weight: 400;
+   translate: 0 0.02em;
+}
+
+.hero-name-sr-only {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0, 0, 0, 0);
+   white-space: nowrap;
+   border: 0;
+}
+
 .hero-subheadline {
    display: block;
-   max-width: 18ch;
-   font-size: clamp(1.35rem, 1rem + 1.6vw, 2.2rem);
+   max-width: min(40ch, 100%);
+   /* ~1/3 headline size: reference-style ~1.25–1.5rem */
+   font-size: clamp(1.12rem, 1.02rem + 0.55vw, 1.48rem);
    font-weight: 600;
-   line-height: 1.35;
+   line-height: 1.4;
    letter-spacing: -0.02em;
+   text-wrap: balance;
 }
 
 .hero-emphasis {
@@ -198,9 +224,9 @@
 
 .hero-summary {
    max-width: 760px;
-   color: #63857b;
-   font-size: clamp(1rem, 0.93rem + 0.34vw, 1.18rem);
-   line-height: 1.75;
+   color: #5c7a72;
+   font-size: clamp(1.02rem, 0.96rem + 0.22vw, 1.2rem);
+   line-height: 1.7;
 }
 
 .hero-tags {
