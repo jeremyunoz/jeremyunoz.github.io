@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Contact.css";
 import { GrGithub } from "react-icons/gr";
-import { SiGmail, SiLinkedin } from "react-icons/si";
+import { RiLinkedinFill } from "react-icons/ri";
+import { SiGmail } from "react-icons/si";
 
 function Contact() {
    const ref = useRef();
@@ -54,7 +55,7 @@ function Contact() {
                rel="noopener noreferrer"
                style={{ fontSize: "2rem" }}
             >
-               <SiLinkedin />
+               <RiLinkedinFill />
             </a>
          </div>
       </section>
