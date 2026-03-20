@@ -100,11 +100,17 @@ function Header() {
                ))}
             </ul>
 
-            <div className="hamburger" onClick={() => setOpen(!open)}>
+            <button
+               type="button"
+               className="hamburger"
+               aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+               aria-expanded={open}
+               onClick={() => setOpen(!open)}
+            >
                <div></div>
                <div></div>
                <div></div>
-            </div>
+            </button>
          </nav>
       </header>
    );
