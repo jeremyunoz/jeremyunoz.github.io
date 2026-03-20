@@ -26,9 +26,9 @@ function Contact() {
          className={`contact ${visible ? "visible" : ""}`}
       >
          <h2 className="font-semibold">Contact Me</h2>
-         <p className="contact-location">Based in Irvine, CA</p>
+         <p className="contact-location">Based in Irvine, CA and open to embedded, edge AI, and software opportunities</p>
          <div className="contact-links">
-            <a href="mailto:jianmiz1@uci.edu">
+            <a href="mailto:jmzheng688@gmail.com">
                <SiGmail />
             </a>
 
@@ -40,7 +40,7 @@ function Contact() {
                <GrGithub />
             </a>
             <a
-               href="https://www.linkedin.com/in/jeremy-zheng-a207aa278/"
+               href="https://www.linkedin.com/in/jeremy-zheng-unoz"
                target="_blank"
                rel="noopener noreferrer"
             >
