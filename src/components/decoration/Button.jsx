@@ -1,12 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = ({ label = "Click Me", href = "#", download = false }) => {
+const Button = ({
+   label = "Click Me",
+   href = "#",
+   download = false,
+   onClick,
+}) => {
    return (
       <StyledWrapper>
-         <a href={href} download={download}>
-            <button>{label}</button>
-         </a>
+         {onClick ? (
+            <button type="button" onClick={onClick}>
+               {label}
+            </button>
+         ) : (
+            <a href={href} download={download}>
+               <button>{label}</button>
+            </a>
+         )}
       </StyledWrapper>
    );
 };

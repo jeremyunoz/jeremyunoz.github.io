@@ -4,9 +4,11 @@ import TextType from "./decoration/TextType";
 import Button from "./decoration/Button";
 import BackgroundBeamsWithCollision from "./background/BeamBackground";
 import ProfileCard from "./background/ProfileCard";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
    const [visible, setVisible] = useState(false);
+   const navigate = useNavigate();
 
    useEffect(() => {
       setVisible(true);
@@ -32,7 +34,10 @@ function Hero() {
                      href="/assets/resume.pdf"
                      download
                   />
-                  <Button label="View My Work" href="#projects" />
+                  <Button
+                     label="View My Work"
+                     onClick={() => navigate("/?section=projects")}
+                  />
                </div>
             </div>
 

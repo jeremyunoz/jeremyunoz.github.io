@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
    motion,
    AnimatePresence,
@@ -9,6 +10,7 @@ import {
 import { cn } from "../../lib/utils";
 
 export const FloatingNav = ({ navItems, className }) => {
+   const navigate = useNavigate();
    const { scrollYProgress } = useScroll();
 
    const [visible, setVisible] = useState(false);
@@ -56,6 +58,15 @@ export const FloatingNav = ({ navItems, className }) => {
                   className={cn(
                      "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
                   )}
+                  onClick={(e) => {
+                     if (!navItem.link) return;
+                     if (navItem.link.startsWith("#")) {
+                        e.preventDefault();
+                        const id = navItem.link.slice(1);
+                        if (id === "about") navigate("/about");
+                        else navigate(`/?section=${id}`);
+                     }
+                  }}
                >
                   <span className="block sm:hidden">{navItem.icon}</span>
                   <span className="hidden sm:block text-sm">
@@ -64,8 +75,12 @@ export const FloatingNav = ({ navItems, className }) => {
                </a>
             ))}
             <a
-               href="#hero"
+               href="/?section=hero"
                className="text-sm font-medium relative border-2 border-blue-500 text-black dark:text-white px-4 py-2 rounded-full hover:border-blue-600 transition-colors"
+               onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/?section=hero");
+               }}
             >
                <span>Home</span>
                <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />

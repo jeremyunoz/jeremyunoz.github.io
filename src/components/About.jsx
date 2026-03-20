@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./About.css";
 import TrueFocus from "./decoration/TrueFocus";
+import TimelineUI from "./decoration/TimelineUI";
 
 function About() {
    const ref = useRef();
@@ -59,6 +60,10 @@ function About() {
                   </div>
                </div>
             </div>
+         </div>
+
+         <div style={{ maxWidth: "1200px", margin: "0 auto", textAlign: "left", paddingTop: 40 }}>
+            <TimelineUI />
          </div>
       </section>
    );

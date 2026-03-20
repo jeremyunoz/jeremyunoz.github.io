@@ -1,7 +1,6 @@
 "use client";
 import { useScroll, useTransform, motion } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
-import "../About.css";
 
 const Timeline = ({ data }) => {
    const ref = useRef(null);
@@ -24,7 +23,7 @@ const Timeline = ({ data }) => {
    const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
    return (
-      <div className="about w-full font-sans md:px-10" ref={containerRef}>
+      <div className="w-full font-sans md:px-10" ref={containerRef}>
          <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
             {data.map((item, index) => (
                <div
