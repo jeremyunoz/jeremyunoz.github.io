@@ -9,3 +9,21 @@
    font-size: var(--section-heading-size) !important;
    margin-bottom: 20px !important;
 }
+
+.contact-location {
+   margin-top: 0.5rem;
+   font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.02rem);
+   line-height: 1.5;
+}
+
+.contact-links {
+   display: flex;
+   justify-content: center;
+   gap: clamp(1.25rem, 3vw, 2rem);
+   margin-top: 1rem;
+}
+
+.contact-links a {
+   font-size: clamp(1.45rem, 1.15rem + 0.8vw, 1.8rem);
+   line-height: 1;
+}

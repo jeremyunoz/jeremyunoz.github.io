@@ -1,61 +1,80 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Projects.css";
+import { IconBriefcase } from "@tabler/icons-react";
 import Card from "./decoration/ProjectCard.jsx";
 import Loading from "./decoration/StatusBox";
+
+const projectItems = [
+   {
+      imageSrc: "./assets/bincredible.png",
+      altText: "Bincredible App Image",
+      title: "Bincredible",
+      description:
+         "I built my first mobile app using React Native and Firebase to make recycling smarter and more accessible.",
+      impact: [
+         "Used an on-device ML model to scan everyday items.",
+         "Guided users on how to sort recyclables and trash correctly.",
+      ],
+   },
+   {
+      imageSrc: "./assets/zotfitness.png",
+      altText: "ZotFitness project preview",
+      title: "ZotFitness",
+      description:
+         "Developed a health watch prototype integrated with Google Gemini to act like a personalized workout health assistant.",
+      impact: [
+         "Collected activity data to surface helpful health insights.",
+         "Explored how AI can support healthier workout decisions in real time.",
+      ],
+   },
+];
 
 function Projects() {
    const ref = useRef();
    const [visible, setVisible] = useState(false);
 
    useEffect(() => {
-      const handleScroll = () => {
-         if (ref.current) {
-            const top = ref.current.getBoundingClientRect().top;
-            if (top < window.innerHeight - 100) setVisible(true);
-         }
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
+      if (!ref.current) return undefined;
+
+      const observer = new IntersectionObserver(
+         ([entry]) => {
+            if (entry.isIntersecting) {
+               setVisible(true);
+               observer.disconnect();
+            }
+         },
+         { threshold: 0.2 }
+      );
+
+      observer.observe(ref.current);
+
+      return () => observer.disconnect();
    }, []);
 
    return (
-      <div>
-         <section
-            id="projects"
-            ref={ref}
-            className={`projects ${visible ? "visible" : ""}`}
-         >
-            <h2 className="font-bold">Projects</h2>
-            <div className="flex justify-center">
-               <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-20 justify-items-center">
-                  <Card
-                     imageSrc="./assets/bincredible.png"
-                     altText="Bincredible App Image"
-                     description="I built my first mobile app using React Native and Firebase to make recycling smarter and more accessible. The app features an on-device ML model that scans everyday items and teaches users how to properly sort recyclables and trash."
-                     title="Bincredible"
-                  />
-                  <Card
-                     imageSrc="./assets/zotfitness.png"
-                     altText="Project 2 Image"
-                     description="Developed a health watch prototype integrated with Google Gemini, acting as a health assistant. It collects user data to provide insights and help maintain good health during workouts."
-                     title="ZotFitness"
-                  />
+      <section
+         id="projects"
+         ref={ref}
+         className={`projects ${visible ? "visible" : ""}`}
+      >
+         <div className="projects-shell">
+            <div className="projects-header">
+               <div className="projects-header-icon" aria-hidden="true">
+                  <IconBriefcase size={42} stroke={1.6} />
                </div>
+               <p className="projects-kicker">My Work</p>
+               <h2 className="projects-title">Projects</h2>
             </div>
-            <div className="mt-20 text-center">
-               <div
-                  style={{
-                     display: "flex",
-                     justifyContent: "center",
-                     marginTop: "1rem",
-                     marginBottom: "1rem",
-                  }}
-               >
-                  <Loading />
-               </div>
+            <div className="projects-list">
+               {projectItems.map((project, index) => (
+                  <Card key={project.title} {...project} delay={index * 160} />
+               ))}
             </div>
-         </section>
-      </div>
+            <div className="projects-loader">
+               <Loading />
+            </div>
+         </div>
+      </section>
    );
 }
 

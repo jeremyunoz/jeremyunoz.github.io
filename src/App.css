@@ -12,7 +12,11 @@
    --color-heading: #8ec3b0;
    --color-text: #333;
    --section-gap: clamp(2rem, 5vw, 4rem);
-   --section-heading-size: clamp(1.9rem, 4vw, 2.35rem);
+   --section-heading-size: clamp(2rem, 1.35rem + 2.6vw, 3.2rem);
+   --section-body-size: clamp(1rem, 0.94rem + 0.35vw, 1.14rem);
+   --section-label-size: clamp(0.76rem, 0.72rem + 0.18vw, 0.84rem);
+   --section-card-title-size: clamp(1rem, 0.95rem + 0.22vw, 1.08rem);
+   --nav-font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
 }
 
 /* App background styling */
@@ -35,6 +39,8 @@ body {
    background-color: var(--color-bg);
    color: var(--color-text);
    font-family: Arial, sans-serif;
+   font-size: var(--section-body-size);
+   line-height: 1.5;
    margin: 0;
    padding: 0;
 }
@@ -89,12 +95,6 @@ section.visible {
       padding: 40px 15px;
    }
 
-   h1,
-   h2,
-   h3 {
-      font-size: 1.35rem;
-   }
-
    .project-grid {
       grid-template-columns: 1fr;
    }
@@ -114,12 +114,6 @@ section.visible {
       padding: 50px 20px;
    }
 
-   h1,
-   h2,
-   h3 {
-      font-size: 1.65rem;
-   }
-
    button {
       padding: 9px 18px;
       font-size: 1rem;
@@ -137,12 +131,6 @@ section.visible {
 
    section {
       padding: 30px 10px;
-   }
-
-   h1,
-   h2,
-   h3 {
-      font-size: 1.05rem;
    }
 
    button {

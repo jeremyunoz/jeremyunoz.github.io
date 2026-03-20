@@ -10,15 +10,16 @@
 }
 
 .logo {
-   font-size: 1.3rem;
+   font-size: clamp(1rem, 0.88rem + 0.5vw, 1.3rem);
    font-weight: bold;
+   line-height: 1.1;
 }
 
 .nav-links {
    list-style: none;
    display: flex;
    gap: 20px;
-   font-size: 1.05rem;
+   font-size: var(--nav-font-size);
    margin-left: auto;
    align-items: center;
 }
@@ -94,7 +95,6 @@
       display: flex;
    }
    .logo {
-      font-size: 0.95rem;
       padding: 0.2rem 0;
       text-align: left;
    }

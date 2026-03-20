@@ -31,7 +31,7 @@
 .skills-eyebrow {
    margin-bottom: 0.75rem;
    color: #4b7a6a;
-   font-size: 0.82rem;
+   font-size: var(--section-label-size);
    font-weight: 700;
    letter-spacing: 0.22em;
    text-transform: uppercase;
@@ -39,7 +39,7 @@
 
 .skills-title {
    color: #2b5d4d;
-   font-size: clamp(2.35rem, 5vw, 3.2rem) !important;
+   font-size: var(--section-heading-size) !important;
    line-height: 1.02;
    letter-spacing: -0.04em;
    text-shadow: 0 10px 30px rgba(255, 255, 255, 0.35);
@@ -64,7 +64,7 @@
 .skill-group h3 {
    margin-bottom: 1rem;
    color: #2b5d4d;
-   font-size: 1.02rem;
+   font-size: var(--section-card-title-size);
 }
 
 .skill-icon-grid {
@@ -107,7 +107,7 @@
 
 .skill-name {
    color: #2f4f43;
-   font-size: 0.82rem;
+   font-size: clamp(0.82rem, 0.78rem + 0.15vw, 0.9rem);
    font-weight: 600;
    line-height: 1.3;
    text-align: center;
@@ -126,10 +126,6 @@
       width: 64px;
       height: 64px;
       border-radius: 20px;
-   }
-
-   .skills-title {
-      font-size: 2.35rem !important;
    }
 
    .skills-groups {
@@ -154,12 +150,7 @@
    }
 
    .skills-eyebrow {
-      font-size: 0.76rem;
       letter-spacing: 0.18em;
-   }
-
-   .skills-title {
-      font-size: 1.95rem !important;
    }
 
    .skill-icon-grid {
