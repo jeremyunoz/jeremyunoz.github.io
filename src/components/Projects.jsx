@@ -35,12 +35,6 @@ function Projects() {
                      title="Bincredible"
                   />
                   <Card
-                     imageSrc="./assets/portfolio.png"
-                     altText="Project 1 Image"
-                     description="My first personal portfolio, built completely from scratch. It integrates various UI libraries to leverage their components for a polished design."
-                     title="Personal Portfolio"
-                  />
-                  <Card
                      imageSrc="./assets/zotfitness.png"
                      altText="Project 2 Image"
                      description="Developed a health watch prototype integrated with Google Gemini, acting as a health assistant. It collects user data to provide insights and help maintain good health during workouts."

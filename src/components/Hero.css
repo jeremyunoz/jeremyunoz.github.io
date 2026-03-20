@@ -19,14 +19,14 @@
 }
 
 .hero-intro {
-   font-size: 3rem;
+   font-size: clamp(2.2rem, 5vw, 2.8rem);
    font-weight: 700;
 }
 
 .hero p {
    margin-top: 15px;
    margin-bottom: 10px;
-   font-size: 1.2rem;
+   font-size: 1.05rem;
    color: #333333;
    font-weight: 500;
 }
@@ -81,10 +81,10 @@
       height: 10rem;
    }
    .hero-content h1 {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
    }
    .hero-content p {
-      font-size: 1rem;
+      font-size: 0.95rem;
    }
 }
 
@@ -95,6 +95,6 @@
    }
 
    .hero-content h2 {
-      font-size: 1rem;
+      font-size: 0.95rem;
    }
 }

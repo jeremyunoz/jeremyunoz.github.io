@@ -1,5 +1,6 @@
 import React from "react";
 import "./Skills.css";
+import { IconLayersIntersect } from "@tabler/icons-react";
 import {
    SiArduino,
    SiCplusplus,
@@ -74,12 +75,13 @@ function Skills() {
    return (
       <section id="skills" className="skills visible">
          <div className="skills-shell">
-            <p className="skills-eyebrow">My Stack</p>
-            <h2 className="skills-title">Tools & Technologies</h2>
-            <p className="skills-intro">
-               The technologies I keep coming back to when building web,
-               embedded, and software projects.
-            </p>
+            <div className="skills-header">
+               <div className="skills-header-icon" aria-hidden="true">
+                  <IconLayersIntersect size={42} stroke={1.6} />
+               </div>
+               <p className="skills-eyebrow">My Stack</p>
+               <h2 className="skills-title">Skills & Tools</h2>
+            </div>
 
             <div className="skills-groups">
                {skillGroups.map((group) => (

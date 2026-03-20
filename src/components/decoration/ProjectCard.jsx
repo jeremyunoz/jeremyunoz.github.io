@@ -89,10 +89,10 @@ const StyledWrapper = styled.div`
          min-height: 70px;
       }
       .card-text h3 {
-         font-size: 1.2rem;
+         font-size: 1.05rem;
       }
       .card-text p {
-         font-size: 1rem;
+         font-size: 0.92rem;
       }
    }
 
@@ -107,10 +107,10 @@ const StyledWrapper = styled.div`
          min-height: 80px;
       }
       .card-text h3 {
-         font-size: 1.4rem;
+         font-size: 1.2rem;
       }
       .card-text p {
-         font-size: 1.1rem;
+         font-size: 0.98rem;
       }
    }
 `;

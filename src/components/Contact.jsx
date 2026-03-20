@@ -26,7 +26,7 @@ function Contact() {
          className={`contact ${visible ? "visible" : ""}`}
       >
          <h2 className="font-semibold">Contact Me</h2>
-         <p style={{ textAlign: "center", marginTop: "0.5rem", fontSize: "1rem" }}>
+         <p style={{ textAlign: "center", marginTop: "0.5rem", fontSize: "0.95rem" }}>
             Based in Irvine, CA
          </p>
          <div
@@ -37,7 +37,7 @@ function Contact() {
                marginTop: "1rem",
             }}
          >
-            <a href="mailto:jianmiz1@uci.edu" style={{ fontSize: "2rem" }}>
+            <a href="mailto:jianmiz1@uci.edu" style={{ fontSize: "1.8rem" }}>
                <SiGmail />
             </a>
 
@@ -45,7 +45,7 @@ function Contact() {
                href="https://github.com/jeremyunoz"
                target="_blank"
                rel="noopener noreferrer"
-               style={{ fontSize: "2rem" }}
+               style={{ fontSize: "1.8rem" }}
             >
                <GrGithub />
             </a>
@@ -53,7 +53,7 @@ function Contact() {
                href="https://www.linkedin.com/in/jeremy-zheng-a207aa278/"
                target="_blank"
                rel="noopener noreferrer"
-               style={{ fontSize: "2rem" }}
+               style={{ fontSize: "1.8rem" }}
             >
                <RiLinkedinFill />
             </a>

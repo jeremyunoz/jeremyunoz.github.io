@@ -12,6 +12,7 @@
    --color-heading: #8ec3b0;
    --color-text: #333;
    --section-gap: clamp(2rem, 5vw, 4rem);
+   --section-heading-size: clamp(1.9rem, 4vw, 2.35rem);
 }
 
 /* App background styling */
@@ -91,7 +92,7 @@ section.visible {
    h1,
    h2,
    h3 {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
    }
 
    .project-grid {
@@ -116,7 +117,7 @@ section.visible {
    h1,
    h2,
    h3 {
-      font-size: 1.8rem;
+      font-size: 1.65rem;
    }
 
    button {
@@ -141,7 +142,7 @@ section.visible {
    h1,
    h2,
    h3 {
-      font-size: 1.2rem;
+      font-size: 1.05rem;
    }
 
    button {

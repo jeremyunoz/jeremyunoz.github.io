@@ -10,7 +10,7 @@
 }
 
 .logo {
-   font-size: 1.5rem;
+   font-size: 1.3rem;
    font-weight: bold;
 }
 
@@ -18,7 +18,7 @@
    list-style: none;
    display: flex;
    gap: 20px;
-   font-size: 1.5rem;
+   font-size: 1.05rem;
    margin-left: auto;
    align-items: center;
 }
@@ -28,7 +28,7 @@
    font-weight: 500;
    text-decoration: none;
    font-family: "Chakra Petch", sans-serif;
-   padding: 0.55rem 1rem;
+   padding: 0.48rem 0.9rem;
    border: 1px solid transparent;
    border-radius: 999px;
    transition:
@@ -94,7 +94,7 @@
       display: flex;
    }
    .logo {
-      font-size: 1rem;
+      font-size: 0.95rem;
       padding: 0.2rem 0;
       text-align: left;
    }
