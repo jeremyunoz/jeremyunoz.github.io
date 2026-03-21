@@ -20,7 +20,12 @@ function About() {
                   <p className="about-kicker">
                      <ScrambleGreeting />
                   </p>
-                  <h2 className="about-heading">I&apos;m Jeremy Zheng 👋</h2>
+                  <h2 className="about-heading">
+                     I&apos;m Jeremy Zheng{" "}
+                     <span className="about-wave" aria-hidden="true">
+                        👋
+                     </span>
+                  </h2>
                   <p className="about-lead">
                      I&apos;m a Computer Science and Engineering student at UC Irvine
                      building embedded systems, edge AI, and connected products that
