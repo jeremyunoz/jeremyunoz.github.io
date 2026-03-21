@@ -13,7 +13,7 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   margin-bottom: 2.75rem;
+   margin-bottom: 1.5rem;
 }
 
 .projects-header-icon {
@@ -32,6 +32,7 @@
 .projects-kicker {
    margin: 0 0 0.75rem;
    color: #4b7a6a;
+   font-family: var(--font-display);
    font-size: var(--section-label-size);
    font-weight: 700;
    letter-spacing: 0.22em;
@@ -40,12 +41,13 @@
 
 .projects-title {
    color: #2b5d4d;
+   font-family: var(--font-display);
    font-size: var(--section-heading-size) !important;
    line-height: 1.02;
    letter-spacing: -0.04em;
    text-shadow: 0 10px 30px rgba(255, 255, 255, 0.35);
    max-width: 12ch;
-   margin: 0 auto 2.5rem !important;
+   margin: 0 auto 1rem !important;
    padding-bottom: 0;
 }
 
@@ -68,7 +70,7 @@
    }
 
    .projects-header {
-      margin-bottom: 2.2rem;
+      margin-bottom: 1.25rem;
    }
 
    .projects-header-icon {
@@ -78,7 +80,7 @@
    }
 
    .projects-title {
-      margin-bottom: 1.75rem !important;
+      margin-bottom: 0.75rem !important;
    }
 }
 

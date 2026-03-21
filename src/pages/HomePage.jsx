@@ -6,7 +6,9 @@ import Hero from "../components/Hero";
 import Contact from "../components/Contact";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
+import { MintSectionBackdrop } from "../components/decoration/MintSectionBackdrop";
 import { FloatingNav } from "../components/decoration/Floating_navbar";
+import { ProjectContactBridge } from "../components/decoration/ProjectContactBridge";
 
 const navItems = [
    { name: "About", link: "#about", icon: "👤" },
@@ -35,11 +37,13 @@ function HomePage() {
       <div className="App">
          <FloatingNav navItems={navItems} />
          <Header />
-         <main className="page-sections">
+         <main className="page-sections mint-section-surface">
+            <MintSectionBackdrop />
             <Hero />
             {/* About is intentionally not rendered on home; it lives on /about */}
             <Skills />
             <Projects />
+            <ProjectContactBridge />
             <Contact />
          </main>
          <Footer />
