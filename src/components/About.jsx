@@ -1,24 +1,48 @@
 import React from "react";
 import "./About.css";
 import TimelineUI from "./decoration/TimelineUI";
+import { ScrambleGreeting } from "./decoration/ScrambleGreeting";
 
 function About() {
    return (
-      <section
-         id="about"
-         className="about visible"
-         style={{ paddingBottom: 10 }}
-      >
+      <section id="about" className="about visible">
          <div className="about-shell">
-            <h2 className="about-heading">My Story</h2>
+            <div className="about-hero">
+               <div className="about-hero-image-shell">
+                  <img
+                     src="/assets/about_me.png"
+                     alt="Jeremy Zheng portrait"
+                     className="about-hero-image"
+                  />
+               </div>
+
+               <div className="about-hero-copy">
+                  <p className="about-kicker">
+                     <ScrambleGreeting />
+                  </p>
+                  <h2 className="about-heading">I&apos;m Jeremy Zheng 👋</h2>
+                  <p className="about-lead">
+                     I&apos;m a Computer Science and Engineering student at UC Irvine
+                     building embedded systems, edge AI, and connected products that
+                     turn sensing into useful real-world experiences.
+                  </p>
+                  <div className="about-status">
+                     <span className="about-status-label">Currently</span>
+                     <span className="about-status-text">
+                        Researching embedded vision and building edge-AI products
+                     </span>
+                  </div>
+               </div>
+            </div>
+
             <div className="about-content">
-               <div className="about-intro">
+               <div className="about-intro-card">
                   <p className="about-text">
-                     I am a Computer Science and Engineering student at the University
-                     of California, Irvine, focused on embedded systems, edge AI, and
-                     IoT product development. I build systems that integrate sensing,
-                     real-time inference, and distributed computation across
-                     resource-constrained devices.
+                     I focus on the part of engineering where hardware, software, and
+                     product thinking all have to work together. Most of my recent
+                     projects have involved embedded devices, real-time inference,
+                     cloud-connected services, and interfaces that make technical
+                     systems feel practical and approachable.
                   </p>
                </div>
 
@@ -70,10 +94,14 @@ function About() {
                   </article>
                </div>
             </div>
-         </div>
 
-         <div className="about-timeline-shell">
-            <TimelineUI />
+            <div className="about-timeline-shell">
+               <div className="about-timeline-header">
+                  <p className="about-card-label">Journey</p>
+                  <h3 className="about-timeline-title">Experience Timeline</h3>
+               </div>
+               <TimelineUI />
+            </div>
          </div>
       </section>
    );

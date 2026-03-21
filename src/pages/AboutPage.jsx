@@ -3,6 +3,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import About from "../components/About";
 import { FloatingNav } from "../components/decoration/Floating_navbar";
+import { MintSectionBackdrop } from "../components/decoration/MintSectionBackdrop";
 
 const navItems = [
    { name: "About", link: "#about", icon: "👤" },
@@ -16,7 +17,10 @@ function AboutPage() {
       <div className="App">
          <FloatingNav navItems={navItems} />
          <Header />
-         <About />
+         <main className="page-sections mint-section-surface">
+            <MintSectionBackdrop />
+            <About />
+         </main>
          <Footer />
       </div>
    );
