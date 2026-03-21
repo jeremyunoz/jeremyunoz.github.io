@@ -2,40 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Projects.css";
 import { IconBriefcase } from "@tabler/icons-react";
 import Card from "./decoration/ProjectCard.jsx";
-import Loading from "./decoration/StatusBox";
-
-const createProjectVisual = (title, subtitle, accent) =>
-   `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
-         <defs>
-            <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-               <stop offset="0%" stop-color="#f7fffb" />
-               <stop offset="100%" stop-color="#e0f2ea" />
-            </linearGradient>
-         </defs>
-         <rect width="1200" height="800" fill="url(#bg)" rx="48" />
-         <circle cx="180" cy="140" r="120" fill="${accent}" fill-opacity="0.16" />
-         <circle cx="1010" cy="660" r="170" fill="${accent}" fill-opacity="0.14" />
-         <rect x="84" y="90" width="1032" height="620" rx="34" fill="#ffffff" fill-opacity="0.74" />
-         <text x="120" y="250" fill="#2f5a4c" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">
-            Featured Project
-         </text>
-         <text x="120" y="360" fill="#24493e" font-family="Inter, Arial, sans-serif" font-size="86" font-weight="800">
-            ${title}
-         </text>
-         <text x="120" y="450" fill="#5c7f73" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="500">
-            ${subtitle}
-         </text>
-         <rect x="120" y="520" width="220" height="14" rx="7" fill="${accent}" fill-opacity="0.8" />
-         <rect x="120" y="570" width="400" height="14" rx="7" fill="#cfe7dd" />
-         <rect x="120" y="610" width="320" height="14" rx="7" fill="#dbeee6" />
-      </svg>
-   `)}`;
 
 const projectItems = [
    {
-      imageSrc: createProjectVisual("AuraBot", "Edge AI wellness companion", "#8fcab7"),
-      altText: "AuraBot project graphic",
+      imageSrc: "../assets/aurabot_component.png",
+      altText: "AuraBot Prototype during senior design project",
       title: "AuraBot",
       description:
          "Led development of an edge-AI robotic wellness companion that connected sensing, inference, and voice interaction across embedded and edge devices.",
@@ -46,7 +17,7 @@ const projectItems = [
       ],
    },
    {
-      imageSrc: createProjectVisual("Bincredible", "Recycling app and on-device vision", "#7db9cc"),
+      imageSrc: "../assets/Bincredible.png",
       altText: "Bincredible project graphic",
       title: "Bincredible",
       description:
@@ -58,11 +29,11 @@ const projectItems = [
       ],
    },
    {
-      imageSrc: createProjectVisual("Smart-Sit Guardian", "IoT posture and wellness monitoring", "#96b6e0"),
-      altText: "Smart-Sit Guardian project graphic",
-      title: "Smart-Sit Guardian",
+      imageSrc: "../assets/zotfitness.png",
+      altText: "ZotFitness Prototype during BitHacks 2025",
+      title: "ZotFitness",
       description:
-         "Engineered an IoT smart seat system that monitored posture, heart rate, SpO2, and sitting duration to help students reduce prolonged sedentary behavior.",
+         "Engineered an IoT smart fitness companion system that monitored posture, heart rate, SpO2, and sitting duration to help students improve their fitness and health.",
       impact: [
          "Implemented C++ firmware on a LILYGO ESP32 to sample sensor data reliably every 3 seconds.",
          "Built an AWS IoT Core, MQTT, DynamoDB, and S3 pipeline for streaming and storing recent health data.",
@@ -104,7 +75,7 @@ function Projects() {
                <div className="projects-header-icon" aria-hidden="true">
                   <IconBriefcase size={42} stroke={1.6} />
                </div>
-               <p className="projects-kicker">My Work</p>
+               <p className="projects-kicker">Recent Work</p>
                <h2 className="projects-title">Projects</h2>
             </div>
             <div className="projects-list">

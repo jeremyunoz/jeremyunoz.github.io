@@ -40,9 +40,6 @@ function Hero() {
 
    return (
       <section id="hero" className={`hero ${visible ? "fade-in" : ""}`}>
-         <div className="hero-orb hero-orb-one" aria-hidden="true" />
-         <div className="hero-orb hero-orb-two" aria-hidden="true" />
-         <div className="hero-grid" aria-hidden="true" />
          <div className="hero-inner">
             <div className="hero-avatar-shell">
                <img
@@ -86,12 +83,6 @@ function Hero() {
                   researcher, and software lead building intelligent products with
                   Raspberry Pi, ESP32, computer vision, and full-stack software.
                </p>
-
-               <div className="hero-tags">
-                  <span>Edge AI</span>
-                  <span>Raspberry Pi + ESP32</span>
-                  <span>Computer Vision</span>
-               </div>
 
                <div className="hero-actions">
                   <button

@@ -72,7 +72,7 @@ const StyledWrapper = styled.div`
    .card {
       width: min(100%, 980px);
       display: grid;
-      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+      grid-template-columns: minmax(272px, 400px) minmax(0, 1fr);
       gap: clamp(1.4rem, 4vw, 2.5rem);
       align-items: center;
       padding: clamp(1rem, 3vw, 1.5rem);
@@ -121,10 +121,14 @@ const StyledWrapper = styled.div`
       transition-delay: calc(var(--card-delay, 0ms) + 180ms);
    }
 
+   .card-media {
+      min-width: 0;
+   }
+
    .image-shell {
       position: relative;
       width: 100%;
-      min-height: 280px;
+      aspect-ratio: 4 / 3;
       border-radius: 24px;
       overflow: hidden;
       background:
@@ -158,9 +162,10 @@ const StyledWrapper = styled.div`
    }
 
    .image-shell img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      min-height: 280px;
       display: block;
       object-fit: cover;
       object-position: center;
@@ -201,8 +206,8 @@ const StyledWrapper = styled.div`
    }
 
    .card-content h3 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 1.05;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      line-height: 1.08;
       margin: 0;
       color: #2b5d4d;
    }
@@ -254,11 +259,6 @@ const StyledWrapper = styled.div`
          border-radius: 24px;
       }
 
-      .image-shell,
-      .image-shell img {
-         min-height: 220px;
-      }
-
       .card-content {
          text-align: left;
       }
@@ -270,12 +270,7 @@ const StyledWrapper = styled.div`
 
    @media (min-width: 768px) and (max-width: 1023px) {
       .card {
-         grid-template-columns: minmax(240px, 310px) minmax(0, 1fr);
-      }
-
-      .image-shell,
-      .image-shell img {
-         min-height: 260px;
+         grid-template-columns: minmax(256px, 360px) minmax(0, 1fr);
       }
    }
 `;
