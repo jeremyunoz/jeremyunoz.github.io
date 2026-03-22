@@ -6,11 +6,26 @@ import {
    useScroll,
    useMotionValueEvent,
 } from "motion/react";
+import {
+   FiBriefcase,
+   FiHome,
+   FiMail,
+   FiTool,
+   FiUser,
+} from "react-icons/fi";
+import { GoStack } from "react-icons/go";
 import { cn } from "../../lib/utils";
 
 const NAV_REVEAL_OFFSET = 72;
 const NAV_COMPACT_OFFSET = 220;
 const ACTIVE_SECTION_THRESHOLD = 150;
+const NAV_ICON_BY_ID = {
+   home: FiHome,
+   about: FiUser,
+   skills: GoStack,
+   projects: FiBriefcase,
+   contact: FiMail,
+};
 
 function getSectionId(link) {
    if (!link || !link.startsWith("#")) return null;
@@ -147,11 +162,13 @@ export const FloatingNav = ({ navItems, className }) => {
                      ? "home"
                      : getSectionId(navItem.link) ?? navItem.name.toLowerCase();
                const isActive = activeItem === itemId;
+               const MobileIcon = NAV_ICON_BY_ID[itemId];
 
                return (
                   <a
                      key={`${itemId}-${navItem.name}`}
                      href={resolveHref(navItem.link)}
+                     aria-label={navItem.name}
                      aria-current={isActive ? "page" : undefined}
                      className={cn(
                         "group relative flex min-w-fit flex-1 items-center justify-center rounded-full px-3 py-2 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#66b89a] focus-visible:ring-offset-2",
@@ -162,7 +179,13 @@ export const FloatingNav = ({ navItems, className }) => {
                      )}
                      onClick={(event) => handleNavClick(event, navItem.link)}
                   >
-                     <span>{navItem.name}</span>
+                     {MobileIcon ? (
+                        <MobileIcon
+                           className="text-lg leading-none sm:hidden"
+                           aria-hidden="true"
+                        />
+                     ) : null}
+                     <span className="hidden sm:inline">{navItem.name}</span>
                   </a>
                );
             })}
