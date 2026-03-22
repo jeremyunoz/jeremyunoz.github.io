@@ -13,6 +13,7 @@
    align-items: center;
    justify-content: center;
    margin-bottom: 2.75rem;
+   text-align: center;
 }
 
 .skills-header-icon {
@@ -47,9 +48,38 @@
    text-shadow: 0 10px 30px rgba(255, 255, 255, 0.35);
 }
 
+.skills-featured-tools {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 0.85rem;
+   margin-bottom: 2rem;
+}
+
+.skill-chip {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.55rem;
+   padding: 0.8rem 1rem;
+   border-radius: 999px;
+   background: rgba(255, 255, 255, 0.8);
+   border: 1px solid rgba(43, 93, 77, 0.12);
+   box-shadow: 0 10px 26px rgba(43, 93, 77, 0.08);
+   color: #2f4f43;
+   font-size: 0.95rem;
+   font-weight: 600;
+   line-height: 1;
+}
+
+.skill-chip-icon {
+   width: 20px;
+   height: 20px;
+   flex: 0 0 auto;
+}
+
 .skills-groups {
    display: grid;
-   grid-template-columns: repeat(2, minmax(0, 1fr));
+   grid-template-columns: repeat(3, minmax(0, 1fr));
    gap: 1.5rem;
 }
 
@@ -64,56 +94,74 @@
 }
 
 .skill-group h3 {
-   margin-bottom: 1rem;
+   margin-bottom: 0.8rem;
    color: #2b5d4d;
    font-family: var(--font-display);
    font-size: var(--section-card-title-size);
 }
 
-.skill-icon-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-   gap: 1rem;
+.skill-inline-list {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.65rem;
 }
 
-.skill-tile {
-   display: flex;
-   flex-direction: column;
+.skill-inline-item {
+   display: inline-flex;
    align-items: center;
-   gap: 0.75rem;
-   padding: 1rem 0.75rem 0.85rem;
-   border-radius: 20px;
-   background: rgba(255, 255, 255, 0.85);
+   gap: 0.45rem;
+   padding: 0.55rem 0.8rem;
+   border-radius: 999px;
+   background: rgba(255, 255, 255, 0.9);
    border: 1px solid rgba(43, 93, 77, 0.1);
+   color: #2f4f43;
+   font-size: 0.88rem;
+   font-weight: 600;
+   line-height: 1;
+}
+
+.skill-inline-icon {
+   width: 18px;
+   height: 18px;
+   flex: 0 0 auto;
+}
+
+.skills-footer {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1rem;
+   margin-top: 1.75rem;
+   padding: 1rem 1.1rem;
+   border-radius: 20px;
+   background: rgba(255, 255, 255, 0.56);
+   border: 1px solid rgba(43, 93, 77, 0.12);
+   box-shadow: 0 16px 40px rgba(43, 93, 77, 0.08);
+}
+
+.skills-footer p {
+   margin: 0;
+   color: rgba(47, 79, 67, 0.88);
+   font-size: 0.95rem;
+}
+
+.skills-link {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0.7rem 1rem;
+   border-radius: 999px;
+   background: #2b5d4d;
+   color: #ffffff;
+   text-decoration: none;
+   font-weight: 600;
+   white-space: nowrap;
    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.skill-tile:hover {
-   transform: translateY(-2px);
-   box-shadow: 0 10px 24px rgba(43, 93, 77, 0.12);
-}
-
-.skill-logo-wrap {
-   display: grid;
-   place-items: center;
-   width: 68px;
-   height: 68px;
-   border-radius: 18px;
-   background: #f7fbf9;
-   box-shadow: inset 0 0 0 1px rgba(43, 93, 77, 0.08);
-}
-
-.skill-logo {
-   width: 34px;
-   height: 34px;
-}
-
-.skill-name {
-   color: #2f4f43;
-   font-size: clamp(0.82rem, 0.78rem + 0.15vw, 0.9rem);
-   font-weight: 600;
-   line-height: 1.3;
-   text-align: center;
+.skills-link:hover {
+   transform: translateY(-1px);
+   box-shadow: 0 10px 22px rgba(43, 93, 77, 0.18);
 }
 
 @media (max-width: 768px) {
@@ -125,6 +173,10 @@
       margin-bottom: 2.2rem;
    }
 
+   .skills-featured-tools {
+      justify-content: flex-start;
+   }
+
    .skills-header-icon {
       width: 64px;
       height: 64px;
@@ -133,6 +185,12 @@
 
    .skills-groups {
       grid-template-columns: 1fr;
+   }
+
+   .skills-footer {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
    }
 }
 
@@ -156,17 +214,33 @@
       letter-spacing: 0.18em;
    }
 
-   .skill-icon-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+   .skills-featured-tools {
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
    }
 
-   .skill-logo-wrap {
-      width: 62px;
-      height: 62px;
+   .skill-chip {
+      padding: 0.68rem 0.85rem;
+      font-size: 0.86rem;
    }
 
-   .skill-logo {
-      width: 30px;
-      height: 30px;
+   .skill-chip-icon,
+   .skill-inline-icon {
+      width: 16px;
+      height: 16px;
+   }
+
+   .skill-inline-list {
+      gap: 0.55rem;
+   }
+
+   .skill-inline-item {
+      padding: 0.5rem 0.7rem;
+      font-size: 0.82rem;
+   }
+
+   .skills-footer {
+      margin-top: 1.25rem;
+      padding: 0.95rem;
    }
 }
