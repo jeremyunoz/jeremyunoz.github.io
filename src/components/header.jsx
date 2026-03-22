@@ -71,6 +71,22 @@ function Header() {
                   background: "#2b5d4d",
                   fontFamily: "'Bungee Shade', cursive",
                }}
+               onClick={() => {
+                  setOpen(false);
+                  setActiveItem("home");
+                  navigate("/");
+               }}
+               onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                     e.preventDefault();
+                     setOpen(false);
+                     setActiveItem("home");
+                     navigate("/");
+                  }
+               }}
+               role="button"
+               tabIndex={0}
+               aria-label="Go to home page"
             >
                Jeremy Zheng
             </h1>
