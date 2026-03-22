@@ -41,20 +41,21 @@ function Contact() {
                <p className="contact-kicker">Let&apos;s Connect</p>
                <h2 className="contact-title">Contact Me</h2>
                <p className="contact-intro">
-                  Based in Irvine, CA and open to embedded, edge AI, and software
-                  opportunities.
+                  Based in Irvine, CA and open to embedded, edge AI, and systems
+                  software opportunities.
                </p>
             </div>
 
             <div className="contact-card">
                <p className="contact-location">
-                  Reach out if you&apos;re building thoughtful products that blend
-                  hardware, intelligence, and polished user experiences.
+                  Reach out if you&apos;re building products across devices, AI,
+                  and software.
                </p>
 
                <div className="contact-links">
                   <a href="mailto:jmzheng688@gmail.com" aria-label="Email Jeremy">
                      <SiGmail />
+                     <span className="contact-link-label">Email</span>
                   </a>
 
                   <a
@@ -64,6 +65,7 @@ function Contact() {
                      aria-label="Jeremy's GitHub"
                   >
                      <GrGithub />
+                     <span className="contact-link-label">GitHub</span>
                   </a>
                   <a
                      href="https://www.linkedin.com/in/jeremy-zheng-unoz"
@@ -72,6 +74,7 @@ function Contact() {
                      aria-label="Jeremy's LinkedIn"
                   >
                      <RiLinkedinFill />
+                     <span className="contact-link-label">LinkedIn</span>
                   </a>
                </div>
             </div>

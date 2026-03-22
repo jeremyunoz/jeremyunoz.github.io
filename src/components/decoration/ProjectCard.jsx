@@ -12,6 +12,7 @@ const Card = ({
    const cardRef = useRef(null);
    const [isVisible, setIsVisible] = useState(false);
    const [isLoaded, setIsLoaded] = useState(false);
+   const [isExpanded, setIsExpanded] = useState(false);
 
    useEffect(() => {
       if (!cardRef.current) return undefined;
@@ -54,12 +55,24 @@ const Card = ({
                <p className="card-description">{description}</p>
                {impact.length > 0 && (
                   <div className="card-impact">
-                     <p className="card-impact-title">Impact</p>
-                     <ul>
-                        {impact.map((item) => (
-                           <li key={item}>{item}</li>
-                        ))}
-                     </ul>
+                     <button
+                        type="button"
+                        className="card-impact-toggle"
+                        onClick={() => setIsExpanded((expanded) => !expanded)}
+                        aria-expanded={isExpanded}
+                     >
+                        {isExpanded ? "Hide impact" : "View impact"}
+                     </button>
+                     {isExpanded ? (
+                        <>
+                           <p className="card-impact-title">Impact</p>
+                           <ul>
+                              {impact.map((item) => (
+                                 <li key={item}>{item}</li>
+                              ))}
+                           </ul>
+                        </>
+                     ) : null}
                   </div>
                )}
             </div>
@@ -242,6 +255,29 @@ const StyledWrapper = styled.div`
       line-height: 1.55;
    }
 
+   .card-impact-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      margin: 0;
+      padding: 0.65rem 0.95rem;
+      border: 1px solid rgba(43, 93, 77, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      color: #355b4d;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+   }
+
+   .card-impact-toggle:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 10px 22px rgba(43, 93, 77, 0.1);
+   }
+
    @keyframes shimmer {
       0% {
          background-position: 200% 0;
@@ -261,10 +297,36 @@ const StyledWrapper = styled.div`
 
       .card-content {
          text-align: left;
+         gap: 0.8rem;
       }
 
       .card-description {
          line-height: 1.6;
+      }
+
+      .card-label {
+         display: none;
+      }
+
+      .card-content h3 {
+         font-size: 1.45rem;
+      }
+
+      .card-impact {
+         gap: 0.65rem;
+      }
+
+      .card-impact-title {
+         font-size: 0.82rem;
+      }
+
+      .card-impact ul {
+         gap: 0.55rem;
+      }
+
+      .card-impact li {
+         font-size: 0.93rem;
+         line-height: 1.5;
       }
    }
 

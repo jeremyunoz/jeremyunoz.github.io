@@ -119,7 +119,7 @@ function TimelineUI() {
                      recognition accuracy.
                   </li>
                </ul>
-               <div className="grid grid-cols-2 gap-4">
+               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <img
                      src="../assets/aurabot_component.png"
                      alt="AuraBot Prototype"
@@ -171,7 +171,7 @@ function TimelineUI() {
                      real-time accuracy.
                   </li>
                </ul>
-               <div className="grid grid-cols-2 gap-4">
+               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <img
                      src="../assets/Bincredible.png"
                      alt="Bincredible app preview"
@@ -219,7 +219,7 @@ function TimelineUI() {
                      PostgreSQL-focused coursework and certification work.
                   </li>
                </ul>
-               <div className="grid grid-cols-2 gap-4">
+               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <img
                      src="../assets/aws-certified-ai-practitioner.png"
                      alt="AWS certifications"

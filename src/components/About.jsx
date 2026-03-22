@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./About.css";
 import TimelineUI from "./decoration/TimelineUI";
 
 function About() {
+   const [isMobile, setIsMobile] = useState(false);
+   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
+
+   useEffect(() => {
+      const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+      const syncLayout = (event) => {
+         const mobile = event.matches;
+         setIsMobile(mobile);
+         setIsTimelineOpen(!mobile);
+      };
+
+      syncLayout(mediaQuery);
+
+      if (mediaQuery.addEventListener) {
+         mediaQuery.addEventListener("change", syncLayout);
+         return () => mediaQuery.removeEventListener("change", syncLayout);
+      }
+
+      mediaQuery.addListener(syncLayout);
+      return () => mediaQuery.removeListener(syncLayout);
+   }, []);
+
    return (
       <section id="about" className="about visible">
          <div className="about-shell">
@@ -36,7 +59,8 @@ function About() {
                      <span className="about-status-label">Currently</span>
                      <span className="about-status-text">
                         Strengthening systems programming with Rust and
-                        preparing for Device Driver Developemnt and Systems Software internship work
+                        preparing for Device Driver Development and Systems
+                        Software internship work
                      </span>
                   </div>
                   <p className="about-focus-text">
@@ -47,7 +71,7 @@ function About() {
             </div>
 
             <div className="about-content">
-               <div className="about-intro-card">
+               <div className="about-intro-card about-mobile-hidden">
                   <div className="about-intro-copy">
                      <p className="about-text">
                         I focus on the intersection where hardware, software,
@@ -114,7 +138,7 @@ function About() {
                      </p>
                   </article>
 
-                  <article className="about-summary-card">
+                  <article className="about-summary-card about-summary-card-mobile-hidden">
                      <p className="about-card-label">How I Work</p>
                      <p className="about-card-text">
                         I approach systems end-to-end, from low-level firmware
@@ -154,7 +178,21 @@ function About() {
                   <p className="about-card-label">Journey</p>
                   <h3 className="about-timeline-title">Experience Timeline</h3>
                </div>
-               <TimelineUI />
+               {isMobile ? (
+                  <>
+                     <button
+                        type="button"
+                        className="about-timeline-toggle"
+                        aria-expanded={isTimelineOpen}
+                        onClick={() => setIsTimelineOpen((open) => !open)}
+                     >
+                        {isTimelineOpen ? "Hide journey" : "Show journey"}
+                     </button>
+                     {isTimelineOpen ? <TimelineUI /> : null}
+                  </>
+               ) : (
+                  <TimelineUI />
+               )}
             </div>
          </div>
       </section>
