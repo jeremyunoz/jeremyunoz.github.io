@@ -1,7 +1,6 @@
 import React from "react";
 import "./About.css";
 import TimelineUI from "./decoration/TimelineUI";
-import { ScrambleGreeting } from "./decoration/ScrambleGreeting";
 
 function About() {
    return (
@@ -17,9 +16,7 @@ function About() {
                </div>
 
                <div className="about-hero-copy">
-                  <p className="about-kicker">
-                     <ScrambleGreeting />
-                  </p>
+                  <p className="about-kicker">About Me</p>
                   <h2 className="about-heading">
                      I&apos;m Jeremy Zheng{" "}
                      <span className="about-wave" aria-hidden="true">
@@ -38,24 +35,35 @@ function About() {
                   <div className="about-status">
                      <span className="about-status-label">Currently</span>
                      <span className="about-status-text">
-                        Building real-time embedded vision systems and
-                        distributed edge-AI products
+                        Strengthening systems programming with Rust and
+                        preparing for Device Driver Developemnt and Systems Software internship work
                      </span>
                   </div>
+                  <p className="about-focus-text">
+                     Currently focused on Rust, systems programming, and
+                     performance-critical software.
+                  </p>
                </div>
             </div>
 
             <div className="about-content">
                <div className="about-intro-card">
-                  <p className="about-text">
-                     I focus on the intersection where hardware, software, and
-                     product thinking all have to work together. I enjoy
-                     building systems that live in the real world, not just in
-                     code. Most of my recent work has involved embedded
-                     devices, real-time inference, cloud-connected services,
-                     and interfaces that make technical systems feel practical
-                     and approachable.
-                  </p>
+                  <div className="about-intro-copy">
+                     <p className="about-text">
+                        I focus on the intersection where hardware, software,
+                        and product thinking work together.
+                     </p>
+                     <p className="about-text">
+                        I enjoy building systems that live in the real world,
+                        not just in code.
+                     </p>
+                     <p className="about-text">
+                        Most of my recent work has involved embedded devices,
+                        real-time inference, cloud-connected systems, and
+                        interfaces that make technical solutions practical and
+                        approachable.
+                     </p>
+                  </div>
                </div>
 
                <div className="about-education-shell" aria-labelledby="about-education-title">
