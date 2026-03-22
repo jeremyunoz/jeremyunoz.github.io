@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
    motion,
@@ -19,6 +19,7 @@ import { cn } from "../../lib/utils";
 const NAV_REVEAL_OFFSET = 72;
 const NAV_COMPACT_OFFSET = 220;
 const ACTIVE_SECTION_THRESHOLD = 150;
+const SCROLL_DIRECTION_THRESHOLD = 4;
 const NAV_ICON_BY_ID = {
    home: FiHome,
    about: FiUser,
@@ -37,6 +38,7 @@ export const FloatingNav = ({ navItems, className }) => {
    const location = useLocation();
    const { scrollY } = useScroll();
    const sectionParam = new URLSearchParams(location.search).get("section");
+   const lastScrollY = useRef(0);
 
    const [visible, setVisible] = useState(false);
    const [compact, setCompact] = useState(false);
@@ -60,10 +62,15 @@ export const FloatingNav = ({ navItems, className }) => {
 
    useMotionValueEvent(scrollY, "change", (current) => {
       if (typeof current === "number") {
-         const nextVisible = current > NAV_REVEAL_OFFSET;
+         const previous = lastScrollY.current;
+         const delta = current - previous;
+         const isScrollingUp = delta < -SCROLL_DIRECTION_THRESHOLD;
+         const hasPassedRevealOffset = current > NAV_REVEAL_OFFSET;
+         const nextVisible = hasPassedRevealOffset ? isScrollingUp : false;
          const nextCompact = current > NAV_COMPACT_OFFSET;
          setVisible((prev) => (prev === nextVisible ? prev : nextVisible));
          setCompact((prev) => (prev === nextCompact ? prev : nextCompact));
+         lastScrollY.current = current;
       }
    });
 
