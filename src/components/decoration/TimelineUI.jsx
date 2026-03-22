@@ -4,7 +4,48 @@ import Timeline from "./Timeline";
 function TimelineUI() {
    const data = [
       {
-         title: "2025 - Present",
+         title: "Mar 2026 - Sep 2026",
+         content: (
+            <div>
+               <p
+                  className="mb-4 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
+                  style={{ lineHeight: "1.4", color: "#1a1a1a", letterSpacing: "0.025em" }}
+               >
+                  UC Irvine Graduation and Next Academic Step
+               </p>
+               <div className="mb-8 mt-2">
+                  <div className="flex items-center gap-3 text-sm font-medium text-neutral-800 md:text-base dark:text-neutral-200 mb-2">
+                     Graduated from UC Irvine and deciding between admitted
+                     graduate programs
+                  </div>
+               </div>
+               <ul className="list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
+                  <li>
+                     Graduated from UC Irvine in March 2026 and will begin
+                     pursuing a Master&apos;s degree in September 2026.
+                  </li>
+                  <li>
+                     Admitted to UCLA&apos;s Master of Engineering in Internet of
+                     Things (IoT) Systems.
+                  </li>
+                  <li>
+                     Admitted to Cornell&apos;s Master of Engineering in Computer
+                     Science.
+                  </li>
+                  <li>
+                     Admitted to UC Irvine&apos;s Master of Embedded and
+                     Cyber-Physical Systems.
+                  </li>
+                  <li>
+                     Admitted to Northwestern&apos;s Master of Science in Computer
+                     Engineering.
+                  </li>
+               </ul>
+            </div>
+         ),
+      },
+      {
+         title: "Jan 2025 - Jan 2026",
          content: (
             <div>
                <p
@@ -16,10 +57,10 @@ function TimelineUI() {
                </p>
                <div className="mb-8 mt-2">
                   <div className="flex items-center gap-3 text-sm font-medium text-neutral-800 md:text-base dark:text-neutral-200 mb-2">
-                     Researching robust embedded computer vision systems for drone
-                     perception
+                     Researched robust embedded computer vision systems for
+                     drone perception
                      <span className="text-neutral-500 font-normal">
-                        (Jan 2025 - Present)
+                        (Jan 2025 - Jan 2026)
                      </span>
                   </div>
                </div>
@@ -61,7 +102,7 @@ function TimelineUI() {
                      </span>
                   </div>
                </div>
-               <ul className="list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
+               <ul className="mb-8 list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Designed distributed software architecture across edge and
                      embedded nodes using Raspberry Pi 5, ESP32-P4, MQTT, and
@@ -78,6 +119,22 @@ function TimelineUI() {
                      recognition accuracy.
                   </li>
                </ul>
+               <div className="grid grid-cols-2 gap-4">
+                  <img
+                     src="../assets/aurabot_component.png"
+                     alt="AuraBot Prototype"
+                     width={500}
+                     height={500}
+                     className="max-w-full max-h-60 rounded-lg object-contain shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+                  />
+                  <img
+                     src="../assets/aurabot_demo.png"
+                     alt="UCI 2026 EECS Undergraduate Senior Design Demo Day"
+                     width={500}
+                     height={500}
+                     className="max-w-full max-h-60 rounded-lg object-contain shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+                  />
+               </div>
             </div>
          ),
       },
@@ -152,7 +209,7 @@ function TimelineUI() {
                      </span>
                   </div>
                </div>
-               <ul className="list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
+               <ul className="mb-8 list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Earned the AWS Certified AI Practitioner and AWS Certified Cloud
                      Practitioner certifications.
@@ -162,6 +219,23 @@ function TimelineUI() {
                      PostgreSQL-focused coursework and certification work.
                   </li>
                </ul>
+               <div className="grid grid-cols-2 gap-4">
+                  <img
+                     src="../assets/aws-certified-ai-practitioner.png"
+                     alt="AWS certifications"
+                     width={500}
+                     height={500}
+                     className="max-w-full max-h-60 rounded-lg object-contain shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+                  />
+                  <img
+                     src="../assets/aws-certified-cloud-practitioner.png"
+                     alt="AWS certifications"
+                     width={500}
+                     height={500}
+                     className="max-w-full max-h-60 rounded-lg object-contain shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+                  />
+                  
+               </div>
             </div>
          ),
       },
@@ -220,12 +294,21 @@ function TimelineUI() {
                      </span>
                   </div>
                </div>
-               <ul className="list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
+               <ul className="mb-8 list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Supported students in programming fundamentals and C++ concepts
                      as a Learning Assistant in UC Irvine ICS courses.
                   </li>
                </ul>
+               <div className="grid grid-cols-1 gap-4">
+                  <img
+                     src="../assets/fall24_clap.png"
+                     alt="AWS certifications"
+                     width={500}
+                     height={500}
+                     className="max-w-full max-h-60 rounded-lg object-contain shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+                  />
+               </div>
             </div>
          ),
       },
@@ -245,7 +328,7 @@ function TimelineUI() {
                      embedded systems
                   </div>
                </div>
-               <ul className="list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
+               <ul className="mb-8 list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Joined the IEEE Student Branch Open Project Space at UC Irvine
                      and worked on practical build-focused projects.
@@ -255,6 +338,15 @@ function TimelineUI() {
                      collaboration pushed me toward embedded, IoT, and systems work.
                   </li>
                </ul>
+               <div className="grid grid-cols-1 gap-4">
+                  <img
+                     src="../assets/rover2022.jpg"
+                     alt="IEEE Open Project Space Rover 2022"
+                     width={500}
+                     height={500}
+                     className="max-w-full max-h-60 rounded-lg object-contain shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+                  />
+               </div>
             </div>
          ),
       },
