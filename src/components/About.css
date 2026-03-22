@@ -192,6 +192,90 @@
    gap: 1.25rem;
 }
 
+.about-education-shell {
+   padding: clamp(1.4rem, 2.5vw, 1.8rem);
+   border-radius: 24px;
+   border: 1px solid rgba(43, 93, 77, 0.14);
+   background: rgba(255, 255, 255, 0.58);
+   backdrop-filter: blur(6px);
+   box-shadow: 0 16px 40px rgba(43, 93, 77, 0.08);
+}
+
+.about-education-header {
+   margin-bottom: 1rem;
+}
+
+.about-education-title {
+   margin: 0;
+   color: #2b5d4d;
+   font-family: var(--font-display);
+   font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.8rem);
+   line-height: 1.1;
+}
+
+.about-education-list {
+   display: grid;
+   gap: 1rem;
+}
+
+.about-education-item {
+   padding: 1.2rem 1.25rem;
+   border-radius: 20px;
+   border: 1px solid rgba(43, 93, 77, 0.12);
+   background: linear-gradient(180deg, rgba(245, 255, 251, 0.95), rgba(232, 246, 240, 0.9));
+}
+
+.about-education-top {
+   display: grid;
+   grid-template-columns: auto 1fr;
+   gap: 1rem;
+   align-items: center;
+}
+
+.about-education-logo {
+   width: clamp(72px, 9vw, 104px);
+   height: auto;
+   display: block;
+   object-fit: contain;
+}
+
+.about-education-copy {
+   min-width: 0;
+}
+
+.about-education-school,
+.about-education-degree,
+.about-education-meta {
+   margin: 0;
+}
+
+.about-education-school {
+   color: #2f5f50;
+   font-family: var(--font-display);
+   font-size: clamp(1.05rem, 0.98rem + 0.28vw, 1.18rem);
+   font-weight: 700;
+}
+
+.about-education-degree {
+   margin-top: 0.35rem;
+   color: #466558;
+   font-size: clamp(0.98rem, 0.93rem + 0.16vw, 1.05rem);
+   font-weight: 600;
+   line-height: 1.6;
+}
+
+.about-education-meta {
+   margin-top: 0.3rem;
+   margin-bottom: 0.8rem;
+   color: #4b7a6a;
+   font-size: 0.95rem;
+   font-weight: 500;
+}
+
+.about-education-highlights {
+   margin-top: 0.25rem;
+}
+
 .about-summary-card {
    padding: 1.35rem 1.4rem;
    border-radius: 24px;
@@ -290,8 +374,15 @@
       grid-template-columns: 1fr;
    }
 
+   .about-education-top {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+   }
+
    .about-intro-card,
-   .about-summary-card {
+   .about-summary-card,
+   .about-education-shell {
       border-radius: 20px;
    }
 
@@ -326,6 +417,7 @@
 
    .about-intro-card,
    .about-summary-card,
+   .about-education-shell,
    .about-timeline-shell,
    .about-hero {
       padding: 1.2rem;

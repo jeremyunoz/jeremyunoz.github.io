@@ -62,6 +62,41 @@ function About() {
                   </p>
                </div>
 
+               <div className="about-education-shell" aria-labelledby="about-education-title">
+                  <div className="about-education-header">
+                     <p className="about-card-label">Education</p>
+                     <h3 className="about-education-title" id="about-education-title">
+                        Academic Background
+                     </h3>
+                  </div>
+
+                  <div className="about-education-list">
+                     <article className="about-education-item">
+                     <div className="about-education-top">
+                        <img
+                           src="/assets/uci_logo.png"
+                           alt="University of California, Irvine logo"
+                           className="about-education-logo"
+                        />
+                        <div className="about-education-copy">
+                           <p className="about-education-school">
+                              University of California, Irvine
+                           </p>
+                           <p className="about-education-degree">
+                              B.S. in Computer Science and Engineering
+                           </p>
+                           <p className="about-education-meta">
+                              Graduated March 2026
+                           </p>
+                        </div>
+                     </div>
+                     <ul className="about-list about-education-highlights">
+                        <li>Dean&apos;s Honor List (10x)</li>
+                     </ul>
+                     </article>
+                  </div>
+               </div>
+
                <div className="about-summary-grid">
                   <article className="about-summary-card">
                      <p className="about-card-label">What I Build</p>
