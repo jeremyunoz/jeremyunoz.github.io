@@ -35,10 +35,6 @@ function About() {
                      Irvine focused on embedded systems, edge AI, and connected
                      product development.
                   </p>
-                  <p className="about-card-text">
-                     Focused on real-time systems, distributed IoT
-                     architectures, and human-centered robotics.
-                  </p>
                   <div className="about-status">
                      <span className="about-status-label">Currently</span>
                      <span className="about-status-text">
@@ -72,27 +68,27 @@ function About() {
 
                   <div className="about-education-list">
                      <article className="about-education-item">
-                     <div className="about-education-top">
-                        <img
-                           src="/assets/uci_logo.png"
-                           alt="University of California, Irvine logo"
-                           className="about-education-logo"
-                        />
-                        <div className="about-education-copy">
-                           <p className="about-education-school">
-                              University of California, Irvine
-                           </p>
-                           <p className="about-education-degree">
-                              B.S. in Computer Science and Engineering
-                           </p>
-                           <p className="about-education-meta">
-                              Graduated March 2026
-                           </p>
-                        </div>
-                     </div>
-                     <ul className="about-list about-education-highlights">
-                        <li>Dean&apos;s Honor List (10x)</li>
-                     </ul>
+                      <div className="about-education-top">
+                         <img
+                            src="/assets/uci_logo.png"
+                            alt="University of California, Irvine logo"
+                            className="about-education-logo"
+                         />
+                         <div className="about-education-copy">
+                            <p className="about-education-school">
+                               University of California, Irvine
+                            </p>
+                            <p className="about-education-degree">
+                               B.S. in Computer Science and Engineering
+                            </p>
+                            <p className="about-education-meta">
+                               Graduated March 2026
+                            </p>
+                         </div>
+                      </div>
+                      <ul className="about-list about-education-highlights">
+                         <li>Dean&apos;s Honor List (10x)</li>
+                      </ul>
                      </article>
                   </div>
                </div>
@@ -142,15 +138,6 @@ function About() {
                      </ul>
                   </article>
 
-                  <article className="about-summary-card about-summary-card-featured">
-                     <p className="about-card-label">What&apos;s Next</p>
-                     <p className="about-card-text">
-                        Next, I plan to pursue a Master&apos;s degree focused on
-                        Embedded Systems and Edge AI, deepening my expertise in
-                        system architecture, real-time intelligence, and
-                        scalable IoT platforms.
-                     </p>
-                  </article>
                </div>
             </div>
 
