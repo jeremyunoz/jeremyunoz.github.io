@@ -84,24 +84,52 @@ function Hero() {
                   Raspberry Pi, ESP32, computer vision, and full-stack software.
                </p>
 
-               <div className="hero-actions">
-                  <button
-                     type="button"
-                     className="hero-pill hero-pill-muted"
-                     onClick={() => navigate("/?section=projects")}
-                  >
-                     <span className="hero-pill-dot" />
-                     Exploring projects
-                  </button>
+               <div className="hero-actions-wrapper">
+                  <div className="hero-actions">
+                     <button
+                        type="button"
+                        className="hero-pill hero-pill-muted"
+                        onClick={() => navigate("/?section=projects")}
+                     >
+                        <span className="hero-pill-dot" />
+                        Exploring projects
+                     </button>
 
-                  <button
-                     type="button"
-                     className="hero-pill hero-pill-primary"
-                     onClick={() => navigate("/?section=contact")}
-                  >
-                     Let's work together
-                     <span className="hero-pill-arrow">↗</span>
-                  </button>
+                     <button
+                        type="button"
+                        className="hero-pill hero-pill-primary"
+                        onClick={() => navigate("/?section=contact")}
+                     >
+                        Let's work together
+                        <span className="hero-pill-arrow">↗</span>
+                     </button>
+                  </div>
+
+                  <div className="hero-actions-secondary">
+                     <button
+                        type="button"
+                        className="hero-pill hero-pill-outline"
+                        onClick={() => window.open("/assets/jz_resume.pdf", "_blank")}
+                     >
+                        <svg 
+                           xmlns="http://www.w3.org/2000/svg" 
+                           width="1.1em" 
+                           height="1.1em" 
+                           viewBox="0 0 24 24" 
+                           fill="none" 
+                           stroke="currentColor" 
+                           strokeWidth="2.2" 
+                           strokeLinecap="round" 
+                           strokeLinejoin="round"
+                           className="hero-resume-icon"
+                        >
+                           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                           <polyline points="7 10 12 15 17 10"></polyline>
+                           <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Resume
+                     </button>
+                  </div>
                </div>
             </div>
          </div>

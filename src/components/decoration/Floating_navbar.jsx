@@ -10,7 +10,6 @@ import {
    FiBriefcase,
    FiHome,
    FiMail,
-   FiTool,
    FiUser,
 } from "react-icons/fi";
 import { GoStack } from "react-icons/go";
