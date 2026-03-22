@@ -158,6 +158,14 @@
    line-height: 1.5;
 }
 
+.about-focus-text {
+   margin: 0.9rem 0 0;
+   color: #4b7a6a;
+   font-size: clamp(0.94rem, 0.91rem + 0.12vw, 1rem);
+   font-weight: 500;
+   line-height: 1.6;
+}
+
 .about-content {
    display: grid;
    gap: 1.5rem;
@@ -176,6 +184,11 @@
 .about-intro-card {
    padding: clamp(1.4rem, 2.5vw, 1.8rem);
    border-radius: 24px;
+}
+
+.about-intro-copy {
+   display: grid;
+   gap: 0.9rem;
 }
 
 .about-text {
