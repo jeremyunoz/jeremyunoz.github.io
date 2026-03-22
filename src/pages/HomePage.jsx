@@ -11,10 +11,10 @@ import { FloatingNav } from "../components/decoration/Floating_navbar";
 import { ProjectContactBridge } from "../components/decoration/ProjectContactBridge";
 
 const navItems = [
-   { name: "About", link: "#about", icon: "👤" },
-   { name: "Skills", link: "#skills", icon: "💪" },
-   { name: "Projects", link: "#projects", icon: "📂" },
-   { name: "Contact", link: "#contact", icon: "✉️" },
+   { name: "About", link: "#about" },
+   { name: "Skills", link: "#skills" },
+   { name: "Projects", link: "#projects" },
+   { name: "Contact", link: "#contact" },
 ];
 
 function scrollToSection(sectionId) {
