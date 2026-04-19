@@ -8,6 +8,7 @@ import {
 } from "motion/react";
 import {
    FiBriefcase,
+   FiDownload,
    FiHome,
    FiMail,
    FiUser,
@@ -161,7 +162,7 @@ export const FloatingNav = ({ navItems, className }) => {
             className
          )}
       >
-         <div className="flex w-full items-center gap-1 overflow-x-auto">
+         <div className="flex w-full items-center gap-1 overflow-x-auto pr-1">
             {visibleNavItems.map((navItem) => {
                const itemId =
                   navItem.link === "/?section=hero"
@@ -196,6 +197,20 @@ export const FloatingNav = ({ navItems, className }) => {
                );
             })}
          </div>
+         <a
+            href="/assets/Jeremy-Zheng-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="Jeremy-Zheng-Resume.pdf"
+            aria-label="Download resume"
+            className={cn(
+               "ml-1 flex shrink-0 items-center gap-1.5 rounded-full bg-[#27453c] px-3 py-2 text-sm font-semibold text-[#f3fff9] shadow-[0_8px_20px_rgba(39,69,60,0.25)] transition-all duration-200 hover:bg-[#1d352e] hover:shadow-[0_10px_24px_rgba(39,69,60,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#66b89a] focus-visible:ring-offset-2",
+               compact ? "sm:px-3" : "sm:px-4"
+            )}
+         >
+            <FiDownload className="text-base leading-none" aria-hidden="true" />
+            <span className="hidden sm:inline">Resume</span>
+         </a>
       </motion.nav>
    );
 };
