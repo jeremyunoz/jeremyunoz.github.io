@@ -50,7 +50,51 @@ function Hero() {
             </div>
 
             <div className="hero-content">
-               <div className="hero-kicker">Embedded Systems x Edge AI x Product Engineering</div>
+               <div className="hero-status-strip" aria-label="Current status">
+                  <span className="hero-status-item">
+                     <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="0.95em"
+                        height="0.95em"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                     >
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                     </svg>
+                     B.S. UCI '26 · Incoming M.S., Georgia Tech
+                  </span>
+                  <span className="hero-status-sep" aria-hidden="true">•</span>
+                  <span className="hero-status-item">
+                     <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="0.95em"
+                        height="0.95em"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                     >
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                     </svg>
+                     Irvine, CA
+                  </span>
+                  <span className="hero-status-sep" aria-hidden="true">•</span>
+                  <span className="hero-status-item hero-status-available">
+                     <span className="hero-status-dot" aria-hidden="true" />
+                     Open to Embedded / Firmware / Edge AI roles
+                  </span>
+               </div>
+
                <h1 className="hero-intro">
                   <span className="hero-name">
                      <span className="hero-name-visual" aria-hidden="true">
@@ -73,15 +117,16 @@ function Hero() {
                      <span className="hero-name-sr-only">{HERO_NAME}</span>
                   </span>
                   <span className="hero-subheadline">
-                     I build <span className="hero-accent">embedded and edge-AI systems </span>
-                     that turn <span className="hero-emphasis">real-world sensing into useful products</span>.
+                     I design <span className="hero-accent">embedded firmware and edge-AI systems </span>
+                     — from <span className="hero-emphasis">real-time drivers to on-device inference</span>.
                   </span>
                </h1>
 
                <p className="hero-summary">
-                  UCI Computer Science and Engineering student, embedded systems
-                  researcher, and software lead building intelligent products with
-                  Raspberry Pi, ESP32, computer vision, and full-stack software.
+                  Embedded engineer working in <strong>C/C++ firmware, FreeRTOS, and
+                  on-device ML</strong> across ESP32 and Raspberry Pi. Currently
+                  deepening systems programming in Rust ahead of my M.S. at Georgia
+                  Tech.
                </p>
 
                <div className="hero-actions-wrapper">
@@ -91,8 +136,8 @@ function Hero() {
                         className="hero-pill hero-pill-muted"
                         onClick={() => navigate("/?section=projects")}
                      >
-                        <span className="hero-pill-dot" />
-                        Exploring projects
+                        See projects
+                        <span className="hero-pill-arrow">↓</span>
                      </button>
 
                      <button
@@ -106,10 +151,12 @@ function Hero() {
                   </div>
 
                   <div className="hero-actions-secondary">
-                     <button
-                        type="button"
+                     <a
                         className="hero-pill hero-pill-outline"
-                        onClick={() => window.open("/assets/jz_resume.pdf", "_blank")}
+                        href="/assets/Jeremy_Zheng_EmbeddedFirmware_Resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download="Jeremy_Zheng_EmbeddedFirmware_Resume.pdf"
                      >
                         <svg 
                            xmlns="http://www.w3.org/2000/svg" 
@@ -128,7 +175,7 @@ function Hero() {
                            <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
                         Resume
-                     </button>
+                     </a>
                   </div>
                </div>
             </div>

@@ -47,26 +47,25 @@ function About() {
                      </span>
                   </h2>
                   <p className="about-lead">
-                     I build embedded and edge AI systems that turn real-world
-                     sensing into responsive, user-facing products.
+                     I design embedded firmware and edge-AI systems — from
+                     low-level drivers and RTOS scheduling to on-device
+                     inference.
                   </p>
                   <p className="about-card-text">
-                     I&apos;m a Computer Science and Engineering student at UC
-                     Irvine focused on embedded systems, edge AI, and connected
-                     product development.
+                     I recently earned my B.S. in Computer Science and
+                     Engineering from UC Irvine and am an incoming M.S. in
+                     Computational Science and Engineering at Georgia Tech.
+                     My work sits squarely in embedded systems, firmware, and
+                     real-time software.
                   </p>
                   <div className="about-status">
                      <span className="about-status-label">Currently</span>
                      <span className="about-status-text">
-                        Strengthening systems programming with Rust and
-                        preparing for Device Driver Development and Systems
-                        Software internship work
+                        On an independent study in Rust — focused on memory
+                        safety, concurrency, and firmware-grade reliability —
+                        ahead of my M.S. at Georgia Tech.
                      </span>
                   </div>
-                  <p className="about-focus-text">
-                     Currently focused on Rust, systems programming, and
-                     performance-critical software.
-                  </p>
                </div>
             </div>
 
@@ -74,18 +73,15 @@ function About() {
                <div className="about-intro-card about-mobile-hidden">
                   <div className="about-intro-copy">
                      <p className="about-text">
-                        I focus on the intersection where hardware, software,
-                        and product thinking work together.
+                        I work where firmware meets the real world — where
+                        timing, memory, and hardware constraints actually
+                        matter.
                      </p>
                      <p className="about-text">
-                        I enjoy building systems that live in the real world,
-                        not just in code.
-                     </p>
-                     <p className="about-text">
-                        Most of my recent work has involved embedded devices,
-                        real-time inference, cloud-connected systems, and
-                        interfaces that make technical solutions practical and
-                        approachable.
+                        Most of my recent builds live on ESP32 and Raspberry
+                        Pi: real-time sensing, peripheral drivers, and
+                        edge-ML pipelines that have to run reliably on
+                        constrained compute.
                      </p>
                   </div>
                </div>
@@ -102,6 +98,27 @@ function About() {
                      <article className="about-education-item">
                       <div className="about-education-top">
                          <img
+                            src="/assets/gt_logo.png"
+                            alt="Georgia Institute of Technology logo"
+                            className="about-education-logo"
+                         />
+                         <div className="about-education-copy">
+                            <p className="about-education-school">
+                               Georgia Institute of Technology
+                            </p>
+                            <p className="about-education-degree">
+                               M.S. in Computational Science and Engineering
+                            </p>
+                            <p className="about-education-meta">
+                               Incoming · Fall 2026
+                            </p>
+                         </div>
+                      </div>
+                     </article>
+
+                     <article className="about-education-item">
+                      <div className="about-education-top">
+                         <img
                             src="/assets/uci_logo.png"
                             alt="University of California, Irvine logo"
                             className="about-education-logo"
@@ -114,7 +131,7 @@ function About() {
                                B.S. in Computer Science and Engineering
                             </p>
                             <p className="about-education-meta">
-                               Graduated March 2026
+                               Graduated March 2026 · GPA 3.90
                             </p>
                          </div>
                       </div>
@@ -129,24 +146,22 @@ function About() {
                   <article className="about-summary-card">
                      <p className="about-card-label">What I Build</p>
                      <p className="about-card-text">
-                        I build intelligent, responsive systems at the
-                        intersection of hardware and software, with a focus on
-                        real-time performance, reliability, and user
-                        experience. Recent work includes edge-AI robotics,
-                        embedded vision pipelines, and sensor-driven
-                        interaction systems.
+                        Embedded firmware and real-time systems. Recent work
+                        spans ESP32 firmware with FreeRTOS, peripheral drivers
+                        (I2C, SPI, UART, PWM), DMA-backed audio pipelines,
+                        and on-device ML on Raspberry Pi.
                      </p>
                   </article>
 
                   <article className="about-summary-card about-summary-card-mobile-hidden">
                      <p className="about-card-label">How I Work</p>
                      <p className="about-card-text">
-                        I approach systems end-to-end, from low-level firmware
-                        and sensing to edge inference and cloud integration.
-                        Through research at UCI&apos;s Embedded and
-                        Cyber-Physical Systems Lab and team-based builds, I
-                        design architectures that are both technically robust
-                        and product-oriented.
+                        End-to-end: from board bring-up and drivers to edge
+                        inference and cloud connectivity. Research at
+                        UCI&apos;s Embedded and Cyber-Physical Systems Lab
+                        sharpened my instincts for profiling latency, handling
+                        real-time constraints, and debugging with UART, logic
+                        analyzers, and scopes.
                      </p>
                   </article>
 
@@ -154,18 +169,19 @@ function About() {
                      <p className="about-card-label">Recent Experience</p>
                      <ul className="about-list">
                         <li>
-                           Evaluated real-time computer vision models on
-                           embedded platforms to optimize latency and accuracy
-                           tradeoffs.
+                           Profiled end-to-end perception latency at 10–40 FPS
+                           on constrained compute; identified bottlenecks
+                           across capture, processing, and inference.
                         </li>
                         <li>
-                           Designed MQTT-based distributed systems across
-                           Raspberry Pi and ESP32 devices for reliable
-                           inter-device communication.
+                           Built real-time audio pipelines on ESP32 using I2S
+                           with DMA-backed buffering and FreeRTOS task
+                           scheduling.
                         </li>
                         <li>
-                           Built interactive voice and sensor-driven systems
-                           enabling responsive, real-world user feedback.
+                           Designed MQTT-based edge-to-cloud pipelines across
+                           ESP32 and Raspberry Pi — reliable under constrained
+                           memory and intermittent networks.
                         </li>
                      </ul>
                   </article>

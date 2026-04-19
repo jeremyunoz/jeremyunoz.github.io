@@ -50,20 +50,22 @@
    text-align: left;
 }
 
-.about-kicker,
 .about-card-label {
    color: #4b7a6a;
    font-family: var(--font-display);
-   font-size: clamp(0.9rem, 0.84rem + 0.24vw, 1.02rem);
-   font-weight: 700;
-   letter-spacing: 0.18em;
+   font-size: var(--section-label-size);
+   font-weight: var(--fw-bold);
+   letter-spacing: 0.2em;
    text-transform: uppercase;
 }
 
 .about-kicker {
-   margin: 0 0 0.8rem;
-   letter-spacing: 0.08em;
+   /* Narrative kicker: sentence-case, softer tracking — overrides the
+      shared uppercase treatment used elsewhere so the greeting reads as
+      a conversational line, not a label. */
+   letter-spacing: 0.06em;
    text-transform: none;
+   font-size: clamp(0.9rem, 0.84rem + 0.24vw, 1.02rem);
 }
 
 .scramble-greeting {
@@ -72,13 +74,10 @@
 }
 
 .about-heading {
-   margin: 0 0 1rem;
-   color: #2b5d4d;
-   font-family: var(--font-body);
+   /* Uses shared section-title recipe; keep a slightly larger hero size
+      since this is a page-level greeting, not a mid-page section. */
    font-size: clamp(2.4rem, 1.8rem + 1.9vw, 3.6rem) !important;
-   line-height: 1.04;
-   letter-spacing: -0.04em;
-   text-shadow: 0 10px 30px rgba(255, 255, 255, 0.35);
+   margin-bottom: var(--s-3);
 }
 
 .about-wave {
@@ -220,10 +219,12 @@
 
 .about-education-title {
    margin: 0;
-   color: #2b5d4d;
+   color: var(--color-heading-strong);
    font-family: var(--font-display);
    font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.8rem);
-   line-height: 1.1;
+   font-weight: var(--fw-bold);
+   line-height: var(--lh-heading);
+   letter-spacing: var(--tracking-heading);
 }
 
 .about-education-list {
@@ -251,6 +252,7 @@
    display: block;
    object-fit: contain;
 }
+
 
 .about-education-copy {
    min-width: 0;
@@ -345,10 +347,12 @@
 
 .about-timeline-title {
    margin: 0;
-   color: #2b5d4d;
+   color: var(--color-heading-strong);
    font-family: var(--font-display);
    font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.8rem);
-   line-height: 1.1;
+   font-weight: var(--fw-bold);
+   line-height: var(--lh-heading);
+   letter-spacing: var(--tracking-heading);
 }
 
 .about-timeline-shell img {
