@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { SiDevpost } from "react-icons/si";
-import { Link } from "react-router-dom";
 
 const LINK_META = {
    github: { label: "GitHub", Icon: FaGithub },
@@ -20,7 +19,9 @@ const Card = ({
    timeframe,
    stack = [],
    links = {},
-   caseStudy,
+   projectSite,
+   featured = false,
+   featuredLabel = "Featured",
    delay = 0,
 }) => {
    const cardRef = useRef(null);
@@ -50,7 +51,9 @@ const Card = ({
       <StyledWrapper style={{ "--card-delay": `${delay}ms` }}>
          <article
             ref={cardRef}
-            className={`card ${isVisible ? "is-visible" : ""}`}
+            className={`card ${isVisible ? "is-visible" : ""} ${
+               featured ? "is-featured" : ""
+            }`}
          >
             <div className="card-media">
                <div className={`image-shell ${isLoaded ? "is-loaded" : ""}`}>
@@ -64,7 +67,13 @@ const Card = ({
                </div>
             </div>
             <div className="card-content">
-               <p className="card-label">Project</p>
+               <span
+                  className={`card-label ${
+                     featured ? "card-label-featured" : ""
+                  }`}
+               >
+                  {featured ? featuredLabel : "Project"}
+               </span>
                <h3>{title}</h3>
                {(role || timeframe) && (
                   <p className="card-meta">
@@ -87,16 +96,21 @@ const Card = ({
                      ))}
                   </ul>
                )}
-               {(Object.keys(links).length > 0 || caseStudy) && (
+               {(Object.keys(links).length > 0 || projectSite) && (
                   <div className="card-links">
-                     {caseStudy && (
-                        <Link
+                     {projectSite && projectSite.href && (
+                        <a
                            className="card-link card-link-primary"
-                           to={caseStudy}
+                           href={projectSite.href}
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label={`${title} — ${
+                              projectSite.label || "Project site"
+                           } (opens in a new tab)`}
                         >
-                           Read case study
-                           <span aria-hidden="true">→</span>
-                        </Link>
+                           {projectSite.label || "Project site"}
+                           <span aria-hidden="true">↗</span>
+                        </a>
                      )}
                      {Object.entries(links).map(([key, href]) => {
                         const meta = LINK_META[key];
@@ -178,6 +192,48 @@ const StyledWrapper = styled.div`
       box-shadow: 0 22px 48px rgba(43, 93, 77, 0.12);
    }
 
+   .card.is-featured {
+      position: relative;
+      background:
+         linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.82) 0%,
+            rgba(229, 244, 235, 0.78) 100%
+         );
+      border-color: rgba(43, 93, 77, 0.28);
+      box-shadow:
+         0 22px 56px rgba(43, 93, 77, 0.16),
+         0 0 0 1px rgba(88, 129, 87, 0.22);
+   }
+
+   .card.is-featured::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+         135deg,
+         rgba(88, 129, 87, 0.75),
+         rgba(165, 184, 131, 0.55) 45%,
+         rgba(58, 90, 64, 0.75)
+      );
+      -webkit-mask:
+         linear-gradient(#000 0 0) content-box,
+         linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.9;
+   }
+
+   .card.is-featured:hover {
+      transform: translateY(-2px);
+      box-shadow:
+         0 28px 64px rgba(43, 93, 77, 0.2),
+         0 0 0 1px rgba(88, 129, 87, 0.32);
+   }
+
    .card-media,
    .card-content {
       opacity: 0;
@@ -200,6 +256,7 @@ const StyledWrapper = styled.div`
    }
 
    .card-media {
+      position: relative;
       min-width: 0;
    }
 
@@ -270,7 +327,6 @@ const StyledWrapper = styled.div`
       padding: 0.25rem 0.15rem;
    }
 
-   .card-label,
    .card-impact-title {
       font-size: var(--section-label-size);
       font-weight: 700;
@@ -280,7 +336,23 @@ const StyledWrapper = styled.div`
    }
 
    .card-label {
+      align-self: flex-start;
       margin: 0;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(88, 129, 87, 0.14);
+      color: #355b4d;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+      white-space: nowrap;
+   }
+
+   .card-label-featured {
+      background: #27453c;
+      color: #f3fff9;
+      box-shadow: 0 6px 16px rgba(27, 58, 49, 0.22);
    }
 
    .card-content h3 {
@@ -455,7 +527,8 @@ const StyledWrapper = styled.div`
       }
 
       .card-label {
-         display: none;
+         font-size: 0.72rem;
+         padding: 0.24rem 0.6rem;
       }
 
       .card-content h3 {

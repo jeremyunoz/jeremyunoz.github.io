@@ -8,7 +8,7 @@ const ACTIVE_THRESHOLD = 150;
 // and scroll position.
 //
 //  - /about                 -> "about"
-//  - /projects/aurabot      -> "projects" (case-study implicitly belongs here)
+//  - /projects/*            -> "projects" (any project detail page)
 //  - / + scrolled past a section -> that section id
 //  - / + at the top         -> "home"
 //  - anything else          -> null

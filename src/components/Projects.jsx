@@ -8,6 +8,8 @@ const projectItems = [
       imageSrc: "../assets/aurabot_component.png",
       altText: "AuraBot Prototype during senior design project",
       title: "AuraBot",
+      featured: true,
+      featuredLabel: "Senior Design Capstone",
       role: "Firmware & Software Lead",
       timeframe: "Sep 2025 — Mar 2026",
       stack: [
@@ -20,9 +22,12 @@ const projectItems = [
          "MQTT",
       ],
       links: {
-         github: "https://github.com/Jeremy1-uci/aurabot",
+         github: "https://github.com/jeremyunoz/AuraBot",
       },
-      caseStudy: "/projects/aurabot",
+      projectSite: {
+         href: "https://projects.eng.uci.edu/projects/2025-2026/aurabot-edge-ai-desk-wellness-companion",
+         label: "Project site",
+      },
       description:
          "Edge-AI embedded robotics system. Owned low-level firmware on ESP32 / ESP32-P4 and the real-time audio and voice inference pipeline.",
       impact: [
@@ -47,7 +52,7 @@ const projectItems = [
          "Python",
       ],
       links: {
-         devpost: "https://devpost.com/software/bincredible",
+         github: "https://github.com/jeremyunoz/bincredible-app",
       },
       description:
          "Real-time embedded prototype pairing on-device ML with a connected app. Led firmware-to-cloud integration across a 6-engineer team.",
@@ -59,8 +64,8 @@ const projectItems = [
    },
    {
       imageSrc: "../assets/zotfitness.png",
-      altText: "Smart-Sit Guardian embedded prototype",
-      title: "Smart-Sit Guardian",
+      altText: "ZotFitness embedded prototype",
+      title: "ZotFitness",
       role: "Embedded Software Engineer",
       timeframe: "Sep 2024 — Dec 2024",
       stack: [
@@ -71,6 +76,10 @@ const projectItems = [
          "MQTT",
          "AWS IoT Core",
       ],
+      links: {
+         github: "https://github.com/jeremyunoz/ZotFitness",
+         devpost: "https://devpost.com/software/zotfitness",
+      },
       description:
          "Real-time posture and health monitoring system. Wrote embedded firmware for deterministic sensor acquisition and reliable edge-to-cloud streaming.",
       impact: [
