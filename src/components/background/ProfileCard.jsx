@@ -46,7 +46,7 @@ const ProfileCard = () => {
                   </div>
                   <img
                      src="./assets/author2.png"
-                     alt="Profile"
+                     alt="Jeremy Zheng portrait"
                      className="profile-img"
                   />
                   <p className="heading">Embedded Systems Enthusiast</p>
