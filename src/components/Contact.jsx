@@ -2,12 +2,27 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Contact.css";
 import { GrGithub } from "react-icons/gr";
 import { RiLinkedinFill } from "react-icons/ri";
-import { SiGmail } from "react-icons/si";
-import { IconMail } from "@tabler/icons-react";
+import {
+   IconMail,
+   IconCalendarEvent,
+   IconCopy,
+   IconCheck,
+   IconFileText,
+} from "@tabler/icons-react";
+
+const EMAIL = "jmzheng688@gmail.com";
+const GITHUB_URL = "https://github.com/jeremyunoz";
+const LINKEDIN_URL = "https://www.linkedin.com/in/jeremy-zheng-unoz";
+const CALENDLY_URL = "https://calendly.com/jmzheng688/30min";
+const RESUME_URL = "/assets/Jeremy_Zheng_EmbeddedFirmware_Resume.pdf";
+const MAILTO_HREF = `mailto:${EMAIL}?subject=${encodeURIComponent(
+   "Embedded / Firmware role"
+)}`;
 
 function Contact() {
    const ref = useRef();
    const [visible, setVisible] = useState(false);
+   const [copied, setCopied] = useState(false);
 
    useEffect(() => {
       if (!ref.current) return undefined;
@@ -27,6 +42,17 @@ function Contact() {
       return () => observer.disconnect();
    }, []);
 
+   const handleCopyEmail = async () => {
+      if (!navigator.clipboard?.writeText) return;
+      try {
+         await navigator.clipboard.writeText(EMAIL);
+         setCopied(true);
+         setTimeout(() => setCopied(false), 2000);
+      } catch {
+         setCopied(false);
+      }
+   };
+
    return (
       <section
          id="contact"
@@ -40,41 +66,120 @@ function Contact() {
                </div>
                <p className="contact-kicker">Let&apos;s Connect</p>
                <h2 className="contact-title">Contact Me</h2>
-               <p className="contact-intro">
-                  Based in Irvine, CA and open to embedded, edge AI, and systems
-                  software opportunities.
-               </p>
             </div>
 
             <div className="contact-card">
-               <p className="contact-location">
-                  Reach out if you&apos;re building products across devices, AI,
-                  and software.
+               <p className="contact-availability" aria-label="Response time">
+                  <span
+                     className="contact-availability-dot"
+                     aria-hidden="true"
+                  />
+                  Usually replies within 24h · Pacific Time
                </p>
 
-               <div className="contact-links">
-                  <a href="mailto:jmzheng688@gmail.com" aria-label="Email Jeremy">
-                     <SiGmail />
-                     <span className="contact-link-label">Email</span>
-                  </a>
+               <p className="contact-pitch">
+                  If you&apos;re hiring for{" "}
+                  <strong>embedded, firmware, or edge-AI roles</strong>,
+                  I&apos;d love to hear from you.
+               </p>
+
+               <div className="contact-cta-row">
+                  <div
+                     className="contact-cta contact-cta-primary contact-cta-email"
+                     role="group"
+                     aria-label="Email Jeremy"
+                  >
+                     <a
+                        className="contact-cta-email-link"
+                        href={MAILTO_HREF}
+                        aria-label={`Email ${EMAIL}`}
+                     >
+                        <IconMail size={18} stroke={2} aria-hidden="true" />
+                        <span className="contact-cta-email-address">
+                           {EMAIL}
+                        </span>
+                     </a>
+                     <button
+                        type="button"
+                        className="contact-cta-email-copy"
+                        onClick={handleCopyEmail}
+                        aria-label={
+                           copied
+                              ? "Email copied to clipboard"
+                              : "Copy email to clipboard"
+                        }
+                     >
+                        {copied ? (
+                           <IconCheck
+                              size={16}
+                              stroke={2.2}
+                              aria-hidden="true"
+                           />
+                        ) : (
+                           <IconCopy
+                              size={16}
+                              stroke={2.2}
+                              aria-hidden="true"
+                           />
+                        )}
+                     </button>
+                  </div>
 
                   <a
-                     href="https://github.com/jeremyunoz"
+                     className="contact-cta contact-cta-secondary"
+                     href={CALENDLY_URL}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     aria-label="Book a 15-minute intro call"
+                  >
+                     <IconCalendarEvent
+                        size={18}
+                        stroke={2}
+                        aria-hidden="true"
+                     />
+                     Book 15 min
+                  </a>
+               </div>
+
+               <div
+                  className="contact-divider"
+                  role="separator"
+                  aria-label="Also here"
+               >
+                  <span>also here</span>
+               </div>
+
+               <div className="contact-socials">
+                  <a
+                     className="contact-social"
+                     href={GITHUB_URL}
                      target="_blank"
                      rel="noopener noreferrer"
                      aria-label="Jeremy's GitHub"
                   >
-                     <GrGithub />
-                     <span className="contact-link-label">GitHub</span>
+                     <GrGithub aria-hidden="true" />
+                     <span className="contact-social-label">GitHub</span>
                   </a>
                   <a
-                     href="https://www.linkedin.com/in/jeremy-zheng-unoz"
+                     className="contact-social"
+                     href={LINKEDIN_URL}
                      target="_blank"
                      rel="noopener noreferrer"
                      aria-label="Jeremy's LinkedIn"
                   >
-                     <RiLinkedinFill />
-                     <span className="contact-link-label">LinkedIn</span>
+                     <RiLinkedinFill aria-hidden="true" />
+                     <span className="contact-social-label">LinkedIn</span>
+                  </a>
+                  <a
+                     className="contact-social"
+                     href={RESUME_URL}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     download="Jeremy_Zheng_EmbeddedFirmware_Resume.pdf"
+                     aria-label="Download Jeremy's resume"
+                  >
+                     <IconFileText size={18} stroke={1.8} aria-hidden="true" />
+                     <span className="contact-social-label">Resume</span>
                   </a>
                </div>
             </div>
