@@ -1,5 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { SiDevpost } from "react-icons/si";
+import { Link } from "react-router-dom";
+
+const LINK_META = {
+   github: { label: "GitHub", Icon: FaGithub },
+   demo: { label: "Live demo", Icon: FaExternalLinkAlt },
+   devpost: { label: "Devpost", Icon: SiDevpost },
+};
 
 const Card = ({
    imageSrc,
@@ -7,6 +16,11 @@ const Card = ({
    title,
    description,
    impact = [],
+   role,
+   timeframe,
+   stack = [],
+   links = {},
+   caseStudy,
    delay = 0,
 }) => {
    const cardRef = useRef(null);
@@ -52,7 +66,58 @@ const Card = ({
             <div className="card-content">
                <p className="card-label">Project</p>
                <h3>{title}</h3>
+               {(role || timeframe) && (
+                  <p className="card-meta">
+                     {role && <span className="card-meta-role">{role}</span>}
+                     {role && timeframe && (
+                        <span className="card-meta-sep" aria-hidden="true">·</span>
+                     )}
+                     {timeframe && (
+                        <span className="card-meta-timeframe">{timeframe}</span>
+                     )}
+                  </p>
+               )}
                <p className="card-description">{description}</p>
+               {stack.length > 0 && (
+                  <ul className="card-stack" aria-label="Stack">
+                     {stack.map((item) => (
+                        <li key={item} className="card-stack-chip">
+                           {item}
+                        </li>
+                     ))}
+                  </ul>
+               )}
+               {(Object.keys(links).length > 0 || caseStudy) && (
+                  <div className="card-links">
+                     {caseStudy && (
+                        <Link
+                           className="card-link card-link-primary"
+                           to={caseStudy}
+                        >
+                           Read case study
+                           <span aria-hidden="true">→</span>
+                        </Link>
+                     )}
+                     {Object.entries(links).map(([key, href]) => {
+                        const meta = LINK_META[key];
+                        if (!meta || !href) return null;
+                        const { label, Icon } = meta;
+                        return (
+                           <a
+                              key={key}
+                              className="card-link"
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`${title} on ${label}`}
+                           >
+                              <Icon aria-hidden="true" />
+                              <span>{label}</span>
+                           </a>
+                        );
+                     })}
+                  </div>
+               )}
                {impact.length > 0 && (
                   <div className="card-impact">
                      <button
@@ -225,11 +290,96 @@ const StyledWrapper = styled.div`
       color: #2b5d4d;
    }
 
+   .card-meta {
+      margin: -0.4rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      color: #4b7a6a;
+      font-size: 0.86rem;
+      font-weight: 600;
+   }
+
+   .card-meta-role {
+      color: #2b5d4d;
+   }
+
+   .card-meta-sep {
+      color: rgba(43, 93, 77, 0.4);
+   }
+
+   .card-meta-timeframe {
+      font-weight: 500;
+      color: #5c7a72;
+   }
+
    .card-description {
       margin: 0;
       font-size: clamp(1rem, 0.94rem + 0.35vw, 1.08rem);
       line-height: 1.7;
       color: #355b4d;
+   }
+
+   .card-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+   }
+
+   .card-stack-chip {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #355b4d;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(43, 93, 77, 0.14);
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+   }
+
+   .card-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+   }
+
+   .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(43, 93, 77, 0.14);
+      background: rgba(255, 255, 255, 0.82);
+      color: #2b5d4d;
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
+         border-color 0.2s ease;
+   }
+
+   .card-link:hover {
+      transform: translateY(-1px);
+      background: #fff;
+      box-shadow: 0 10px 22px rgba(43, 93, 77, 0.1);
+      border-color: rgba(43, 93, 77, 0.28);
+   }
+
+   .card-link-primary {
+      background: #27453c;
+      color: #f3fff9;
+      border-color: transparent;
+   }
+
+   .card-link-primary:hover {
+      background: #1d352e;
+      color: #ffffff;
    }
 
    .card-impact {
