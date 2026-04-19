@@ -67,10 +67,6 @@ function Header() {
          <nav className="navbar">
             <h1
                className="logo"
-               style={{
-                  background: "#2b5d4d",
-                  fontFamily: "'Bungee Shade', cursive",
-               }}
                onClick={() => {
                   setOpen(false);
                   setActiveItem("home");
@@ -86,9 +82,16 @@ function Header() {
                }}
                role="button"
                tabIndex={0}
-               aria-label="Go to home page"
+               aria-label="Jeremy Zheng — go to home page"
             >
-               Jeremy Zheng
+               <span className="logo-mark" aria-hidden="true">
+                  <span className="logo-mark-letter logo-mark-letter-j">J</span>
+                  <span className="logo-mark-letter logo-mark-letter-z">Z</span>
+               </span>
+               <span className="logo-wordmark">
+                  <span className="logo-wordmark-name">Jeremy Zheng</span>
+                  <span className="logo-wordmark-tag">Embedded · Edge AI</span>
+               </span>
             </h1>
 
             <ul className={`nav-links ${open ? "show" : ""}`}>
