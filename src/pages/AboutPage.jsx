@@ -1,34 +1,18 @@
-import React, { useEffect } from "react";
-import Header from "../components/header";
-import Footer from "../components/footer";
+import React from "react";
+import PageShell from "../components/PageShell";
 import About from "../components/About";
-import { FloatingNav } from "../components/decoration/Floating_navbar";
-import { MintSectionBackdrop } from "../components/decoration/MintSectionBackdrop";
+import { usePageMeta } from "../lib/usePageMeta";
 
-const navItems = [
-   { name: "About", link: "#about" },
-   { name: "Skills", link: "#skills" },
-   { name: "Projects", link: "#projects" },
-   { name: "Contact", link: "#contact" },
-];
-
-function AboutPage() {
-   useEffect(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-   }, []);
+export default function AboutPage() {
+   usePageMeta({
+      title: "About",
+      description:
+         "About Jeremy Zheng — embedded firmware and edge-AI engineer, UC Irvine CS, incoming Georgia Tech M.S.",
+   });
 
    return (
-      <div className="App">
-         <FloatingNav navItems={navItems} />
-         <Header />
-         <main className="page-sections mint-section-surface">
-            <MintSectionBackdrop />
-            <About />
-         </main>
-         <Footer />
-      </div>
+      <PageShell>
+         <About />
+      </PageShell>
    );
 }
-
-export default AboutPage;
-

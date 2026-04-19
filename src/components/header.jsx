@@ -1,83 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
+import { HOME_ITEM, NAV_ITEMS } from "./nav/navItems";
+import { useActiveNavId } from "./nav/useActiveNavId";
+import { resolveHref, useNavItemClick } from "./nav/useNavItemClick";
+
+// Header order: section nav, then Home last (matches the FloatingNav).
+const HEADER_ITEMS = [...NAV_ITEMS, HOME_ITEM];
 
 function Header() {
    const [open, setOpen] = useState(false);
    const navigate = useNavigate();
-   const location = useLocation();
-   const [activeItem, setActiveItem] = useState("home");
+   const activeId = useActiveNavId();
+   const onItemClick = useNavItemClick();
 
-   const navItems = [
-      { id: "about", label: "About", href: "#about" },
-      { id: "skills", label: "Skills", href: "#skills" },
-      { id: "projects", label: "Projects", href: "#projects" },
-      { id: "contact", label: "Contact", href: "#contact" },
-      { id: "home", label: "Home", href: "/" },
-   ];
-
-   const goTo = (hash) => {
-      if (!hash || !hash.startsWith("#")) return;
-      const id = hash.slice(1);
-      if (id === "about") navigate("/about");
-      else navigate(`/?section=${id}`);
+   const handleLogo = () => {
+      setOpen(false);
+      navigate("/");
    };
-
-   useEffect(() => {
-      if (location.pathname === "/about") {
-         setActiveItem("about");
-         return;
-      }
-
-      if (location.pathname !== "/") {
-         setActiveItem("");
-         return;
-      }
-
-      const updateActiveSection = () => {
-         const sectionIds = ["skills", "projects", "contact"];
-         const threshold = 150;
-         let currentSection = "home";
-
-         for (const id of sectionIds) {
-            const section = document.getElementById(id);
-            if (!section) continue;
-
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= threshold) {
-               currentSection = id;
-            }
-         }
-
-         setActiveItem(currentSection);
-      };
-
-      updateActiveSection();
-      window.addEventListener("scroll", updateActiveSection, { passive: true });
-      window.addEventListener("resize", updateActiveSection);
-
-      return () => {
-         window.removeEventListener("scroll", updateActiveSection);
-         window.removeEventListener("resize", updateActiveSection);
-      };
-   }, [location.pathname, location.search]);
 
    return (
       <header>
          <nav className="navbar">
             <h1
                className="logo"
-               onClick={() => {
-                  setOpen(false);
-                  setActiveItem("home");
-                  navigate("/");
-               }}
+               onClick={handleLogo}
                onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                      e.preventDefault();
-                     setOpen(false);
-                     setActiveItem("home");
-                     navigate("/");
+                     handleLogo();
                   }
                }}
                role="button"
@@ -95,28 +46,25 @@ function Header() {
             </h1>
 
             <ul className={`nav-links ${open ? "show" : ""}`}>
-               {navItems.map((item) => (
-                  <li key={item.id}>
-                     <a
-                        href={item.href}
-                        className={activeItem === item.id ? "active" : ""}
-                        onClick={(e) => {
-                           e.preventDefault();
-                           setOpen(false);
-                           setActiveItem(item.id);
-
-                           if (item.id === "home") {
-                              navigate("/");
-                              return;
-                           }
-
-                           goTo(item.href);
-                        }}
-                     >
-                        {item.label}
-                     </a>
-                  </li>
-               ))}
+               {HEADER_ITEMS.map((item) => {
+                  const isActive = activeId === item.id;
+                  const baseHandler = onItemClick(item);
+                  return (
+                     <li key={item.id}>
+                        <a
+                           href={resolveHref(item)}
+                           aria-current={isActive ? "page" : undefined}
+                           className={isActive ? "active" : ""}
+                           onClick={(event) => {
+                              setOpen(false);
+                              baseHandler(event);
+                           }}
+                        >
+                           {item.label}
+                        </a>
+                     </li>
+                  );
+               })}
             </ul>
 
             <button

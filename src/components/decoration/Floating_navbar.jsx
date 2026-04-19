@@ -1,149 +1,43 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useRef, useState } from "react";
 import {
    motion,
    useScroll,
    useMotionValueEvent,
 } from "motion/react";
-import {
-   FiBriefcase,
-   FiDownload,
-   FiHome,
-   FiMail,
-   FiUser,
-} from "react-icons/fi";
-import { GoStack } from "react-icons/go";
+import { FiDownload } from "react-icons/fi";
 import { cn } from "../../lib/utils";
+import { HOME_ITEM, NAV_ITEMS } from "../nav/navItems";
+import { useActiveNavId } from "../nav/useActiveNavId";
+import { resolveHref, useNavItemClick } from "../nav/useNavItemClick";
 
 const NAV_REVEAL_OFFSET = 72;
 const NAV_COMPACT_OFFSET = 220;
-const ACTIVE_SECTION_THRESHOLD = 150;
 const SCROLL_DIRECTION_THRESHOLD = 4;
-const NAV_ICON_BY_ID = {
-   home: FiHome,
-   about: FiUser,
-   skills: GoStack,
-   projects: FiBriefcase,
-   contact: FiMail,
-};
 
-function getSectionId(link) {
-   if (!link || !link.startsWith("#")) return null;
-   return link.slice(1);
-}
+// Render order: section nav first, then Home as the last pill.
+const FLOATING_ITEMS = [...NAV_ITEMS, HOME_ITEM];
 
-export const FloatingNav = ({ navItems, className }) => {
-   const navigate = useNavigate();
-   const location = useLocation();
+export const FloatingNav = ({ className }) => {
    const { scrollY } = useScroll();
-   const sectionParam = new URLSearchParams(location.search).get("section");
    const lastScrollY = useRef(0);
-
    const [visible, setVisible] = useState(false);
    const [compact, setCompact] = useState(false);
-   const [activeItem, setActiveItem] = useState("home");
-
-   const visibleNavItems = useMemo(
-      () => [...navItems, { name: "Home", link: "/?section=hero" }],
-      [navItems]
-   );
-
-   const trackedHomeSections = useMemo(
-      () =>
-         ["hero"]
-            .concat(
-               navItems
-                  .map((item) => getSectionId(item.link))
-                  .filter((id) => id && id !== "about")
-            ),
-      [navItems]
-   );
+   const activeId = useActiveNavId();
+   const onItemClick = useNavItemClick();
 
    useMotionValueEvent(scrollY, "change", (current) => {
-      if (typeof current === "number") {
-         const previous = lastScrollY.current;
-         const delta = current - previous;
-         const isScrollingUp = delta < -SCROLL_DIRECTION_THRESHOLD;
-         const hasPassedRevealOffset = current > NAV_REVEAL_OFFSET;
-         const nextVisible = hasPassedRevealOffset ? isScrollingUp : false;
-         const nextCompact = current > NAV_COMPACT_OFFSET;
-         setVisible((prev) => (prev === nextVisible ? prev : nextVisible));
-         setCompact((prev) => (prev === nextCompact ? prev : nextCompact));
-         lastScrollY.current = current;
-      }
+      if (typeof current !== "number") return;
+      const previous = lastScrollY.current;
+      const delta = current - previous;
+      const isScrollingUp = delta < -SCROLL_DIRECTION_THRESHOLD;
+      const hasPassedRevealOffset = current > NAV_REVEAL_OFFSET;
+      const nextVisible = hasPassedRevealOffset ? isScrollingUp : false;
+      const nextCompact = current > NAV_COMPACT_OFFSET;
+      setVisible((prev) => (prev === nextVisible ? prev : nextVisible));
+      setCompact((prev) => (prev === nextCompact ? prev : nextCompact));
+      lastScrollY.current = current;
    });
-
-   useEffect(() => {
-      if (location.pathname === "/about") {
-         setActiveItem("about");
-         return;
-      }
-
-      if (location.pathname !== "/") {
-         setActiveItem("home");
-         return;
-      }
-
-      if (sectionParam) {
-         setActiveItem(sectionParam === "hero" ? "home" : sectionParam);
-      }
-
-      const updateActiveSection = () => {
-         let currentSection = "home";
-
-         trackedHomeSections.forEach((sectionId) => {
-            const section = document.getElementById(sectionId);
-            if (!section) return;
-
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= ACTIVE_SECTION_THRESHOLD) {
-               currentSection = sectionId === "hero" ? "home" : sectionId;
-            }
-         });
-
-         setActiveItem(currentSection);
-      };
-
-      updateActiveSection();
-      window.addEventListener("scroll", updateActiveSection, { passive: true });
-      window.addEventListener("resize", updateActiveSection);
-
-      return () => {
-         window.removeEventListener("scroll", updateActiveSection);
-         window.removeEventListener("resize", updateActiveSection);
-      };
-   }, [location.pathname, sectionParam, trackedHomeSections]);
-
-   const handleNavClick = (event, link) => {
-      if (!link) return;
-
-      if (link.startsWith("#")) {
-         event.preventDefault();
-         const id = link.slice(1);
-         setActiveItem(id);
-         if (id === "about") {
-            navigate("/about");
-            return;
-         }
-         navigate(`/?section=${id}`);
-         return;
-      }
-
-      if (link === "/?section=hero") {
-         event.preventDefault();
-         setActiveItem("home");
-         navigate(link);
-      }
-   };
-
-   const resolveHref = (link) => {
-      if (!link) return "/";
-      if (!link.startsWith("#")) return link;
-
-      const id = link.slice(1);
-      return id === "about" ? "/about" : `/?section=${id}`;
-   };
 
    return (
       <motion.nav
@@ -163,20 +57,16 @@ export const FloatingNav = ({ navItems, className }) => {
          )}
       >
          <div className="flex w-full items-center gap-1 overflow-x-auto pr-1">
-            {visibleNavItems.map((navItem) => {
-               const itemId =
-                  navItem.link === "/?section=hero"
-                     ? "home"
-                     : getSectionId(navItem.link) ?? navItem.name.toLowerCase();
-               const isActive = activeItem === itemId;
-               const MobileIcon = NAV_ICON_BY_ID[itemId];
-
+            {FLOATING_ITEMS.map((item) => {
+               const { id, label, Icon } = item;
+               const isActive = activeId === id;
                return (
                   <a
-                     key={`${itemId}-${navItem.name}`}
-                     href={resolveHref(navItem.link)}
-                     aria-label={navItem.name}
+                     key={id}
+                     href={resolveHref(item)}
+                     aria-label={label}
                      aria-current={isActive ? "page" : undefined}
+                     onClick={onItemClick(item)}
                      className={cn(
                         "group relative flex min-w-fit flex-1 items-center justify-center rounded-full px-3 py-2 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#66b89a] focus-visible:ring-offset-2",
                         compact ? "sm:px-3" : "sm:px-4",
@@ -184,15 +74,14 @@ export const FloatingNav = ({ navItems, className }) => {
                            ? "bg-[#eef8f2] text-[#16352b] shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_8px_18px_rgba(118,180,150,0.18)] ring-1 ring-[#c7e8d9]"
                            : "text-neutral-600 hover:bg-white/80 hover:text-neutral-900"
                      )}
-                     onClick={(event) => handleNavClick(event, navItem.link)}
                   >
-                     {MobileIcon ? (
-                        <MobileIcon
+                     {Icon ? (
+                        <Icon
                            className="text-lg leading-none sm:hidden"
                            aria-hidden="true"
                         />
                      ) : null}
-                     <span className="hidden sm:inline">{navItem.name}</span>
+                     <span className="hidden sm:inline">{label}</span>
                   </a>
                );
             })}

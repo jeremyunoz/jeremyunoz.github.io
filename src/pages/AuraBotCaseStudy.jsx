@@ -1,17 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import { FloatingNav } from "../components/decoration/Floating_navbar";
-import { MintSectionBackdrop } from "../components/decoration/MintSectionBackdrop";
+import PageShell from "../components/PageShell";
+import { usePageMeta } from "../lib/usePageMeta";
 import "./AuraBotCaseStudy.css";
-
-const navItems = [
-   { name: "About", link: "#about" },
-   { name: "Skills", link: "#skills" },
-   { name: "Projects", link: "#projects" },
-   { name: "Contact", link: "#contact" },
-];
 
 const CONSTRAINTS = [
    {
@@ -56,22 +47,21 @@ const NEXT_STEPS = [
 ];
 
 function AuraBotCaseStudy() {
-   useEffect(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-   }, []);
+   usePageMeta({
+      title: "AuraBot — Case Study",
+      description:
+         "AuraBot senior design case study: distributed embedded + edge-AI system on ESP32-P4 and Raspberry Pi 5.",
+   });
 
    return (
-      <div className="App">
-         <FloatingNav navItems={navItems} />
-         <Header />
-         <main className="page-sections mint-section-surface">
-            <MintSectionBackdrop />
-
-            <article className="case-study visible">
-               <div className="case-study-shell">
-                  <nav aria-label="Breadcrumb" className="case-study-breadcrumb">
-                     <Link to="/?section=projects">← Back to projects</Link>
-                  </nav>
+      <PageShell>
+         <article className="case-study visible">
+            <div className="case-study-shell">
+               <nav aria-label="Breadcrumb" className="case-study-breadcrumb">
+                  <Link to="/" state={{ scrollTo: "projects" }}>
+                     ← Back to projects
+                  </Link>
+               </nav>
 
                   <header className="case-study-header">
                      <p className="case-study-kicker">Senior Design · 2024–2025</p>
@@ -216,16 +206,18 @@ function AuraBotCaseStudy() {
                   </section>
 
                   <div className="case-study-footer">
-                     <Link className="case-study-cta" to="/?section=contact">
+                     <Link
+                        className="case-study-cta"
+                        to="/"
+                        state={{ scrollTo: "contact" }}
+                     >
                         Let&apos;s talk about embedded + edge-AI roles
                         <span aria-hidden="true">↗</span>
                      </Link>
                   </div>
-               </div>
-            </article>
-         </main>
-         <Footer />
-      </div>
+            </div>
+         </article>
+      </PageShell>
    );
 }
 

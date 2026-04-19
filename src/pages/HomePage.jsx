@@ -1,55 +1,46 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import Header from "../components/header";
-import Footer from "../components/footer";
+import React, { useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import PageShell from "../components/PageShell";
 import Hero from "../components/Hero";
-import Contact from "../components/Contact";
-import Projects from "../components/Projects";
 import Skills from "../components/Skills";
-import { MintSectionBackdrop } from "../components/decoration/MintSectionBackdrop";
-import { FloatingNav } from "../components/decoration/Floating_navbar";
+import Projects from "../components/Projects";
+import Contact from "../components/Contact";
 import { ProjectContactBridge } from "../components/decoration/ProjectContactBridge";
+import { scrollToSection } from "../lib/scrollToSection";
+import { usePageMeta } from "../lib/usePageMeta";
 
-const navItems = [
-   { name: "About", link: "#about" },
-   { name: "Skills", link: "#skills" },
-   { name: "Projects", link: "#projects" },
-   { name: "Contact", link: "#contact" },
-];
+export default function HomePage() {
+   usePageMeta({
+      title: "Home",
+      description:
+         "Jeremy Zheng — embedded firmware and edge-AI engineer. Skills, projects, and contact.",
+   });
 
-function scrollToSection(sectionId) {
-   const el = document.getElementById(sectionId);
-   if (!el) return;
-   el.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function HomePage() {
    const location = useLocation();
-   const section = new URLSearchParams(location.search).get("section");
+   const navigate = useNavigate();
+   const lastHandledRef = useRef(null);
 
    useEffect(() => {
-      if (!section) return;
-      // Ensure layout is settled before scrolling.
-      requestAnimationFrame(() => scrollToSection(section));
-   }, [section]);
+      const target = location.state?.scrollTo;
+      if (!target) return;
+      // Guard against re-running when state hasn't changed but the effect
+      // re-fires (e.g. React strict-mode double invoke in dev).
+      if (lastHandledRef.current === target) return;
+      lastHandledRef.current = target;
+
+      const handle = requestAnimationFrame(() => scrollToSection(target));
+      // Clear the state so a refresh or later re-render doesn't re-trigger.
+      navigate(".", { replace: true, state: null });
+      return () => cancelAnimationFrame(handle);
+   }, [location.state, navigate]);
 
    return (
-      <div className="App">
-         <FloatingNav navItems={navItems} />
-         <Header />
-         <main className="page-sections mint-section-surface">
-            <MintSectionBackdrop />
-            <Hero />
-            {/* About is intentionally not rendered on home; it lives on /about */}
-            <Skills />
-            <Projects />
-            <ProjectContactBridge />
-            <Contact />
-         </main>
-         <Footer />
-      </div>
+      <PageShell>
+         <Hero />
+         <Skills />
+         <Projects />
+         <ProjectContactBridge />
+         <Contact />
+      </PageShell>
    );
 }
-
-export default HomePage;
-
