@@ -1,46 +1,157 @@
 import React from "react";
 import Timeline from "./Timeline";
 
+const datePillStyle = {
+   display: "inline-flex",
+   alignItems: "center",
+   padding: "0.34rem 0.78rem",
+   borderRadius: "999px",
+   background: "rgba(142, 195, 176, 0.2)",
+   border: "1px solid rgba(142, 195, 176, 0.45)",
+   color: "#2f5f50",
+   fontFamily: "var(--font-display)",
+   fontSize: "0.72rem",
+   fontWeight: 700,
+   letterSpacing: "0.14em",
+   textTransform: "uppercase",
+   whiteSpace: "nowrap",
+};
+
+const itemTitleStyle = {
+   lineHeight: "1.4",
+   color: "#1a1a1a",
+   letterSpacing: "0.025em",
+};
+
+const subheadingStyle = {
+   color: "#2f5f50",
+   lineHeight: "1.55",
+};
+
+const committedBadgeStyle = {
+   display: "inline-flex",
+   alignItems: "center",
+   padding: "0.34rem 0.78rem",
+   borderRadius: "999px",
+   background: "linear-gradient(135deg, #B3A369, #857437)",
+   color: "#ffffff",
+   fontFamily: "var(--font-display)",
+   fontSize: "0.72rem",
+   fontWeight: 700,
+   letterSpacing: "0.14em",
+   textTransform: "uppercase",
+   whiteSpace: "nowrap",
+   boxShadow: "0 4px 10px rgba(133, 116, 55, 0.25)",
+};
+
+const rationaleStyle = {
+   padding: "0.9rem 1.05rem",
+   borderRadius: "14px",
+   background: "rgba(142, 195, 176, 0.14)",
+   border: "1px solid rgba(43, 93, 77, 0.18)",
+   borderLeft: "3px solid #5aa389",
+   marginBottom: "1rem",
+};
+
+const rationaleLabelStyle = {
+   display: "inline-block",
+   color: "#2f5f50",
+   fontFamily: "var(--font-display)",
+   fontSize: "0.7rem",
+   fontWeight: 700,
+   letterSpacing: "0.14em",
+   textTransform: "uppercase",
+   marginBottom: "0.3rem",
+};
+
+const rationaleTextStyle = {
+   margin: 0,
+   color: "#2d3d36",
+   fontSize: "0.92rem",
+   lineHeight: "1.6",
+};
+
+const alsoAdmittedStyle = {
+   margin: 0,
+   color: "#7a8a82",
+   fontSize: "0.78rem",
+   fontStyle: "italic",
+   lineHeight: "1.55",
+};
+
+const goJacketsStyle = {
+   margin: "0.7rem 0 0",
+   color: "#857437",
+   fontFamily: "var(--font-display)",
+   fontSize: "0.82rem",
+   fontWeight: 700,
+   fontStyle: "italic",
+   letterSpacing: "0.04em",
+};
+
+const DatePill = ({ children }) => (
+   <span style={datePillStyle}>{children}</span>
+);
+
 function TimelineUI() {
    const data = [
       {
          title: "Mar 2026 - Sep 2026",
          content: (
             <div>
-               <p
-                  className="mb-4 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
-                  style={{ lineHeight: "1.4", color: "#1a1a1a", letterSpacing: "0.025em" }}
-               >
-                  UC Irvine Graduation and Next Academic Step
-               </p>
-               <div className="mb-8 mt-2">
-                  <div className="flex items-center gap-3 text-sm font-medium text-neutral-800 md:text-base dark:text-neutral-200 mb-2">
-                     Graduated from UC Irvine and deciding between admitted
-                     graduate programs
-                  </div>
+               <div className="mb-3 flex flex-wrap items-center gap-2">
+                  <DatePill>Mar – Sep 2026</DatePill>
+                  <span style={committedBadgeStyle}>Committed</span>
                </div>
-               <ul className="list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
+               <p
+                  className="mb-3 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
+                  style={itemTitleStyle}
+               >
+                  UC Irvine Graduation → Georgia Tech{" "}
+                  <span
+                     className="gt-buzz"
+                     role="img"
+                     aria-label="Georgia Tech Yellow Jacket mascot"
+                  >
+                     🐝
+                  </span>
+               </p>
+               <p
+                  className="mb-6 text-sm font-semibold md:text-base"
+                  style={subheadingStyle}
+               >
+                  Committed to Georgia Tech for M.S. in Computational
+                  Science and Engineering
+               </p>
+               <ul className="mb-5 list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
-                     Graduated from UC Irvine in March 2026 and will begin
-                     pursuing a Master&apos;s degree in September 2026.
+                     Graduated from UC Irvine with a B.S. in Computer
+                     Science and Engineering in March 2026.
                   </li>
                   <li>
-                     Admitted to UCLA&apos;s Master of Engineering in Internet of
-                     Things (IoT) Systems.
+                     Starting Georgia Tech&apos;s M.S. in Computational
+                     Science and Engineering in Fall 2026.
                   </li>
                   <li>
-                     Admitted to Cornell&apos;s Master of Engineering in Computer
-                     Science.
-                  </li>
-                  <li>
-                     Admitted to UC Irvine&apos;s Master of Embedded and
-                     Cyber-Physical Systems.
-                  </li>
-                  <li>
-                     Admitted to Northwestern&apos;s Master of Science in Computer
-                     Engineering.
+                     Focus areas: embedded systems, low-level software, and
+                     edge AI.
                   </li>
                </ul>
+               <div style={rationaleStyle}>
+                  <span style={rationaleLabelStyle}>Why Georgia Tech</span>
+                  <p style={rationaleTextStyle}>
+                     GT&apos;s CSE program offers the depth in HPC,
+                     numerical methods, and systems-level computing I need
+                     to keep pushing further into performance-critical,
+                     low-level work.
+                  </p>
+                  <p style={goJacketsStyle}>Go Jackets! 🐝</p>
+               </div>
+               <p style={alsoAdmittedStyle}>
+                  Also admitted to UCLA (M.Eng. IoT Systems), Cornell
+                  (M.Eng. CS), UC Irvine (M.S. Embedded &amp; Cyber-Physical
+                  Systems), and Northwestern (M.S. Computer Engineering).
+               </p>
             </div>
          ),
       },
@@ -48,22 +159,23 @@ function TimelineUI() {
          title: "Jan 2025 - Jan 2026",
          content: (
             <div>
+               <div className="mb-3">
+                  <DatePill>Jan 2025 – Jan 2026</DatePill>
+               </div>
                <p
-                  className="mb-4 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
-                  style={{ lineHeight: "1.4", color: "#1a1a1a", letterSpacing: "0.025em" }}
+                  className="mb-3 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
+                  style={itemTitleStyle}
                >
                   Undergraduate Research Assistant at the UCI Embedded and
                   Cyber-Physical Systems Lab
                </p>
-               <div className="mb-8 mt-2">
-                  <div className="flex items-center gap-3 text-sm font-medium text-neutral-800 md:text-base dark:text-neutral-200 mb-2">
-                     Researched robust embedded computer vision systems for
-                     drone perception
-                     <span className="text-neutral-500 font-normal">
-                        (Jan 2025 - Jan 2026)
-                     </span>
-                  </div>
-               </div>
+               <p
+                  className="mb-6 text-sm font-semibold md:text-base"
+                  style={subheadingStyle}
+               >
+                  Researched robust embedded computer vision systems for drone
+                  perception
+               </p>
                <ul className="list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Built Python tooling with a Gradio interface to inject blur,
@@ -87,21 +199,22 @@ function TimelineUI() {
          title: "Sep 2025 - Mar 2026",
          content: (
             <div>
+               <div className="mb-3">
+                  <DatePill>Sep 2025 – Mar 2026</DatePill>
+               </div>
                <p
-                  className="mb-4 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
-                  style={{ lineHeight: "1.4", color: "#1a1a1a", letterSpacing: "0.025em" }}
+                  className="mb-3 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
+                  style={itemTitleStyle}
                >
                   AuraBot - Edge-AI Desk Wellness Companion
                </p>
-               <div className="mb-8 mt-2">
-                  <div className="flex items-center gap-3 text-sm font-medium text-neutral-800 md:text-base dark:text-neutral-200 mb-2">
-                     Software Lead and Project Manager for a 5-member team building a
-                     distributed edge-AI robotics platform
-                     <span className="text-neutral-500 font-normal">
-                        (Sep 2025 - Mar 2026)
-                     </span>
-                  </div>
-               </div>
+               <p
+                  className="mb-6 text-sm font-semibold md:text-base"
+                  style={subheadingStyle}
+               >
+                  Software Lead and Project Manager for a 5-member team building a
+                  distributed edge-AI robotics platform
+               </p>
                <ul className="mb-8 list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Designed distributed software architecture across edge and
@@ -142,20 +255,21 @@ function TimelineUI() {
          title: "May - Oct 2025",
          content: (
             <div>
+               <div className="mb-3">
+                  <DatePill>May – Oct 2025</DatePill>
+               </div>
                <p
-                  className="mb-4 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
-                  style={{ lineHeight: "1.4", color: "#1a1a1a", letterSpacing: "0.025em" }}
+                  className="mb-3 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
+                  style={itemTitleStyle}
                >
                   Bincredible - BRDG Innovative Challenge
                </p>
-               <div className="mb-8 mt-2">
-                  <div className="flex items-center gap-3 text-sm font-medium text-neutral-800 md:text-base dark:text-neutral-200 mb-2">
-                     Project Manager and Software Lead for a gamified recycling app
-                     <span className="text-neutral-500 font-normal">
-                        (May - Oct 2025)
-                     </span>
-                  </div>
-               </div>
+               <p
+                  className="mb-6 text-sm font-semibold md:text-base"
+                  style={subheadingStyle}
+               >
+                  Project Manager and Software Lead for a gamified recycling app
+               </p>
                <ul className="mb-8 list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Developed a mobile app with React Native, TypeScript, and
@@ -194,21 +308,22 @@ function TimelineUI() {
          title: "2025 Highlights",
          content: (
             <div>
+               <div className="mb-3">
+                  <DatePill>Jan – Dec 2025</DatePill>
+               </div>
                <p
-                  className="mb-4 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
-                  style={{ lineHeight: "1.4", color: "#1a1a1a", letterSpacing: "0.025em" }}
+                  className="mb-3 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
+                  style={itemTitleStyle}
                >
                   Certifications and technical depth
                </p>
-               <div className="mb-8 mt-2">
-                  <div className="flex items-center gap-3 text-sm font-medium text-neutral-800 md:text-base dark:text-neutral-200 mb-2">
-                     Expanded cloud, AI, and database foundations through
-                     certifications and focused coursework
-                     <span className="text-neutral-500 font-normal">
-                        (2025)
-                     </span>
-                  </div>
-               </div>
+               <p
+                  className="mb-6 text-sm font-semibold md:text-base"
+                  style={subheadingStyle}
+               >
+                  Expanded cloud, AI, and database foundations through
+                  certifications and focused coursework
+               </p>
                <ul className="mb-8 list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Earned the AWS Certified AI Practitioner and AWS Certified Cloud
@@ -243,20 +358,21 @@ function TimelineUI() {
          title: "2024",
          content: (
             <div>
+               <div className="mb-3">
+                  <DatePill>Sep – Dec 2024</DatePill>
+               </div>
                <p
-                  className="mb-4 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
-                  style={{ lineHeight: "1.4", color: "#1a1a1a", letterSpacing: "0.025em" }}
+                  className="mb-3 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
+                  style={itemTitleStyle}
                >
                   Smart-Sit Guardian
                </p>
-               <div className="mb-8 mt-2">
-                  <div className="flex items-center gap-3 text-sm font-medium text-neutral-800 md:text-base dark:text-neutral-200 mb-2">
-                     Software Engineer on an IoT wellness monitoring system
-                     <span className="text-neutral-500 font-normal">
-                        (Sep - Dec 2024)
-                     </span>
-                  </div>
-               </div>
+               <p
+                  className="mb-6 text-sm font-semibold md:text-base"
+                  style={subheadingStyle}
+               >
+                  Software Engineer on an IoT wellness monitoring system
+               </p>
                <ul className="list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Built a smart seat prototype that tracked posture, heart rate,
@@ -280,20 +396,21 @@ function TimelineUI() {
          title: "2024 Teaching",
          content: (
             <div>
+               <div className="mb-3">
+                  <DatePill>Jan – Dec 2024</DatePill>
+               </div>
                <p
-                  className="mb-4 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
-                  style={{ lineHeight: "1.4", color: "#1a1a1a", letterSpacing: "0.025em" }}
+                  className="mb-3 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
+                  style={itemTitleStyle}
                >
                   Teaching at UC Irvine
                </p>
-               <div className="mb-8 mt-2">
-                  <div className="flex items-center gap-3 text-sm font-medium text-neutral-800 md:text-base dark:text-neutral-200 mb-2">
-                     Learning Assistant for ICS 31 and ICS 45C
-                     <span className="text-neutral-500 font-normal">
-                        (2024)
-                     </span>
-                  </div>
-               </div>
+               <p
+                  className="mb-6 text-sm font-semibold md:text-base"
+                  style={subheadingStyle}
+               >
+                  Learning Assistant for ICS 31 and ICS 45C
+               </p>
                <ul className="mb-8 list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Supported students in programming fundamentals and C++ concepts
@@ -316,18 +433,22 @@ function TimelineUI() {
          title: "Early Foundation",
          content: (
             <div>
+               <div className="mb-3">
+                  <DatePill>2022</DatePill>
+               </div>
                <p
-                  className="mb-4 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
-                  style={{ lineHeight: "1.4", color: "#1a1a1a", letterSpacing: "0.025em" }}
+                  className="mb-3 text-lg font-bold text-neutral-900 md:text-xl dark:text-neutral-100"
+                  style={itemTitleStyle}
                >
                   IEEE Open Project Space
                </p>
-               <div className="mb-8 mt-2">
-                  <div className="flex items-center gap-3 text-sm font-medium text-neutral-800 md:text-base dark:text-neutral-200 mb-2">
-                     Early hands-on hardware projects that shaped my interest in
-                     embedded systems
-                  </div>
-               </div>
+               <p
+                  className="mb-6 text-sm font-semibold md:text-base"
+                  style={subheadingStyle}
+               >
+                  Early hands-on hardware projects that shaped my interest in
+                  embedded systems
+               </p>
                <ul className="mb-8 list-disc space-y-3 pl-5 text-sm font-medium leading-7 text-neutral-700 md:text-base">
                   <li>
                      Joined the IEEE Student Branch Open Project Space at UC Irvine
@@ -353,6 +474,26 @@ function TimelineUI() {
    ];
    return (
       <div className="relative w-full overflow-clip">
+         <style>{`
+            @keyframes timeline-gt-buzz {
+               0%, 100% { transform: translate(0, 0) rotate(0deg); }
+               20% { transform: translate(1px, -1px) rotate(8deg); }
+               40% { transform: translate(-1px, 1px) rotate(-5deg); }
+               60% { transform: translate(1px, 0) rotate(6deg); }
+               80% { transform: translate(-1px, -1px) rotate(-3deg); }
+            }
+            .gt-buzz {
+               display: inline-block;
+               margin-left: 0.35rem;
+               font-size: 1.05em;
+               transform-origin: center;
+               animation: timeline-gt-buzz 1.8s ease-in-out infinite;
+               filter: drop-shadow(0 1px 2px rgba(179, 163, 105, 0.35));
+            }
+            @media (prefers-reduced-motion: reduce) {
+               .gt-buzz { animation: none; }
+            }
+         `}</style>
          <Timeline data={data} />
       </div>
    );
