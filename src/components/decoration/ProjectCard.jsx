@@ -255,7 +255,7 @@ const StyledWrapper = styled.div`
       display: grid;
       grid-template-columns: minmax(272px, 400px) minmax(0, 1fr);
       gap: clamp(1.4rem, 4vw, 2.5rem);
-      align-items: center;
+      align-items: start;
       padding: clamp(0.8rem, 2.4vw, 1.2rem);
       border-radius: 28px;
       background: rgba(255, 255, 255, 0.58);

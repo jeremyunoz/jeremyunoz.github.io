@@ -9,7 +9,7 @@ const projectItems = [
       altText: "AuraBot Prototype during senior design project",
       title: "AuraBot",
       featured: true,
-      featuredLabel: "Senior Design Capstone",
+      featuredLabel: "IAB Award · UCI Senior Design Capstone",
       role: "Firmware Lead, Embedded Systems & Real-Time Interaction",
       timeframe: "Sep 2025 — Mar 2026",
       stack: [
@@ -26,34 +26,6 @@ const projectItems = [
       keyMetric: "**~10 FPS** · **~95%** voice accuracy · real-time multi-tasking",
       detailHref: "/projects/aurabot",
       detailLabel: "System Design",
-      impactTitle: "System Overview & Performance",
-      impactToggleNoun: "overview",
-      impactHeadline:
-         "Real-time edge-AI system (**~10 FPS**) with concurrent sensing, interaction, and control",
-      impactGroups: [
-         {
-            heading: "System Behavior",
-            items: [
-               "Presence detection via vision + PIR",
-               "Inactivity tracking and reminders",
-               "Voice interaction (STT → LLM → TTS)",
-            ],
-         },
-         {
-            heading: "Firmware & Real-Time",
-            items: [
-               "FreeRTOS task scheduling",
-               "ESP32 handles sensing, control, and audio I/O",
-            ],
-         },
-         {
-            heading: "Distributed System",
-            items: [
-               "Raspberry Pi: AI inference and orchestration",
-               "ESP32: sensing and actuation node (MQTT)",
-            ],
-         },
-      ],
    },
    {
       imageSrc: "../assets/Bincredible.png",
@@ -71,59 +43,49 @@ const projectItems = [
       keyMetric: "**~93%** accuracy · **~25%** latency reduction",
       detailHref: "/projects/bincredible",
       detailLabel: "System Design",
-      impactTitle: "System Performance & Results",
-      impactToggleNoun: "results",
-      impactHeadline:
-         "Real-time edge AI system achieving **93%** accuracy with **~25%** reduced latency",
-      impactGroups: [
-         {
-            heading: "Edge ML Performance",
-            items: [
-               "Deployed TensorFlow Lite on Raspberry Pi 5 for real-time on-device classification",
-               "Achieved **93%** accuracy under edge compute constraints",
-            ],
-         },
-         {
-            heading: "Latency & Communication",
-            items: [
-               "Designed MQTT + Firebase pipeline for device-to-cloud messaging",
-               "Reduced end-to-end latency by **~25%**, enabling responsive feedback",
-            ],
-         },
-         {
-            heading: "System Integration & Delivery",
-            items: [
-               "Led firmware, ML inference, and app integration across a 6-engineer team",
-               "Delivered a fully integrated end-to-end system within a **20-week** BRDG cycle",
-            ],
-         },
-      ],
    },
    {
       imageSrc: "../assets/zotfitness.png",
       altText: "ZotFitness embedded prototype",
       title: "ZotFitness",
-      featuredLabel: "BitHack 2025 Project",
+      featuredLabel: "Best Use of Gemini · BitHack 2025",
       role: "Embedded Software Engineer",
       timeframe: "Sep 2024 — Dec 2024",
-      stack: [
-         "ESP32",
-         "Embedded C/C++",
-         "I2C",
-         "UART",
-         "MQTT",
-         "AWS IoT Core",
-      ],
+      stack: ["ESP32", "Embedded C/C++", "I2C", "MQTT", "AWS IoT Core"],
       links: {
          github: "https://github.com/jeremyunoz/ZotFitness",
          devpost: "https://devpost.com/software/zotfitness",
       },
       description:
-         "Real-time posture and health monitoring system. Wrote embedded firmware for deterministic sensor acquisition and reliable edge-to-cloud streaming.",
-      impact: [
-         "Implemented C/C++ firmware on ESP32 for real-time multi-sensor acquisition over I2C with deterministic 3-second sampling.",
-         "Debugged sensor communication and timing issues via UART serial logging, ensuring reliable I2C data acquisition under continuous runtime.",
-         "Designed an edge-to-cloud pipeline with MQTT and AWS IoT Core that stayed reliable under constrained memory and intermittent networks.",
+         "Real-time posture and health monitoring wearable with ESP32 firmware streaming multi-sensor data to AWS IoT Core.",
+      keyMetric:
+         "**3s** deterministic sampling · multi-sensor I2C · reliable edge-to-cloud",
+      impactTitle: "System Overview & Performance",
+      impactToggleNoun: "overview",
+      impactHeadline:
+         "Real-time wearable streaming deterministic multi-sensor data from **ESP32** to **AWS IoT Core**",
+      impactGroups: [
+         {
+            heading: "System Behavior",
+            items: [
+               "Multi-sensor posture and health tracking",
+               "Deterministic 3s sampling cadence",
+            ],
+         },
+         {
+            heading: "Firmware & Real-Time",
+            items: [
+               "ESP32 C/C++ with I2C acquisition",
+               "UART serial tracing for timing diagnostics",
+            ],
+         },
+         {
+            heading: "Edge-to-Cloud",
+            items: [
+               "MQTT pipeline to AWS IoT Core",
+               "Reliable streaming under constrained memory",
+            ],
+         },
       ],
    },
 ];

@@ -56,6 +56,10 @@ const META = [
       value: "Sep 2025 — Mar 2026",
    },
    {
+      label: "Recognition",
+      value: "Industry Advisory Board Award · Annual Design Review",
+   },
+   {
       label: "Stack",
       value:
          "ESP32 / ESP32-P4 · FreeRTOS · ESP-IDF · Pi 5 · IMX500 · MQTT / WebSocket",
