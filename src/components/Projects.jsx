@@ -49,41 +49,41 @@ const projectItems = [
       altText: "ZotFitness embedded prototype",
       title: "ZotFitness",
       featuredLabel: "Best Use of Gemini · BitHack 2025",
-      role: "Embedded Software Engineer",
+      role: "Embedded Firmware, Edge-to-Cloud Pipeline",
       timeframe: "Sep 2024 — Dec 2024",
-      stack: ["ESP32", "Embedded C/C++", "I2C", "MQTT", "AWS IoT Core"],
+      stack: ["ESP32-S3", "Embedded C/C++", "I2C", "MQTT", "AWS IoT Core"],
       links: {
          github: "https://github.com/jeremyunoz/ZotFitness",
          devpost: "https://devpost.com/software/zotfitness",
       },
       description:
-         "Real-time posture and health monitoring wearable with ESP32 firmware streaming multi-sensor data to AWS IoT Core.",
+         "ESP32-S3 embedded IoT system: I2C multi-sensor acquisition streamed over MQTT into AWS IoT Core with a DynamoDB time-series backend.",
       keyMetric:
-         "**3s** deterministic sampling · multi-sensor I2C · reliable edge-to-cloud",
+         "Deterministic I2C sampling · **MQTT → AWS IoT Core** · real-time telemetry",
       impactTitle: "System Overview & Performance",
       impactToggleNoun: "overview",
       impactHeadline:
-         "Real-time wearable streaming deterministic multi-sensor data from **ESP32** to **AWS IoT Core**",
+         "Embedded **ESP32-S3** pipeline streaming I2C sensor telemetry over **MQTT** into AWS IoT Core",
       impactGroups: [
          {
-            heading: "System Behavior",
+            heading: "Firmware & Sensor Acquisition",
             items: [
-               "Multi-sensor posture and health tracking",
-               "Deterministic 3s sampling cadence",
+               "ESP32-S3 driving an I2C multi-sensor bus (MAX3010x, AHT20)",
+               "Deterministic sampling for continuous real-time telemetry",
             ],
          },
          {
-            heading: "Firmware & Real-Time",
+            heading: "Edge-to-Cloud Pipeline",
             items: [
-               "ESP32 C/C++ with I2C acquisition",
-               "UART serial tracing for timing diagnostics",
+               "MQTT publish from ESP32-S3 to AWS IoT Core over Wi-Fi",
+               "IoT Core rules + Lambda stream payloads into DynamoDB",
             ],
          },
          {
-            heading: "Edge-to-Cloud",
+            heading: "System Reliability",
             items: [
-               "MQTT pipeline to AWS IoT Core",
-               "Reliable streaming under constrained memory",
+               "UART serial tracing for timing and I2C bus diagnostics",
+               "Stable streaming under constrained memory and intermittent Wi-Fi",
             ],
          },
       ],
