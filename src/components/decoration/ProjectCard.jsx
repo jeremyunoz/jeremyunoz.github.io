@@ -1,12 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { SiDevpost } from "react-icons/si";
+import { IconChartBar, IconLayoutGrid } from "@tabler/icons-react";
 
 const LINK_META = {
-   github: { label: "GitHub", Icon: FaGithub },
+   github: { label: "View Code", Icon: FaGithub },
    demo: { label: "Live demo", Icon: FaExternalLinkAlt },
    devpost: { label: "Devpost", Icon: SiDevpost },
+};
+
+const renderBold = (text) => {
+   if (typeof text !== "string") return text;
+   const parts = text.split(/(\*\*[^*]+\*\*)/g);
+   return parts.map((part, i) => {
+      const match = part.match(/^\*\*([^*]+)\*\*$/);
+      if (match) {
+         return (
+            <strong key={i} className="card-impact-metric">
+               {match[1]}
+            </strong>
+         );
+      }
+      return <React.Fragment key={i}>{part}</React.Fragment>;
+   });
 };
 
 const Card = ({
@@ -21,8 +39,15 @@ const Card = ({
    links = {},
    projectSite,
    featured = false,
-   featuredLabel = "Featured",
+   featuredLabel,
    delay = 0,
+   impactTitle = "Impact",
+   impactHeadline,
+   impactGroups,
+   impactToggleNoun = "impact",
+   keyMetric,
+   detailHref,
+   detailLabel = "System Design",
 }) => {
    const cardRef = useRef(null);
    const [isVisible, setIsVisible] = useState(false);
@@ -72,7 +97,7 @@ const Card = ({
                      featured ? "card-label-featured" : ""
                   }`}
                >
-                  {featured ? featuredLabel : "Project"}
+                  {featuredLabel || (featured ? "Featured" : "Project")}
                </span>
                <h3>{title}</h3>
                {(role || timeframe) && (
@@ -96,7 +121,17 @@ const Card = ({
                      ))}
                   </ul>
                )}
-               {(Object.keys(links).length > 0 || projectSite) && (
+               {keyMetric && (
+                  <p className="card-key-metric" aria-label="Key result">
+                     <IconChartBar size={16} stroke={2} aria-hidden="true" />
+                     <span>{renderBold(keyMetric)}</span>
+                  </p>
+               )}
+               {(Object.keys(links).length > 0 ||
+                  projectSite ||
+                  detailHref ||
+                  impact.length > 0 ||
+                  (impactGroups && impactGroups.length > 0)) && (
                   <div className="card-links">
                      {projectSite && projectSite.href && (
                         <a
@@ -130,30 +165,84 @@ const Card = ({
                            </a>
                         );
                      })}
+                     {(impact.length > 0 ||
+                        (impactGroups && impactGroups.length > 0)) && (
+                        <button
+                           type="button"
+                           className="card-link card-link-toggle"
+                           onClick={() =>
+                              setIsExpanded((expanded) => !expanded)
+                           }
+                           aria-expanded={isExpanded}
+                        >
+                           <IconChartBar
+                              size={14}
+                              stroke={2}
+                              aria-hidden="true"
+                           />
+                           <span>
+                              {isExpanded
+                                 ? `Hide ${impactToggleNoun}`
+                                 : `View ${impactToggleNoun}`}
+                           </span>
+                        </button>
+                     )}
+                     {detailHref && (
+                        <Link
+                           to={detailHref}
+                           className="card-link card-link-detail"
+                           aria-label={`${title} — ${detailLabel} deep dive`}
+                        >
+                           <IconLayoutGrid
+                              size={14}
+                              stroke={2}
+                              aria-hidden="true"
+                           />
+                           <span>{detailLabel}</span>
+                           <span aria-hidden="true">→</span>
+                        </Link>
+                     )}
                   </div>
                )}
-               {impact.length > 0 && (
-                  <div className="card-impact">
-                     <button
-                        type="button"
-                        className="card-impact-toggle"
-                        onClick={() => setIsExpanded((expanded) => !expanded)}
-                        aria-expanded={isExpanded}
-                     >
-                        {isExpanded ? "Hide impact" : "View impact"}
-                     </button>
-                     {isExpanded ? (
-                        <>
-                           <p className="card-impact-title">Impact</p>
+               {(impact.length > 0 ||
+                  (impactGroups && impactGroups.length > 0)) &&
+                  isExpanded && (
+                     <div className="card-impact">
+                        <p className="card-impact-title">{impactTitle}</p>
+                        {impactHeadline && (
+                           <p className="card-impact-headline">
+                              {renderBold(impactHeadline)}
+                           </p>
+                        )}
+                        {impactGroups && impactGroups.length > 0 ? (
+                           <div className="card-impact-groups">
+                              {impactGroups.map((group) => (
+                                 <div
+                                    key={group.heading}
+                                    className="card-impact-group"
+                                 >
+                                    <h4 className="card-impact-group-heading">
+                                       {group.heading}
+                                    </h4>
+                                    <ul>
+                                       {group.items.map((item) => (
+                                          <li key={item}>
+                                             {renderBold(item)}
+                                          </li>
+                                       ))}
+                                    </ul>
+                                 </div>
+                              ))}
+                           </div>
+                        ) : (
                            <ul>
                               {impact.map((item) => (
                                  <li key={item}>{item}</li>
                               ))}
                            </ul>
-                        </>
-                     ) : null}
-                  </div>
-               )}
+                        )}
+                     </div>
+                  )}
             </div>
          </article>
       </StyledWrapper>
@@ -431,7 +520,10 @@ const StyledWrapper = styled.div`
       color: #2b5d4d;
       font-size: 0.84rem;
       font-weight: 600;
+      font-family: inherit;
+      line-height: 1.15;
       text-decoration: none;
+      cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
          border-color 0.2s ease;
    }
@@ -454,10 +546,58 @@ const StyledWrapper = styled.div`
       color: #ffffff;
    }
 
+   .card-link-detail {
+      background: rgba(88, 129, 87, 0.14);
+      color: #1d352e;
+      border-color: rgba(88, 129, 87, 0.32);
+   }
+
+   .card-link-detail:hover {
+      background: rgba(88, 129, 87, 0.22);
+      border-color: rgba(88, 129, 87, 0.5);
+   }
+
+   .card-link-toggle {
+      background: rgba(255, 255, 255, 0.92);
+      color: #355b4d;
+   }
+
+   .card-link-toggle[aria-expanded="true"] {
+      background: rgba(88, 129, 87, 0.18);
+      border-color: rgba(88, 129, 87, 0.42);
+      color: #1d352e;
+   }
+
+   .card-key-metric {
+      margin: -0.2rem 0 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      align-self: flex-start;
+      padding: 0.38rem 0.7rem 0.38rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(165, 184, 131, 0.22);
+      border: 1px solid rgba(88, 129, 87, 0.28);
+      color: #1d352e;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+   }
+
+   .card-key-metric svg {
+      color: #355b4d;
+   }
+
    .card-impact {
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
+      gap: 0.55rem;
+      margin-top: 0.15rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(43, 93, 77, 0.12);
    }
 
    .card-impact-title {
@@ -466,38 +606,58 @@ const StyledWrapper = styled.div`
 
    .card-impact ul {
       margin: 0;
-      padding-left: 1.2rem;
+      padding-left: 1.15rem;
       color: #2f4f43;
       display: grid;
-      gap: 0.7rem;
+      gap: 0.45rem;
    }
 
    .card-impact li {
-      font-size: clamp(0.94rem, 0.9rem + 0.2vw, 1rem);
-      line-height: 1.55;
+      font-size: clamp(0.92rem, 0.88rem + 0.18vw, 0.98rem);
+      line-height: 1.5;
    }
 
-   .card-impact-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: fit-content;
+   .card-impact-headline {
       margin: 0;
-      padding: 0.65rem 0.95rem;
-      border: 1px solid rgba(43, 93, 77, 0.14);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.82);
-      color: #355b4d;
-      font-size: 0.88rem;
+      padding: 0.55rem 0.8rem;
+      border-radius: 12px;
+      background: rgba(88, 129, 87, 0.12);
+      border-left: 3px solid #588157;
+      color: #264d40;
+      font-size: clamp(0.94rem, 0.9rem + 0.2vw, 1rem);
       font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      line-height: 1.45;
    }
 
-   .card-impact-toggle:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 10px 22px rgba(43, 93, 77, 0.1);
+   .card-impact-groups {
+      display: grid;
+      gap: 0.65rem;
+   }
+
+   .card-impact-group {
+      display: grid;
+      gap: 0.3rem;
+   }
+
+   .card-impact-group-heading {
+      margin: 0;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #355b4d;
+   }
+
+   .card-impact-group ul {
+      gap: 0.45rem;
+   }
+
+   .card-impact-metric {
+      color: #1d352e;
+      font-weight: 700;
+      background: rgba(165, 184, 131, 0.28);
+      padding: 0 0.28rem;
+      border-radius: 6px;
    }
 
    @keyframes shimmer {

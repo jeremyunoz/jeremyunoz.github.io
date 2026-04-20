@@ -41,31 +41,51 @@ const projectItems = [
       imageSrc: "../assets/Bincredible.png",
       altText: "Bincredible project graphic",
       title: "Bincredible",
-      role: "Embedded Systems / Edge AI Lead",
+      featuredLabel: "BRDG Innovation Challenge 2025",
+      role: "Embedded Systems Lead, Edge AI Pipeline",
       timeframe: "May 2025 — Oct 2025",
-      stack: [
-         "Raspberry Pi 5",
-         "TensorFlow Lite",
-         "YOLOv11n-cls",
-         "MQTT",
-         "Firebase",
-         "Python",
-      ],
+      stack: ["Raspberry Pi 5", "TensorFlow Lite", "YOLO", "MQTT"],
       links: {
          github: "https://github.com/jeremyunoz/bincredible-app",
       },
       description:
-         "Real-time embedded prototype pairing on-device ML with a connected app. Led firmware-to-cloud integration across a 6-engineer team.",
-      impact: [
-         "Coordinated firmware, ML inference, and cross-component integration for a 6-engineer team; shipped a working prototype in a 20-week BRDG challenge.",
-         "Deployed TensorFlow Lite inference on Raspberry Pi 5 for real-time classification at 93% accuracy on edge compute.",
-         "Optimized device–cloud messaging over MQTT and Firebase, cutting end-to-end response latency ~25%.",
+         "Edge AI pipeline: camera → preprocessing → TFLite inference → MQTT → mobile app. Real-time recyclable classification on-device with cloud sync.",
+      keyMetric: "**~93%** accuracy · **~25%** latency reduction",
+      detailHref: "/projects/bincredible",
+      detailLabel: "System Design",
+      impactTitle: "System Performance & Results",
+      impactToggleNoun: "results",
+      impactHeadline:
+         "Real-time edge AI system achieving **93%** accuracy with **~25%** reduced latency",
+      impactGroups: [
+         {
+            heading: "Edge ML Performance",
+            items: [
+               "Deployed TensorFlow Lite on Raspberry Pi 5 for real-time on-device classification",
+               "Achieved **93%** accuracy under edge compute constraints",
+            ],
+         },
+         {
+            heading: "Latency & Communication",
+            items: [
+               "Designed MQTT + Firebase pipeline for device-to-cloud messaging",
+               "Reduced end-to-end latency by **~25%**, enabling responsive feedback",
+            ],
+         },
+         {
+            heading: "System Integration & Delivery",
+            items: [
+               "Led firmware, ML inference, and app integration across a 6-engineer team",
+               "Delivered a fully integrated end-to-end system within a **20-week** BRDG cycle",
+            ],
+         },
       ],
    },
    {
       imageSrc: "../assets/zotfitness.png",
       altText: "ZotFitness embedded prototype",
       title: "ZotFitness",
+      featuredLabel: "BitHack 2025 Project",
       role: "Embedded Software Engineer",
       timeframe: "Sep 2024 — Dec 2024",
       stack: [
