@@ -87,10 +87,10 @@ export const FloatingNav = ({ className }) => {
             })}
          </div>
          <a
-            href="/assets/Jeremy-Zheng-Resume.pdf"
+            href="/assets/Jeremy_Zheng_EmbeddedFirmware_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            download="Jeremy-Zheng-Resume.pdf"
+            download="Jeremy_Zheng_EmbeddedFirmware_Resume.pdf"
             aria-label="Download resume"
             className={cn(
                "ml-1 flex shrink-0 items-center gap-1.5 rounded-full bg-[#27453c] px-3 py-2 text-sm font-semibold text-[#f3fff9] shadow-[0_8px_20px_rgba(39,69,60,0.25)] transition-all duration-200 hover:bg-[#1d352e] hover:shadow-[0_10px_24px_rgba(39,69,60,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#66b89a] focus-visible:ring-offset-2",
