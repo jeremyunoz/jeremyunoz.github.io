@@ -1,6 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "./About.css";
 import TimelineUI from "./decoration/TimelineUI";
+import { ScrambleGreeting } from "./decoration/ScrambleGreeting";
+import {
+   SiCplusplus,
+   SiRust,
+   SiPython,
+   SiEspressif,
+   SiMqtt,
+   SiPytorch,
+   SiTensorflow,
+} from "react-icons/si";
+import { FaAws } from "react-icons/fa6";
+import { LuCpu } from "react-icons/lu";
+import { TbPlugConnected } from "react-icons/tb";
+
+const STACK_ITEMS = [
+   { label: "C / C++", Icon: SiCplusplus, color: "#00599C" },
+   { label: "Rust", Icon: SiRust, color: "#111111" },
+   { label: "Python", Icon: SiPython, color: "#3776AB" },
+   { label: "ESP-IDF", Icon: SiEspressif, color: "#E7352C" },
+   { label: "FreeRTOS", Icon: LuCpu, color: "#2f5f50" },
+   { label: "I2C / SPI / UART", Icon: TbPlugConnected, color: "#2f5f50" },
+   { label: "MQTT", Icon: SiMqtt, color: "#660066" },
+   { label: "PyTorch", Icon: SiPytorch, color: "#EE4C2C" },
+   { label: "TFLite", Icon: SiTensorflow, color: "#FF6F00" },
+   { label: "AWS IoT Core", Icon: FaAws, color: "#FF9900" },
+];
 
 function About() {
    const [isMobile, setIsMobile] = useState(false);
@@ -80,7 +106,9 @@ function About() {
                </div>
 
                <div className="about-hero-copy">
-                  <p className="about-kicker">About Me</p>
+                  <p className="about-kicker">
+                     <ScrambleGreeting />
+                  </p>
                   <h2 className="about-heading">
                      I&apos;m Jeremy Zheng{" "}
                      <span className="about-wave" aria-hidden="true">
@@ -147,16 +175,16 @@ function About() {
                   My Stack
                </p>
                <ul className="about-stack-list">
-                  <li className="about-stack-chip">C / C++</li>
-                  <li className="about-stack-chip">Rust</li>
-                  <li className="about-stack-chip">Python</li>
-                  <li className="about-stack-chip">ESP-IDF</li>
-                  <li className="about-stack-chip">FreeRTOS</li>
-                  <li className="about-stack-chip">I2C / SPI / UART</li>
-                  <li className="about-stack-chip">MQTT</li>
-                  <li className="about-stack-chip">PyTorch</li>
-                  <li className="about-stack-chip">TFLite</li>
-                  <li className="about-stack-chip">AWS IoT Core</li>
+                  {STACK_ITEMS.map(({ label, Icon, color }) => (
+                     <li key={label} className="about-stack-chip">
+                        <Icon
+                           className="about-stack-icon"
+                           style={{ color }}
+                           aria-hidden="true"
+                        />
+                        <span>{label}</span>
+                     </li>
+                  ))}
                </ul>
             </div>
 

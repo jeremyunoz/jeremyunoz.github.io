@@ -264,7 +264,8 @@
 .about-stack-chip {
    display: inline-flex;
    align-items: center;
-   padding: 0.48rem 0.85rem;
+   gap: 0.45rem;
+   padding: 0.48rem 0.9rem;
    border-radius: 999px;
    border: 1px solid rgba(43, 93, 77, 0.18);
    background: rgba(255, 255, 255, 0.8);
@@ -276,10 +277,22 @@
    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
+.about-stack-icon {
+   flex-shrink: 0;
+   width: 1.05rem;
+   height: 1.05rem;
+   font-size: 1.05rem;
+   line-height: 1;
+}
+
 .about-stack-chip:hover {
    transform: translateY(-1px);
    background: linear-gradient(180deg, rgba(245, 255, 251, 1), rgba(220, 240, 232, 0.95));
    box-shadow: 0 6px 14px rgba(43, 93, 77, 0.12);
+}
+
+.about-stack-chip:hover .about-stack-icon {
+   filter: saturate(1.1);
 }
 
 /* ---------- EDUCATION & TECHNICAL FOUNDATION ---------- */
