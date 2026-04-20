@@ -256,7 +256,7 @@ const StyledWrapper = styled.div`
       grid-template-columns: minmax(272px, 400px) minmax(0, 1fr);
       gap: clamp(1.4rem, 4vw, 2.5rem);
       align-items: center;
-      padding: clamp(1rem, 3vw, 1.5rem);
+      padding: clamp(0.8rem, 2.4vw, 1.2rem);
       border-radius: 28px;
       background: rgba(255, 255, 255, 0.58);
       backdrop-filter: blur(6px);
@@ -412,7 +412,7 @@ const StyledWrapper = styled.div`
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 0.95rem;
+      gap: 0.75rem;
       padding: 0.25rem 0.15rem;
    }
 
@@ -478,7 +478,7 @@ const StyledWrapper = styled.div`
    .card-description {
       margin: 0;
       font-size: clamp(1rem, 0.94rem + 0.35vw, 1.08rem);
-      line-height: 1.7;
+      line-height: 1.55;
       color: #355b4d;
    }
 
@@ -592,9 +592,9 @@ const StyledWrapper = styled.div`
    .card-impact {
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
-      margin-top: 0.15rem;
-      padding: 0.75rem 0.9rem;
+      gap: 0.45rem;
+      margin-top: 0.1rem;
+      padding: 0.6rem 0.75rem;
       border-radius: 16px;
       background: rgba(255, 255, 255, 0.5);
       border: 1px solid rgba(43, 93, 77, 0.12);
@@ -609,12 +609,12 @@ const StyledWrapper = styled.div`
       padding-left: 1.15rem;
       color: #2f4f43;
       display: grid;
-      gap: 0.45rem;
+      gap: 0.35rem;
    }
 
    .card-impact li {
       font-size: clamp(0.92rem, 0.88rem + 0.18vw, 0.98rem);
-      line-height: 1.5;
+      line-height: 1.45;
    }
 
    .card-impact-headline {
@@ -631,12 +631,12 @@ const StyledWrapper = styled.div`
 
    .card-impact-groups {
       display: grid;
-      gap: 0.65rem;
+      gap: 0.5rem;
    }
 
    .card-impact-group {
       display: grid;
-      gap: 0.3rem;
+      gap: 0.25rem;
    }
 
    .card-impact-group-heading {
@@ -649,7 +649,7 @@ const StyledWrapper = styled.div`
    }
 
    .card-impact-group ul {
-      gap: 0.45rem;
+      gap: 0.35rem;
    }
 
    .card-impact-metric {
@@ -672,18 +672,18 @@ const StyledWrapper = styled.div`
    @media (max-width: 767px) {
       .card {
          grid-template-columns: 1fr;
-         gap: 1.25rem;
-         padding: 1rem;
+         gap: 1rem;
+         padding: 0.8rem;
          border-radius: 24px;
       }
 
       .card-content {
          text-align: left;
-         gap: 0.8rem;
+         gap: 0.65rem;
       }
 
       .card-description {
-         line-height: 1.6;
+         line-height: 1.5;
       }
 
       .card-label {
@@ -696,7 +696,7 @@ const StyledWrapper = styled.div`
       }
 
       .card-impact {
-         gap: 0.65rem;
+         gap: 0.5rem;
       }
 
       .card-impact-title {
@@ -704,12 +704,12 @@ const StyledWrapper = styled.div`
       }
 
       .card-impact ul {
-         gap: 0.55rem;
+         gap: 0.4rem;
       }
 
       .card-impact li {
          font-size: 0.93rem;
-         line-height: 1.5;
+         line-height: 1.45;
       }
    }
 

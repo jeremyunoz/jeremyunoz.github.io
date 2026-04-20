@@ -10,31 +10,49 @@ const projectItems = [
       title: "AuraBot",
       featured: true,
       featuredLabel: "Senior Design Capstone",
-      role: "Firmware & Software Lead",
+      role: "Firmware Lead, Embedded Systems & Real-Time Interaction",
       timeframe: "Sep 2025 — Mar 2026",
       stack: [
          "ESP32 / ESP32-P4",
-         "ESP-IDF (C)",
          "FreeRTOS",
-         "I2S + DMA",
-         "I2C / SPI / PWM",
-         "Raspberry Pi 5",
-         "MQTT",
+         "ESP-IDF (C)",
+         "MQTT / WebSocket",
       ],
       links: {
          github: "https://github.com/jeremyunoz/AuraBot",
       },
-      projectSite: {
-         href: "https://projects.eng.uci.edu/projects/2025-2026/aurabot-edge-ai-desk-wellness-companion",
-         label: "Project site",
-      },
       description:
-         "Edge-AI embedded robotics system. Owned low-level firmware on ESP32 / ESP32-P4 and the real-time audio and voice inference pipeline.",
-      impact: [
-         "Wrote C firmware with ESP-IDF using FreeRTOS task scheduling, ISRs, and event-driven state machines; tuned task priorities, stack sizes, and PSRAM / SRAM allocation to eliminate task starvation, races, and watchdog resets.",
-         "Built an I2S + DMA-backed embedded audio pipeline running WakeNet and VAD inference at ~95% accuracy.",
-         "Developed peripheral drivers and hardware interfaces (I2C, SPI, PWM, Wi-Fi) for system bring-up and reliable inter-subsystem communication under concurrent workloads.",
-         "Debugged real-time firmware via UART serial tracing, diagnosing timing issues and improving stability under sustained runtime.",
+         "Distributed edge-AI robotics system for a desk wellness companion, using ESP32 firmware and a Raspberry Pi for real-time sensing, interaction, and control.",
+      keyMetric: "**~10 FPS** · **~95%** voice accuracy · real-time multi-tasking",
+      detailHref: "/projects/aurabot",
+      detailLabel: "System Design",
+      impactTitle: "System Overview & Performance",
+      impactToggleNoun: "overview",
+      impactHeadline:
+         "Real-time edge-AI system (**~10 FPS**) with concurrent sensing, interaction, and control",
+      impactGroups: [
+         {
+            heading: "System Behavior",
+            items: [
+               "Presence detection via vision + PIR",
+               "Inactivity tracking and reminders",
+               "Voice interaction (STT → LLM → TTS)",
+            ],
+         },
+         {
+            heading: "Firmware & Real-Time",
+            items: [
+               "FreeRTOS task scheduling",
+               "ESP32 handles sensing, control, and audio I/O",
+            ],
+         },
+         {
+            heading: "Distributed System",
+            items: [
+               "Raspberry Pi: AI inference and orchestration",
+               "ESP32: sensing and actuation node (MQTT)",
+            ],
+         },
       ],
    },
    {

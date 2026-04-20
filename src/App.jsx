@@ -10,6 +10,9 @@ const AboutPage = lazy(() => import("./pages/AboutPage"));
 const BincredibleProjectPage = lazy(() =>
    import("./pages/BincredibleProjectPage")
 );
+const AuraBotProjectPage = lazy(() =>
+   import("./pages/AuraBotProjectPage")
+);
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function PageFallback() {
@@ -38,6 +41,10 @@ function App() {
                <Route
                   path="/projects/bincredible"
                   element={<BincredibleProjectPage />}
+               />
+               <Route
+                  path="/projects/aurabot"
+                  element={<AuraBotProjectPage />}
                />
                <Route path="*" element={<NotFoundPage />} />
             </Routes>
