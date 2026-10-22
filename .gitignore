@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Rebuild outputs and local archive
+/dist
+/archive
+/.taste-skill

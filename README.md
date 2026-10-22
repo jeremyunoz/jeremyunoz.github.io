@@ -1,56 +1,51 @@
-# My React Portfolio
+# Jeremy Zheng — portfolio
 
-Live Site: [https://jeremyunoz.github.io](https://jeremyunoz.github.io/)
+A bilingual engineering portfolio built with React 19, Vite 7, Tailwind CSS 3, and Motion. Published at https://jeremyunoz.github.io/.
 
-## Overview
+## Develop
 
-This is my portfolio site built with React.js and deployed via GitHub Pages.
+Use Node 20.19 or newer. The existing `.nvmrc` selects a compatible version.
 
-## Local Setup
-
-### Prerequisites
-
-- Node.js `20.19.5`
-- npm `10.8.2`
-
-If you use `nvm`, run:
-
-```bash
-nvm use
+```sh
+npm ci
+npm run dev
 ```
 
-### Install
+## Edit content
 
-```bash
-npm install
-```
+- `src/content.js`: both language dictionaries, project content, category filters, education, contact links, and résumé path.
+- `src/App.jsx`: page structure, routing, project filters, system explorer, and preference controls.
+- `src/index.css`: design tokens, layout, responsive rules, and themes.
+- `public/assets/`: optimized project photos and the downloadable résumé.
 
-### Run Locally
+Keep English and Chinese dictionary keys aligned. To add a project, add one entry to `projects` with both `en` and `zh` content; navigation and case-study routes are derived from it.
 
-```bash
-npm start
-```
+## Check and build
 
-The app will start in development mode at [http://localhost:3000](http://localhost:3000).
-
-### Build
-
-```bash
+```sh
+npm test
 npm run build
+npm run preview
 ```
 
-### Deploy
+The tests check filter membership, bilingual content coverage, and local assets. Browser checks cover layout and interactions. `dist/` contains the static production site. No server, secrets, or environment variables are needed. The archive is never included in `dist/`.
 
-```bash
+## Publish to GitHub Pages
+
+The repository is https://github.com/jeremyunoz/jeremyunoz.github.io. The configured older remote URL redirects to this repository.
+
+```sh
 npm run deploy
 ```
 
-## Environment Variables
+This publishes **generated files** from `dist/` to the remote `main` branch using the existing `gh-pages` workflow. Keep editable source on the `codex/portfolio-rebuild` branch or another source branch; do not merge it directly into the generated deployment branch. The publish command does not save source changes automatically.
 
-This project does not currently require a local `.env` file.
+In GitHub Settings → Pages, select “Deploy from a branch,” `main`, and `/ (root)` to enable the site. The old site was unpublished and its source set to None during archiving. Re-enable publication only when the replacement is ready to go live.
 
-## Features
+The existing `/#/about` and `/#/projects/...` URLs work with GitHub Pages without server rewrite rules. Main navigation uses section anchors within the hash router.
 
--  Responsive design
--  Project showcase
--  Contact form
+## Offline archive
+
+`archive/2026-10-22/` holds the previous source snapshot, exact deployed files, verified Git bundle, hashes, and restoration instructions. It is ignored by Git and not published. Back this folder up separately. To open it offline, follow its `README.md`.
+
+See `DESIGN.md` for the design and content decisions.

@@ -1,64 +1,31 @@
 {
-   "name": "portfolio",
-   "version": "0.1.0",
-   "homepage": "https://jeremyunoz.github.io",
-   "private": true,
-   "engines": {
-      "node": "20.x",
-      "npm": "10.x"
-   },
-   "packageManager": "npm@10.8.2",
-   "dependencies": {
-      "@tabler/icons-react": "^3.34.1",
-      "@testing-library/dom": "^10.4.1",
-      "@testing-library/jest-dom": "^6.6.4",
-      "@testing-library/react": "^16.3.0",
-      "@testing-library/user-event": "^13.5.0",
-      "clsx": "^2.1.1",
-      "framer-motion": "^12.23.12",
-      "gsap": "^3.13.0",
-      "motion": "^12.23.12",
-      "ogl": "^1.0.11",
-      "react": "^19.1.1",
-      "react-dom": "^19.1.1",
-      "react-icons": "^5.5.0",
-      "react-router-dom": "^7.13.1",
-      "react-scripts": "5.0.1",
-      "styled-components": "^6.1.19",
-      "tailwind-merge": "^3.3.1",
-      "three": "^0.179.0",
-      "web-vitals": "^2.1.4"
-   },
-   "scripts": {
-      "predeploy": "npm run build",
-      "deploy": "gh-pages -b main -d build",
-      "start": "react-scripts start",
-      "build": "react-scripts build",
-      "test": "react-scripts test",
-      "eject": "react-scripts eject"
-   },
-   "eslintConfig": {
-      "extends": [
-         "react-app",
-         "react-app/jest"
-      ]
-   },
-   "browserslist": {
-      "production": [
-         ">0.2%",
-         "not dead",
-         "not op_mini all"
-      ],
-      "development": [
-         "last 1 chrome version",
-         "last 1 firefox version",
-         "last 1 safari version"
-      ]
-   },
-   "devDependencies": {
-      "autoprefixer": "^10.4.21",
-      "gh-pages": "^6.3.0",
-      "postcss": "^8.5.6",
-      "tailwindcss": "^3.4.17"
-   }
+  "name": "jeremy-zheng-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "start": "vite --host 127.0.0.1",
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test src/content.test.js",
+    "deploy": "npm run build && gh-pages -b main -d dist"
+  },
+  "dependencies": {
+    "motion": "^12.23.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.13.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.4",
+    "autoprefixer": "^10.4.21",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "vite": "^7.3.1"
+  }
 }
