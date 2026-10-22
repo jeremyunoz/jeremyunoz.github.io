@@ -248,6 +248,16 @@ export const projects = [
 ];
 
 export const filters = ["all", "embedded", "ai", "iot"];
+export const toolkit = [
+  "C/C++",
+  "Python",
+  "ESP-IDF",
+  "FreeRTOS",
+  "ESP32",
+  "Raspberry Pi 5",
+  "TensorFlow Lite",
+  "MQTT",
+];
 export function filterProjects(filter) {
   return projects.filter((project) =>
     filter === "all"
@@ -348,7 +358,7 @@ export const copy = {
     educationShort:
       "UC Irvine, B.S. Computer Science & Engineering. Incoming M.S. at Georgia Tech, Spring 2027.",
     storyLink: "More about me",
-    contactTitle: "Let’s build something",
+    contactTitle: "Let’s talk",
     contactText:
       "Have an embedded systems role, a research question, or a project in mind? I’d be glad to hear about it.",
     copyEmail: "Copy email",
@@ -363,6 +373,7 @@ export const copy = {
     aboutIntro:
       "I like the moment when code starts doing something in the real world.",
     backgroundIntro: "I work where software meets physical constraints.",
+    toolkitTitle: "My toolkit",
     backgroundItems: [
       [
         "Embedded systems",
@@ -497,7 +508,7 @@ export const copy = {
     educationShort:
       "加州大学欧文分校计算机科学与工程学士。佐治亚理工学院计算科学与工程硕士在读。",
     storyLink: "更多关于我",
-    contactTitle: "一起构建新事物",
+    contactTitle: "一起聊聊",
     contactText: "如果你有嵌入式系统岗位、研究问题或合作项目，欢迎联系我。",
     copyEmail: "复制邮箱",
     copied: "邮箱已复制",
@@ -509,6 +520,7 @@ export const copy = {
     aboutTitle: ["你好，", "我是剑铭。"],
     aboutIntro: "我喜欢代码开始影响真实世界的那一刻。",
     backgroundIntro: "我关注软件与物理约束相遇的地方。",
+    toolkitTitle: "常用工具",
     backgroundItems: [
       [
         "嵌入式系统",

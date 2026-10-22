@@ -14,6 +14,7 @@ import {
   pipeline,
   PROFILE,
   projects,
+  toolkit,
 } from "./content.js";
 
 const Language = createContext("en");
@@ -224,7 +225,15 @@ function Contact() {
       aria-labelledby="contact-title"
     >
       <Reveal>
-        <h2 id="contact-title">{t.contactTitle}</h2>
+        <h2 id="contact-title">
+          <a className="contact-cta" href={`mailto:${PROFILE.email}`}>
+            <span className="rolling-label">
+              <span>{t.contactTitle}</span>
+              <span aria-hidden="true">{t.contactTitle}</span>
+            </span>
+            <Icon name="arrow" />
+          </a>
+        </h2>
       </Reveal>
       <div className="contact-layout">
         <Reveal>
@@ -232,25 +241,28 @@ function Contact() {
           <p className="contact-note">{t.contactNote}</p>
         </Reveal>
         <Reveal className="contact-links" delay={0.08}>
-          <a className="email-link" href={`mailto:${PROFILE.email}`}>
-            {PROFILE.email}
-          </a>
-          <button
-            className="text-button copy-button"
-            onClick={copyEmail}
-            data-copied={status === "copied"}
-          >
-            <motion.span
-              className="copy-icon"
-              key={status === "copied" ? "copied" : "copy"}
-              initial={false}
-              animate={{ scale: [0.8, 1], opacity: [0.5, 1] }}
-              transition={{ duration: 0.18 }}
+          <div className="email-row">
+            <a className="email-link" href={`mailto:${PROFILE.email}`}>
+              {PROFILE.email}
+            </a>
+            <button
+              className="copy-button"
+              onClick={copyEmail}
+              data-copied={status === "copied"}
+              aria-label={t.copyEmail}
+              title={t.copyEmail}
             >
-              <Icon name={status === "copied" ? "check" : "copy"} />
-            </motion.span>
-            {t.copyEmail}
-          </button>
+              <motion.span
+                className="copy-icon"
+                key={status === "copied" ? "copied" : "copy"}
+                initial={false}
+                animate={{ scale: [0.8, 1], opacity: [0.5, 1] }}
+                transition={{ duration: 0.18 }}
+              >
+                <Icon name={status === "copied" ? "check" : "copy"} />
+              </motion.span>
+            </button>
+          </div>
           <p
             className={status === "copyFailed" ? "copy-status" : "sr-only"}
             role="status"
@@ -260,9 +272,11 @@ function Contact() {
           <div className="social-links">
             <a href={PROFILE.github} target="_blank" rel="noreferrer">
               GitHub
+              <Icon name="arrow" />
             </a>
             <a href={PROFILE.linkedin} target="_blank" rel="noreferrer">
               LinkedIn
+              <Icon name="arrow" />
             </a>
             <a href={PROFILE.resume} download>
               {t.download}
@@ -367,6 +381,9 @@ function ProjectList() {
                 height="900"
                 loading="lazy"
               />
+              <span className="project-image-action" aria-hidden="true">
+                <Icon name="arrow" />
+              </span>
             </Link>
             <div className="project-description">
               <div className="project-title-row">
@@ -375,7 +392,6 @@ function ProjectList() {
                 </h3>
                 <span>{project.year}</span>
               </div>
-              <p className="project-subtitle">{project[lang].subtitle}</p>
               <p>{project[lang].description}</p>
               <ul className="stack-list" aria-label={t.technology}>
                 {project.stack.slice(0, 4).map((item) => (
@@ -649,6 +665,14 @@ function About() {
         <Reveal>
           <h2 id="background-title">{t.background}</h2>
           <p className="background-intro">{t.backgroundIntro}</p>
+          <div className="toolkit">
+            <h3 id="toolkit-title">{t.toolkitTitle}</h3>
+            <ul aria-labelledby="toolkit-title">
+              {toolkit.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         </Reveal>
         <div className="background-list">
           {t.backgroundItems.map(([title, preview, detail], i) => (

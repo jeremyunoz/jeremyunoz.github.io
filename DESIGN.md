@@ -17,6 +17,8 @@ The idea: Jeremy's actual split between ESP32 real-time control and Raspberry Pi
 - Three case studies: AuraBot, Bincredible, and ZotFitness. Each explains context, contribution, decisions, outcome, and reflection.
 - AuraBot and Bincredible appear in the default project view. ZotFitness appears when Embedded or IoT is selected.
 - Background topics use native expandable sections with a short preview. Action and system icons reinforce their adjacent labels; copying the email changes its icon to a checkmark.
+- The contact section uses a large email action with rolling text on hover and keyboard focus. Its copy button sits beside the email as a labeled icon. Reduced-motion preferences remove the travel.
+- Selected projects use two image-led columns on larger screens and one column on phones, with image and arrow feedback on hover or keyboard focus. About includes a compact toolkit list drawn from the existing project and expertise content.
 - Section links scroll smoothly after a click, with immediate navigation for reduced-motion preferences and direct page loads.
 - English is the default; English/Chinese and light/dark selections persist locally.
 - Existing hash-based project and About links continue to work on GitHub Pages.
@@ -24,6 +26,8 @@ The idea: Jeremy's actual split between ESP32 real-time control and Raspberry Pi
 - No writing section, contact backend, analytics, or new project claims were added.
 
 The old pages are the source for project content. Performance claims with inconsistent explanations were omitted. Recognition and leadership labels were not expanded. The owner explicitly requested “Incoming Spring 2027” in English and “在读” in Chinese after the differing meanings were explained; the content preserves that choice.
+
+The contact scale, image-led project presentation, and concise toolkit listing take cues from the owner's supplied reference, [Mike Wilcock's portfolio](https://mikewilcockdesign.com/), using the site's existing typography, colors, assets, and dependencies.
 
 ## Archive and publishing
 

@@ -8,6 +8,7 @@ import {
   pipeline,
   PROFILE,
   projects,
+  toolkit,
 } from "./content.js";
 
 test("project filters show the intended overlapping categories", () => {
@@ -44,6 +45,11 @@ test("every project has complete bilingual content and real local assets", () =>
     }
   }
   assert.ok(existsSync(`public${PROFILE.resume}`));
+  const evidence = [
+    ...projects.flatMap((project) => project.stack),
+    ...copy.en.expertise.flat(),
+  ].join(" ");
+  assert.ok(toolkit.every((tool) => evidence.includes(tool)));
 });
 
 test("language dictionaries cover the same controls and system stages", () => {
