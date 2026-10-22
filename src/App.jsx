@@ -238,7 +238,6 @@ function Contact() {
           <button
             className="text-button copy-button"
             onClick={copyEmail}
-            aria-label={status === "copied" ? t.copied : t.copyEmail}
             data-copied={status === "copied"}
           >
             <motion.span
