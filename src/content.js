@@ -173,6 +173,7 @@ export const projects = [
   },
   {
     id: "zotfitness",
+    filterOnly: true,
     title: "ZotFitness",
     year: "2024",
     categories: ["embedded", "iot"],
@@ -248,9 +249,11 @@ export const projects = [
 
 export const filters = ["all", "embedded", "ai", "iot"];
 export function filterProjects(filter) {
-  return filter === "all"
-    ? projects
-    : projects.filter((project) => project.categories.includes(filter));
+  return projects.filter((project) =>
+    filter === "all"
+      ? !project.filterOnly
+      : project.categories.includes(filter),
+  );
 }
 
 export const pipeline = [
@@ -308,7 +311,7 @@ export const copy = {
       all: "All work",
       embedded: "Embedded",
       ai: "Edge AI",
-      iot: "Connected systems",
+      iot: "IoT",
     },
     projectCount: (count) => `${count} ${count === 1 ? "project" : "projects"}`,
     readCase: "Explore project",
@@ -359,10 +362,23 @@ export const copy = {
     aboutTitle: ["A bit", "about me."],
     aboutIntro:
       "I like the moment when code starts doing something in the real world.",
-    aboutParagraphs: [
-      "I’m Jeremy, an engineer focused on embedded firmware and edge AI. I studied Computer Science and Engineering at UC Irvine, and I’m preparing to begin an M.S. in Computational Science and Engineering at Georgia Tech in Spring 2027.",
-      "My projects bring together small devices and larger systems: ESP32 firmware, FreeRTOS tasks, camera pipelines, voice interaction, and companion applications. I enjoy working across those boundaries and figuring out how the pieces behave together.",
-      "In research, I’ve explored how embedded computer vision responds to visual perturbations. That experience made me interested in what happens outside ideal conditions, when inputs change and resources are limited.",
+    backgroundIntro: "I work where software meets physical constraints.",
+    backgroundItems: [
+      [
+        "Embedded systems",
+        "Firmware, timing, and the devices around us.",
+        "I focus on embedded firmware and edge AI, from ESP32 control and FreeRTOS scheduling to camera pipelines and voice interaction.",
+      ],
+      [
+        "From parts to systems",
+        "Small devices, connected applications, and the boundaries between them.",
+        "I enjoy bringing firmware, perception, messaging, and companion applications together, then testing how the pieces behave as a system.",
+      ],
+      [
+        "Research perspective",
+        "What happens when the inputs stop being ideal?",
+        "At UC Irvine, I explored the effect of visual perturbations on embedded computer vision. That work shaped my interest in how perception behaves when inputs change and resources are limited.",
+      ],
     ],
     background: "My background",
     educationTitle: "Education",
@@ -446,7 +462,7 @@ export const copy = {
       all: "全部项目",
       embedded: "嵌入式",
       ai: "端侧 AI",
-      iot: "互联系统",
+      iot: "物联网",
     },
     projectCount: (count) => `${count} 个项目`,
     readCase: "探索项目",
@@ -492,10 +508,23 @@ export const copy = {
     footerBack: "返回顶部",
     aboutTitle: ["你好，", "我是剑铭。"],
     aboutIntro: "我喜欢代码开始影响真实世界的那一刻。",
-    aboutParagraphs: [
-      "我是郑剑铭，专注于嵌入式固件与端侧 AI。我在加州大学欧文分校学习计算机科学与工程，目前在佐治亚理工学院攻读计算科学与工程硕士。",
-      "我的项目将小型设备与更大的系统连接起来：ESP32 固件、FreeRTOS 任务、摄像头处理流程、语音交互和配套应用。我享受跨越这些边界，理解各个部分如何协同运行的过程。",
-      "在研究中，我探索了视觉扰动对嵌入式计算机视觉系统的影响。这段经历让我更加关注理想条件之外的问题：当输入变化、资源受限时，系统会怎样表现。",
+    backgroundIntro: "我关注软件与物理约束相遇的地方。",
+    backgroundItems: [
+      [
+        "嵌入式系统",
+        "固件、时序，以及身边的设备。",
+        "我专注于嵌入式固件与端侧 AI，从 ESP32 控制和 FreeRTOS 调度，到摄像头处理流程与语音交互。",
+      ],
+      [
+        "从部件到系统",
+        "小型设备、联网应用，以及它们之间的边界。",
+        "我喜欢将固件、感知、消息通信和配套应用连接起来，再验证各个部分如何作为一个系统协同运行。",
+      ],
+      [
+        "研究视角",
+        "当输入不再理想时，系统会怎样表现？",
+        "在加州大学欧文分校，我探索了视觉扰动对嵌入式计算机视觉的影响。这段经历让我更加关注输入变化、资源受限时感知系统的表现。",
+      ],
     ],
     background: "我的经历",
     educationTitle: "教育背景",

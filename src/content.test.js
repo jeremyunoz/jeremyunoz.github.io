@@ -11,7 +11,10 @@ import {
 } from "./content.js";
 
 test("project filters show the intended overlapping categories", () => {
-  assert.deepEqual(filterProjects("all"), projects);
+  assert.deepEqual(
+    filterProjects("all").map((p) => p.id),
+    ["aurabot", "bincredible"],
+  );
   assert.deepEqual(
     filterProjects("embedded").map((p) => p.id),
     ["aurabot", "zotfitness"],
@@ -25,6 +28,7 @@ test("project filters show the intended overlapping categories", () => {
     ["bincredible", "zotfitness"],
   );
   assert.deepEqual(filterProjects("unknown"), []);
+  assert.ok(projects.some((p) => p.id === "zotfitness"));
 });
 
 test("every project has complete bilingual content and real local assets", () => {
@@ -47,6 +51,12 @@ test("language dictionaries cover the same controls and system stages", () => {
   for (const lang of ["en", "zh"]) {
     assert.ok(filters.every((filter) => copy[lang].filters[filter]));
     assert.ok(pipeline.every((stage) => stage.label[lang] && stage[lang]));
+    assert.equal(copy[lang].backgroundItems.length, 3);
+    assert.ok(
+      copy[lang].backgroundItems.every(
+        (item) => item.length === 3 && item.every(Boolean),
+      ),
+    );
   }
   assert.match(copy.en.education[0][2], /Spring 2027/);
   assert.equal(copy.zh.name, "郑剑铭");

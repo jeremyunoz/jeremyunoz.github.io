@@ -1,5 +1,11 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { Link, Route, Routes, useLocation } from "react-router-dom";
+import {
+  Link,
+  Route,
+  Routes,
+  useLocation,
+  useNavigationType,
+} from "react-router-dom";
 import { MotionConfig, motion } from "motion/react";
 import {
   copy,
@@ -48,6 +54,26 @@ function Icon({ name, ...props }) {
         <>
           <rect x="8" y="8" width="12" height="13" rx="1" />
           <path d="M16 8V3H3v13h5" />
+        </>
+      )}
+      {name === "check" && <path d="m5 12 4 4L19 6" />}
+      {name === "down" && <path d="M12 4v16m-6-6 6 6 6-6" />}
+      {name === "plus" && <path d="M12 5v14M5 12h14" />}
+      {name === "sense" && (
+        <>
+          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+          <circle cx="12" cy="12" r="3" />
+        </>
+      )}
+      {name === "think" && (
+        <>
+          <rect x="6" y="6" width="12" height="12" rx="2" />
+          <path d="M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4" />
+        </>
+      )}
+      {name === "respond" && (
+        <>
+          <path d="m11 5-5 4H3v6h3l5 4V5ZM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" />
         </>
       )}
     </svg>
@@ -188,7 +214,8 @@ function Contact() {
     } catch {
       setStatus("copyFailed");
     }
-    timer.current = setTimeout(() => setStatus(""), 4000);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setStatus(""), 2000);
   }
   return (
     <section
@@ -208,11 +235,27 @@ function Contact() {
           <a className="email-link" href={`mailto:${PROFILE.email}`}>
             {PROFILE.email}
           </a>
-          <button className="text-button" onClick={copyEmail}>
-            <Icon name="copy" />
+          <button
+            className="text-button copy-button"
+            onClick={copyEmail}
+            aria-label={status === "copied" ? t.copied : t.copyEmail}
+            data-copied={status === "copied"}
+          >
+            <motion.span
+              className="copy-icon"
+              key={status === "copied" ? "copied" : "copy"}
+              initial={false}
+              animate={{ scale: [0.8, 1], opacity: [0.5, 1] }}
+              transition={{ duration: 0.18 }}
+            >
+              <Icon name={status === "copied" ? "check" : "copy"} />
+            </motion.span>
             {t.copyEmail}
           </button>
-          <p className="copy-status" role="status">
+          <p
+            className={status === "copyFailed" ? "copy-status" : "sr-only"}
+            role="status"
+          >
             {status ? t[status] : ""}
           </p>
           <div className="social-links">
@@ -420,10 +463,8 @@ function SystemExplorer({ photo = true }) {
                 onClick={() => setActive(i)}
                 onKeyDown={(event) => moveTab(event, i)}
               >
+                <Icon name={step.id} />
                 {step.label[lang]}
-                <span aria-hidden="true">
-                  {i < pipeline.length - 1 ? "→" : "↺"}
-                </span>
               </button>
             ))}
           </div>
@@ -489,7 +530,7 @@ function Home() {
           <div className="hero-actions">
             <Link className="button-primary" to="/#projects">
               {t.viewWork}
-              <span aria-hidden="true">↓</span>
+              <Icon name="down" className="action-icon" />
             </Link>
             <Link className="text-link" to="/about">
               {t.introLink}
@@ -608,12 +649,25 @@ function About() {
       >
         <Reveal>
           <h2 id="background-title">{t.background}</h2>
+          <p className="background-intro">{t.backgroundIntro}</p>
         </Reveal>
-        <div>
-          {t.aboutParagraphs.map((p) => (
-            <Reveal key={p}>
-              <p>{p}</p>
-            </Reveal>
+        <div className="background-list">
+          {t.backgroundItems.map(([title, preview, detail], i) => (
+            <details
+              className="background-item"
+              name="background"
+              key={title}
+              open={i === 0}
+            >
+              <summary>
+                <span>
+                  <span className="background-title">{title}</span>
+                  <span className="background-preview">{preview}</span>
+                </span>
+                <Icon name="plus" className="background-toggle" />
+              </summary>
+              <p>{detail}</p>
+            </details>
           ))}
         </div>
       </section>
@@ -674,7 +728,7 @@ function Project({ project }) {
   const lang = useContext(Language);
   const t = useCopy();
   const p = project[lang];
-  const next = projects[(projects.indexOf(project) + 1) % projects.length];
+  const next = filterProjects("all").find((item) => item.id !== project.id);
   return (
     <>
       <Meta title={project.title} description={p.description} />
@@ -850,6 +904,7 @@ export default function App() {
     () => document.documentElement.dataset.theme || "dark",
   );
   const location = useLocation();
+  const navigationType = useNavigationType();
   const previousPath = useRef(location.pathname);
   useEffect(() => {
     document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
@@ -864,9 +919,13 @@ export default function App() {
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       if (location.hash)
-        document
-          .getElementById(location.hash.slice(1))
-          ?.scrollIntoView({ behavior: "instant" });
+        document.getElementById(location.hash.slice(1))?.scrollIntoView({
+          behavior:
+            navigationType === "PUSH" &&
+            !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? "smooth"
+              : "instant",
+        });
       else window.scrollTo({ top: 0, behavior: "instant" });
       if (previousPath.current !== location.pathname) {
         document.querySelector("main")?.focus({ preventScroll: true });
@@ -874,7 +933,7 @@ export default function App() {
       }
     });
     return () => cancelAnimationFrame(frame);
-  }, [location.key, location.pathname, location.hash]);
+  }, [location.key, location.pathname, location.hash, navigationType]);
   return (
     <Language.Provider value={lang}>
       <MotionConfig reducedMotion="user">

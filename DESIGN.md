@@ -15,6 +15,9 @@ The idea: Jeremy's actual split between ESP32 real-time control and Raspberry Pi
 - Homepage: introduction, filtered projects, AuraBot system explorer, expertise, personal introduction, and contact.
 - About: existing outdoor photo, background, education, research and teaching, and interests.
 - Three case studies: AuraBot, Bincredible, and ZotFitness. Each explains context, contribution, decisions, outcome, and reflection.
+- AuraBot and Bincredible appear in the default project view. ZotFitness appears when Embedded or IoT is selected.
+- Background topics use native expandable sections with a short preview. Action and system icons reinforce their adjacent labels; copying the email changes its icon to a checkmark.
+- Section links scroll smoothly after a click, with immediate navigation for reduced-motion preferences and direct page loads.
 - English is the default; English/Chinese and light/dark selections persist locally.
 - Existing hash-based project and About links continue to work on GitHub Pages.
 - The existing résumé remains downloadable. A separate research CV was not supplied.
