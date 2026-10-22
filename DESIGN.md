@@ -19,6 +19,8 @@ The idea: Jeremy's actual split between ESP32 real-time control and Raspberry Pi
 - Background topics use native expandable sections with a short preview. Action and system icons reinforce their adjacent labels; copying the email changes its icon to a checkmark.
 - The contact section uses a large email action with rolling text on hover and keyboard focus. Its copy button sits beside the email as a labeled icon. Reduced-motion preferences remove the travel.
 - Selected projects use two image-led columns on larger screens and one column on phones, with image and arrow feedback on hover or keyboard focus. About includes a compact toolkit list drawn from the existing project and expertise content.
+- Case studies pair their opening image with the overview, project facts, and source links. Available demonstration photographs sit beside outcomes and lessons; tablets and phones stack the content in reading order.
+- The contact section is the page's final large statement. The footer contains only copyright and a back-to-top action.
 - Section links scroll smoothly after a click, with immediate navigation for reduced-motion preferences and direct page loads.
 - English is the default; English/Chinese and light/dark selections persist locally.
 - Existing hash-based project and About links continue to work on GitHub Pages.
@@ -28,6 +30,17 @@ The idea: Jeremy's actual split between ESP32 real-time control and Raspberry Pi
 The old pages are the source for project content. Performance claims with inconsistent explanations were omitted. Recognition and leadership labels were not expanded. The owner explicitly requested “Incoming Spring 2027” in English and “在读” in Chinese after the differing meanings were explained; the content preserves that choice.
 
 The contact scale, image-led project presentation, and concise toolkit listing take cues from the owner's supplied reference, [Mike Wilcock's portfolio](https://mikewilcockdesign.com/), using the site's existing typography, colors, assets, and dependencies.
+
+## Scoped interface review
+
+Reviewed the footer, icon context, case-study layouts, and their keyboard/mobile behavior with UI/UX Pro Max and the current [Web Interface Guidelines](https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md).
+
+- `src/App.jsx:308` — removed the repeated oversized name and tagline after the contact section; retained compact legal and navigation content.
+- `src/App.jsx:250` — replaced the shared diagonal action arrow with an envelope for email, horizontal arrows for internal navigation, framed arrows for external links, and code brackets for source repositories. Download, copy/check, theme, system-stage, and expansion icons retain explicit meanings. Icons beside labels remain hidden from assistive technology; icon-only controls have accessible names.
+- `src/App.jsx:776` — moved the overview and project facts beside the main image, and grouped demonstration photographs with outcomes. Gallery-free ZotFitness keeps its real asset and text without an empty image column.
+- `src/index.css:897` — switch case-study image/text pairs to a single column at 1050px and below; preserve text sizes and source order. Accordion indicators now use plus/minus rather than rotating a plus into a close icon.
+
+No blocking findings remain within this scope. Browser checks covered all three cases at 1440px and 390px, plus 768px and 320px checks, with no horizontal overflow; the footer measures 92px high. This is a scoped design review, not a full accessibility certification.
 
 ## Archive and publishing
 

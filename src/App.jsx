@@ -34,11 +34,22 @@ function Icon({ name, ...props }) {
       aria-hidden="true"
       {...props}
     >
-      {name === "arrow" && (
+      {name === "right" && <path d="M4 12h16m-6-6 6 6-6 6" />}
+      {name === "left" && <path d="M20 12H4m6-6-6 6 6 6" />}
+      {name === "up" && <path d="M12 20V4m-6 6 6-6 6 6" />}
+      {name === "external" && (
         <>
-          <path d="M5 19 19 5M5 5h14v14" />
+          <path d="M15 3h6v6m0-6L10 14" />
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
         </>
       )}
+      {name === "mail" && (
+        <>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m3 6 9 7 9-7" />
+        </>
+      )}
+      {name === "code" && <path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16" />}
       {name === "download" && (
         <>
           <path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" />
@@ -59,7 +70,12 @@ function Icon({ name, ...props }) {
       )}
       {name === "check" && <path d="m5 12 4 4L19 6" />}
       {name === "down" && <path d="M12 4v16m-6-6 6 6 6-6" />}
-      {name === "plus" && <path d="M12 5v14M5 12h14" />}
+      {name === "plus" && (
+        <>
+          <path d="M5 12h14" />
+          <path d="M12 5v14" className="expand-vertical" />
+        </>
+      )}
       {name === "sense" && (
         <>
           <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
@@ -231,7 +247,7 @@ function Contact() {
               <span>{t.contactTitle}</span>
               <span aria-hidden="true">{t.contactTitle}</span>
             </span>
-            <Icon name="arrow" />
+            <Icon name="mail" />
           </a>
         </h2>
       </Reveal>
@@ -272,11 +288,11 @@ function Contact() {
           <div className="social-links">
             <a href={PROFILE.github} target="_blank" rel="noreferrer">
               GitHub
-              <Icon name="arrow" />
+              <Icon name="external" />
             </a>
             <a href={PROFILE.linkedin} target="_blank" rel="noreferrer">
               LinkedIn
-              <Icon name="arrow" />
+              <Icon name="external" />
             </a>
             <a href={PROFILE.resume} download>
               {t.download}
@@ -293,31 +309,25 @@ function Footer() {
   const t = useCopy();
   return (
     <footer className="site-footer">
-      <div className="footer-top">
-        <p>{t.footer}</p>
-        <button
-          className="text-button"
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
-                .matches
-                ? "instant"
-                : "smooth",
-            });
-            document.querySelector("h1")?.focus({ preventScroll: true });
-          }}
-        >
-          {t.footerBack}
-          <span aria-hidden="true">↑</span>
-        </button>
-      </div>
-      <p className="footer-name" aria-hidden="true">
-        {t.name}
-      </p>
       <p className="copyright">
         © {new Date().getFullYear()} {t.name}
       </p>
+      <button
+        className="text-button"
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+              .matches
+              ? "instant"
+              : "smooth",
+          });
+          document.querySelector("h1")?.focus({ preventScroll: true });
+        }}
+      >
+        {t.footerBack}
+        <Icon name="up" />
+      </button>
     </footer>
   );
 }
@@ -382,7 +392,7 @@ function ProjectList() {
                 loading="lazy"
               />
               <span className="project-image-action" aria-hidden="true">
-                <Icon name="arrow" />
+                <Icon name="right" />
               </span>
             </Link>
             <div className="project-description">
@@ -400,7 +410,7 @@ function ProjectList() {
               </ul>
               <Link className="project-link" to={`/projects/${project.id}`}>
                 {t.readCase}
-                <Icon name="arrow" />
+                <Icon name="right" />
               </Link>
             </div>
           </Reveal>
@@ -500,7 +510,7 @@ function SystemExplorer({ photo = true }) {
           {photo && (
             <Link className="project-link" to="/projects/aurabot">
               {t.readCase}
-              <Icon name="arrow" />
+              <Icon name="right" />
             </Link>
           )}
         </Reveal>
@@ -609,7 +619,7 @@ function Home() {
             <p>{t.educationShort}</p>
             <Link className="project-link" to="/about">
               {t.storyLink}
-              <Icon name="arrow" />
+              <Icon name="right" />
             </Link>
           </Reveal>
         </div>
@@ -757,34 +767,13 @@ function Project({ project }) {
       <Meta title={project.title} description={p.description} />
       <section className="case-hero">
         <Link className="back-link" to="/#projects">
-          <span aria-hidden="true">←</span>
+          <Icon name="left" />
           {t.back}
         </Link>
         <h1 tabIndex={-1}>{project.title}</h1>
-        <div className="case-intro">
-          <p className="lead">{p.description}</p>
-          <div className="case-actions">
-            <a
-              className="button-primary"
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t.code}
-              <Icon name="arrow" />
-            </a>
-            {project.external && (
-              <a
-                className="text-link"
-                href={project.external}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t.projectSite}
-              </a>
-            )}
-          </div>
-        </div>
+        <p className="lead case-deck">{p.description}</p>
+      </section>
+      <section className="case-opening" aria-labelledby="overview-title">
         <Reveal as="figure" className={`case-image case-${project.id}`}>
           <img
             src={project.image}
@@ -794,35 +783,52 @@ function Project({ project }) {
             fetchPriority="high"
           />
         </Reveal>
-      </section>
-      <dl className="case-meta">
-        <div>
-          <dt>{t.role}</dt>
-          <dd>{p.role}</dd>
+        <div className="case-summary">
+          <Reveal>
+            <h2 id="overview-title">{t.overview}</h2>
+            <p>{p.overview}</p>
+          </Reveal>
+          <dl className="case-meta">
+            <div>
+              <dt>{t.role}</dt>
+              <dd>{p.role}</dd>
+            </div>
+            <div>
+              <dt>{t.context}</dt>
+              <dd>{p.context}</dd>
+            </div>
+            <div>
+              <dt>{t.timeline}</dt>
+              <dd>{p.dates}</dd>
+            </div>
+            <div>
+              <dt>{t.technology}</dt>
+              <dd>{project.stack.join(", ")}</dd>
+            </div>
+          </dl>
+          <div className="case-actions">
+            <a
+              className="button-primary"
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t.code}
+              <Icon name="code" />
+            </a>
+            {project.external && (
+              <a
+                className="text-link"
+                href={project.external}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t.projectSite}
+                <Icon name="external" />
+              </a>
+            )}
+          </div>
         </div>
-        <div>
-          <dt>{t.context}</dt>
-          <dd>{p.context}</dd>
-        </div>
-        <div>
-          <dt>{t.timeline}</dt>
-          <dd>{p.dates}</dd>
-        </div>
-        <div>
-          <dt>{t.technology}</dt>
-          <dd>{project.stack.join(", ")}</dd>
-        </div>
-      </dl>
-      <section
-        className="case-copy section-space"
-        aria-labelledby="overview-title"
-      >
-        <Reveal>
-          <h2 id="overview-title">{t.overview}</h2>
-        </Reveal>
-        <Reveal>
-          <p className="lead">{p.overview}</p>
-        </Reveal>
       </section>
       <section
         className="case-copy section-space"
@@ -852,39 +858,32 @@ function Project({ project }) {
           ))}
         </div>
       </section>
-      {project.gallery && (
-        <Reveal as="figure" className="case-gallery">
-          <img
-            src={project.gallery}
-            alt={p.galleryAlt}
-            width="1200"
-            height="900"
-            loading="lazy"
-          />
-          <figcaption>{p.galleryAlt}</figcaption>
-        </Reveal>
-      )}
       <section
-        className="case-copy section-space"
+        className={`case-result section-space${project.gallery ? " case-result-with-image" : ""}`}
         aria-labelledby="outcome-title"
       >
-        <Reveal>
-          <h2 id="outcome-title">{t.outcome}</h2>
-        </Reveal>
-        <Reveal>
-          <p className="lead">{p.outcome}</p>
-        </Reveal>
-      </section>
-      <section
-        className="case-copy section-space"
-        aria-labelledby="reflection-title"
-      >
-        <Reveal>
-          <h2 id="reflection-title">{t.reflection}</h2>
-        </Reveal>
-        <Reveal>
-          <p>{p.reflection}</p>
-        </Reveal>
+        {project.gallery && (
+          <Reveal as="figure" className="case-gallery">
+            <img
+              src={project.gallery}
+              alt={p.galleryAlt}
+              width="1200"
+              height="900"
+              loading="lazy"
+            />
+            <figcaption>{p.galleryAlt}</figcaption>
+          </Reveal>
+        )}
+        <div className="case-result-copy">
+          <Reveal>
+            <h2 id="outcome-title">{t.outcome}</h2>
+            <p className="lead">{p.outcome}</p>
+          </Reveal>
+          <Reveal className="case-reflection">
+            <h3 id="reflection-title">{t.reflection}</h3>
+            <p>{p.reflection}</p>
+          </Reveal>
+        </div>
       </section>
       <section
         className="next-project section-space"
@@ -893,7 +892,7 @@ function Project({ project }) {
         <h2 id="next-title">{t.next}</h2>
         <Link to={`/projects/${next.id}`}>
           <span>{next.title}</span>
-          <Icon name="arrow" width="40" height="40" />
+          <Icon name="right" width="40" height="40" />
         </Link>
       </section>
       <Contact />

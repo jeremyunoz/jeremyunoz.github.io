@@ -357,7 +357,7 @@ figcaption {
   transition: transform 200ms;
 }
 .project-link:hover svg {
-  transform: translate(3px, -3px);
+  transform: translateX(4px);
 }
 .section-heading {
   display: grid;
@@ -446,7 +446,7 @@ figcaption {
 }
 .project-row:is(:hover, :focus-within) .project-image-action svg,
 .project-row:is(:hover, :focus-within) .project-link svg {
-  transform: translate(3px, -3px);
+  transform: translateX(4px);
 }
 .project-bincredible .project-image {
   object-fit: contain;
@@ -620,7 +620,7 @@ figcaption {
   transition: transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .contact-cta:is(:hover, :focus-visible) > svg {
-  transform: translate(8px, -8px);
+  transform: translateY(-4px);
 }
 .rolling-label {
   position: relative;
@@ -715,32 +715,27 @@ figcaption {
   transform: translate(3px, -3px);
 }
 .site-footer {
-  padding-top: 48px;
-  padding-bottom: 24px;
-  overflow: hidden;
-}
-.footer-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
+  padding-block: 24px;
   font-family: var(--font-display);
   font-size: var(--small);
 }
-.footer-name {
-  font-family: var(--font-display);
-  font-size: clamp(60px, 12.3vw, 210px);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.07em;
-  margin-top: 40px;
+.site-footer .text-button {
   white-space: nowrap;
+}
+.site-footer svg {
+  transition: transform 200ms;
+}
+.site-footer .text-button:is(:hover, :focus-visible) svg {
+  transform: translateY(-3px);
 }
 .copyright {
   font-size: var(--small);
   font-family: var(--font-display);
   color: var(--secondary);
-  margin-top: 20px;
 }
 .about-hero {
   padding-top: 48px;
@@ -827,11 +822,11 @@ figcaption {
 .background-item summary:hover .background-title {
   color: var(--accent);
 }
-.background-toggle {
-  transition: transform 200ms;
+.expand-vertical {
+  transition: opacity 180ms;
 }
-.background-item[open] .background-toggle {
-  transform: rotate(45deg);
+.background-item[open] .expand-vertical {
+  opacity: 0;
 }
 .background-item > p {
   margin-top: 24px;
@@ -889,34 +884,53 @@ figcaption {
   align-items: center;
 }
 .case-hero h1 {
-  font-size: clamp(60px, 12vw, 180px);
+  font-size: clamp(56px, 9vw, 140px);
   line-height: 1.05;
   margin-top: 28px;
   letter-spacing: -0.065em;
 }
-.case-intro {
-  display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  gap: 64px;
+.case-deck {
   margin-top: 32px;
-  align-items: end;
+  max-width: 54ch;
 }
-.case-intro .lead {
-  max-width: 43ch;
+.case-opening,
+.case-result-with-image {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+.case-opening {
+  margin-top: 48px;
+}
+.case-opening ~ .section-space {
+  margin-top: clamp(80px, 8vw, 120px);
+}
+.case-summary,
+.case-result-copy {
+  min-width: 0;
+}
+.case-summary h2,
+.case-result h2 {
+  font-size: clamp(30px, 3vw, 44px);
+}
+.case-summary h2 + p,
+.case-result h2 + p,
+.case-reflection h3 + p {
+  margin-top: 24px;
 }
 .case-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 }
 .case-image {
-  margin-top: 56px;
   overflow: hidden;
 }
 .case-image img {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   object-position: center 53%;
 }
 .case-aurabot img {
@@ -924,7 +938,7 @@ figcaption {
 }
 .case-bincredible {
   background: #e9ede5;
-  padding: 48px;
+  padding: 5%;
 }
 .case-bincredible img {
   object-fit: contain;
@@ -934,15 +948,15 @@ figcaption {
 }
 .case-meta {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  padding-block: 40px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-block: 28px;
 }
 .case-meta dt {
   font-family: var(--font-display);
   color: var(--secondary);
   font-size: var(--small);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .case-meta dd {
   font-size: var(--body);
@@ -969,11 +983,22 @@ figcaption {
 .system-case .pipeline-tabs {
   max-width: 720px;
 }
-.case-gallery {
-  margin-top: var(--section-gap);
+.case-result-with-image {
+  align-items: center;
+}
+.case-reflection {
+  margin-top: 36px;
+}
+.case-result:not(.case-result-with-image) .case-result-copy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+.case-result:not(.case-result-with-image) .case-reflection {
+  margin-top: 0;
 }
 .case-gallery img {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
 }
 .next-project h2 {
   font-size: var(--lead);
@@ -1052,6 +1077,11 @@ figcaption {
     margin-top: -16px !important;
   }
   .contact-layout {
+    gap: 40px;
+  }
+  .case-opening,
+  .case-result-with-image {
+    grid-template-columns: 1fr;
     gap: 40px;
   }
 }
@@ -1224,21 +1254,7 @@ figcaption {
     gap: 20px;
   }
   .site-footer {
-    padding-top: 32px;
-  }
-  .footer-top {
-    align-items: start;
     gap: 16px;
-  }
-  .footer-top p {
-    max-width: 20ch;
-  }
-  .footer-name {
-    font-size: 12vw;
-    margin-top: 30px;
-  }
-  .footer-top .text-button {
-    white-space: nowrap;
   }
   .about-hero {
     padding-top: 32px;
@@ -1259,7 +1275,10 @@ figcaption {
   .experience-section,
   .beyond-section,
   .case-copy,
-  .case-decisions {
+  .case-decisions,
+  .case-opening,
+  .case-result-with-image,
+  .case-result:not(.case-result-with-image) .case-result-copy {
     grid-template-columns: 1fr;
     gap: 32px;
   }
@@ -1276,32 +1295,11 @@ figcaption {
     font-size: clamp(50px, 11vw, 88px);
     overflow-wrap: anywhere;
   }
-  .case-intro {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-  .case-actions {
-    justify-content: flex-start;
-  }
-  .case-image {
-    margin-top: 36px;
-  }
-  .case-image img {
-    aspect-ratio: 4 / 3;
-  }
   .case-bincredible {
     padding: 20px 10px;
   }
   .case-bincredible img {
     aspect-ratio: 16 / 9;
-  }
-  .case-meta {
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    padding-block: 28px;
-  }
-  .case-gallery img {
-    aspect-ratio: 4 / 3;
   }
   .next-project a {
     font-size: 36px;
@@ -1338,7 +1336,10 @@ figcaption {
   .project-row:is(:hover, :focus-within) svg,
   .contact-cta:is(:hover, :focus-visible) > svg,
   .contact-cta:is(:hover, :focus-visible) .rolling-label > span,
-  .social-links a:is(:hover, :focus-visible) svg {
+  .social-links a:is(:hover, :focus-visible) svg,
+  .site-footer .text-button:is(:hover, :focus-visible) svg,
+  .hero-actions .button-primary:is(:hover, :focus-visible) .action-icon,
+  .project-link:hover svg {
     transform: none;
   }
 }

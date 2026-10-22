@@ -367,7 +367,6 @@ export const copy = {
     download: "Download résumé",
     contactNote:
       "For opportunities in embedded systems, firmware, edge AI, and computer vision.",
-    footer: "Embedded systems. Edge intelligence.",
     footerBack: "Back to top",
     aboutTitle: ["A bit", "about me."],
     aboutIntro:
@@ -430,11 +429,11 @@ export const copy = {
     beyond: "Beyond the workbench",
     beyondText:
       "Long walks, a good cup of milk tea, and time away from the screen. I’m also exploring Rust and the ways it changes how I think about memory and concurrency.",
-    overview: "The project",
+    overview: "Overview",
     contribution: "My contribution",
     decisions: "Engineering decisions",
-    outcome: "What came together",
-    reflection: "What I took from it",
+    outcome: "Outcome",
+    reflection: "Lessons learned",
     technology: "Built with",
     role: "My focus",
     context: "Context",
@@ -515,7 +514,6 @@ export const copy = {
     copyFailed: "复制失败，你可以直接选中上方邮箱地址。",
     download: "下载简历",
     contactNote: "关注嵌入式系统、固件、端侧 AI 与计算机视觉方向的机会。",
-    footer: "嵌入式系统，端侧智能。",
     footerBack: "返回顶部",
     aboutTitle: ["你好，", "我是剑铭。"],
     aboutIntro: "我喜欢代码开始影响真实世界的那一刻。",
